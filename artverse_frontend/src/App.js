@@ -1,23 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
-
+// src/App.js
+import React from 'react';
+// import Left_Image_Signin_page from './components/Left_Image_Signin_page';
+// import Right_Section_Signin_page from './components/Right_Section_Signin_page';
+import SignInPage from './pages/signin_page';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" style={{"backgroundColor":"black"}}>
+      <SignInPage />
     </div>
   );
 }
