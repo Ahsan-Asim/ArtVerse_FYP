@@ -1,0 +1,157 @@
+.header {
+  width: 1224px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space elements evenly */
+  padding: 40px 20px 50px 50px; 
+  background-color: rgba(255, 253, 244, 1); /* Match your home page background */
+}
+
+.logo {
+  width: 180px;
+  height: 122px;
+  top: -4px;
+left: -10px;
+}
+
+
+
+
+.headings {
+  display: flex;
+  /* flex-direction: column; Arrange headings vertically */
+}
+
+
+
+.become-artist{
+width: 92px;
+height: 27px;
+top: 48px;
+left: 151px;
+
+font-family: 'Aleo', sans-serif; /* Apply the Aleo font */
+font-size: 20px;
+font-weight: 500;
+line-height: 19.2px;
+text-align: left;
+margin-left: 150px;
+text-decoration: none !important; /* Ensures underline is removed */
+  color: black !important; /* Ensures color applies */
+}
+
+
+
+
+
+.why-us{
+  width: 105px;
+  height: 27px;
+top: 45px;
+left: 279px;
+margin-left: 20px;
+
+font-family: 'Aleo', sans-serif; /* Apply the Aleo font */
+font-size: 20px;
+font-weight: 500;
+line-height: 19.2px;
+text-align: left;
+text-decoration: none !important; /* Ensures underline is removed */
+  color: black !important; /* Ensures color applies */
+
+}
+
+
+
+
+.explore-digital-art{
+
+  width: 150px;
+height: 27px;
+margin-left: 20px;
+top: 45px;
+left: 368px;
+font-family: 'Aleo', sans-serif; /* Apply the Aleo font */
+font-size: 20px;
+font-weight: 500;
+line-height: 19.2px;
+text-align: left;
+text-decoration: none !important; /* Ensures underline is removed */
+  color: black !important; /* Ensures color applies */
+
+
+}
+
+
+
+
+.search-container {
+  display: flex;
+  align-items: center;
+
+  width: 280px;
+  height: 60px;
+  top: -30px;
+  left: 90px;
+  position: relative; /* Position relative for absolute children */
+
+border: 3px solid rgba(0, 0, 0, 1);
+
+  border-radius: 100px;
+  background: linear-gradient(90deg, #FFFDF4 65.5%, #998486 100%);
+}
+
+
+.search-icon {
+  width: 29.7px;
+  height: 27.64px;
+  margin-left: 10px; /* Margin to space from the left */
+}
+
+.search-input {
+  width: 100%; /* Take full width */
+  height: 100%; /* Match height of container */
+  border: none; /* Remove border */
+  outline: none; /* Remove outline */
+  padding-left: 20px; /* Padding for text */
+  font-family: Inter;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.buttons {
+  display:flex;
+  width: 60px; /* Adjust width accordingly */
+  height: 60px; /* Adjust height accordingly */
+  top: -37px;
+  left:10px;
+  position: relative;
+  
+}
+
+/* Specific styles for shopping and like icons if needed */
+.signup_button {
+  background-color: black; /* Button background color */
+  color: white; /* Text color */
+  border: 3px solid black; /* No border */
+  border-radius: 30px;
+  padding: 10px 20px; /* Padding for size */
+  font-size: 20px; /* Font size */
+  font-family: 'Aleo', sans-serif; /* Font style */
+  cursor: pointer; /* Pointer cursor on hover */
+  
+}
+
+.login_button {
+  background-color: transparent; /* No background color */
+  color: black; /* Text color is white */
+  border: none;
+  padding: 10px 20px; /* Padding for size */
+  font-size: 20px; /* Font size */
+  font-family: 'Aleo', sans-serif; /* Font style */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: color 0.3s ease; /* Smooth color transition */
+ 
+}
+
+

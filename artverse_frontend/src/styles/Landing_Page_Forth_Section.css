@@ -1,0 +1,49 @@
+.main-headin2{
+  width: 560px;
+  height: 38px;
+  color: black;
+ align-items: center;
+  position: absolute;
+  left: 525px;
+  top: 1500px;
+  font-family: 'Aleo', sans-serif;
+  font-size: 32px;
+  font-weight: 500; /* Makes the text bold */
+  /* margin-top: 13px; */
+  letter-spacing: 7px;
+  line-height: auto;
+  text-shadow: 5px 5px 8px rgba(0, 0, 0, 0.2); /* Horizontal and Vertical offset, blur radius, color */
+
+}
+
+
+/* Container with background image */
+.text-with-background {
+  position: absolute;
+  width: 1400px;
+  height: 720px; /* Adjust height as needed */
+  left: 0px;
+  top: 1600px;
+  background-image: url('../assets/images/Landing_Page_Image2.png'); /* Replace with the actual path to your image */
+  background-size: cover; /* Ensures the image covers the container */
+  background-position: center; /* Centers the image within the container */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Text over background */
+.overlay-text {
+  color: white;
+  position: absolute;
+  width: 850px;
+  height: 58px;
+  font-size: 48px;
+  left: 700px;
+  top: 330px;
+  font-family: 'Aleo', sans-serif;
+  font-weight: 900;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Light shadow for readability */
+  line-height: auto;
+  letter-spacing: 15px;
+}

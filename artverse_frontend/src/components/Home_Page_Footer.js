@@ -92,4 +92,4 @@ function Home_Page_Footer() {
   )
 }
 
-export default Home_Page_Footer
+export default Home_Page_Footer;

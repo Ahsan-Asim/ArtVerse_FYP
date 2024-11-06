@@ -1,0 +1,98 @@
+.main-heading1 {
+  width: 380px;
+  height: 38px;
+  color: black;
+  text-align: left;
+  position: absolute;
+  left: 542px;
+  top: 820px;
+  font-size: 32px;
+  font-family: 'Aleo', sans-serif;
+  font-weight: 700; /* Makes the text bold */
+  margin-top: 13px;
+  letter-spacing: 7px;
+}
+
+.bold-line {
+  position: absolute;
+  left: 542px; /* Aligns the line exactly below the heading */
+  top: 881px; /* Position the line just below the heading, adjust as needed */
+  width: 365px; /* Same width as the heading */
+  height: 7px; /* Line thickness */
+  background-color: black; /* Pure black line */
+}
+
+
+/* Artist section container */
+.artist-cards {
+  display: flex;
+  justify-content: space-between; /* This ensures the images are displayed in parallel */
+  margin-top: 100px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+/* Individual artist card */
+.artist-card {
+  width: 282px; /* width for each card */
+  text-align: center;
+  
+  margin: 0 15px; /* Space between the cards */
+}
+
+/* card1{
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+card2{
+  position: absolute;
+
+  left: 302px;
+  top: 0px;
+}
+card3{
+  position: absolute;
+
+  left: 600px;
+  top: 0px;
+}
+card4{
+  position: absolute;
+
+  left: 888px;
+  top: 0px;
+} */
+
+
+/* Artist image style */
+.artist-image {
+  width: 300px;
+  height: 380px;
+  border: 1px solid black;
+  border-radius: 50px; /* Circular image */
+  margin-top: 200px;
+  object-fit: cover; /* Ensures the image covers the area properly */
+}
+
+/* Artist text */
+.artist-text h3 {
+  font-family: 'Aleo', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+/* Star image */
+.stars {
+  display: flex;
+  justify-content: center;
+}
+
+.star-image {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  margin-top: 0px;
+}

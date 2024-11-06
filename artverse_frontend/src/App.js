@@ -6,10 +6,11 @@ import SignInPage from './pages/signin_page';
 import SignUpPage from './pages/signup_page';
 
 import HomePage from './pages/home_page';
+import Landing_Page from './pages/Landing_Page';
 function App() {
   return (
     <div className="App" style={{"backgroundColor":"black"}}>
-      <HomePage />
+      <Landing_Page />
     </div>
   );
 }
