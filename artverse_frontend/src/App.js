@@ -9,10 +9,11 @@ import HomePage from './pages/home_page';
 import Landing_Page from './pages/Landing_Page';
 
 import Specific_Painting_Page from './pages/Specific_Painting_Page';
+import Service_Page from './pages/Service_Page';
 function App() {
   return (
     <div className="App" style={{"backgroundColor":"black"}}>
-      <Specific_Painting_Page />
+      <Service_Page />
     </div>
   );
 }
