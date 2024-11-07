@@ -4,8 +4,8 @@
   color: black;
  align-items: center;
   position: absolute;
-  left: 525px;
-  top: 2420px;
+  left: 473px;
+  top: 2045px;
   font-family: 'Aleo', sans-serif;
   font-size: 32px;
   font-weight: 500; /* Makes the text bold */
@@ -19,29 +19,30 @@
 
 .art-cards-container {
   display: flex;
-  width: 1000px;
+  width: 600px;
   height: 231px;
   justify-content: space-between;
-  padding: 20px;
   position: absolute;
-  top: 2500px;
+  top: 2180px;
+  left: 51px;
+  gap: 150px;
 
 
   
 }
 
 .art-card {
-  width: 50%;
-  margin: 20px;
+  width: 30%;
   border: 1px;
   border-radius: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Background shadow effect */
+
 }
 
 
 .card-image {
   background-size: cover;
-  width: 400px;
+  width: 330px;
   height: 232px;
   border: 1px;
   border-radius: 20px;
@@ -53,6 +54,8 @@
 
 .card-details {
   display: flex;
+  width: 330px;
+  height: 232px;
   justify-content: space-between;
   padding: 10px 0;
   background-color: white;
@@ -116,29 +119,30 @@
 
 .art-cards-container1 {
   display: flex;
-  width: 1000px;
+  width: 600px;
   height: 231px;
   justify-content: space-between;
-  padding: 20px;
   position: absolute;
-  top: 3200px;
+  top: 2747px;
+  left: 51px;
+  gap: 150px;
 
 
   
 }
 
 .art-card1 {
-  width: 50%;
-  margin: 20px;
+  width: 30%;
   border: 1px;
   border-radius: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Background shadow effect */
+
 }
 
 
 .card-image1 {
   background-size: cover;
-  width: 400px;
+  width: 330px;
   height: 232px;
   border: 1px;
   border-radius: 20px;
@@ -150,6 +154,8 @@
 
 .card-details1 {
   display: flex;
+  width: 330px;
+  height: 232px;
   justify-content: space-between;
   padding: 10px 0;
   background-color: white;
@@ -210,14 +216,55 @@
 }
 
 
+.pain-line{
+  width: 1181px;
+  height: 0px;
+  position: absolute;
+  left: 20px;
+  top: 3350px;
+}
+
+.main-headin4{
+  width: 560px;
+  height: 38px;
+  color: black;
+ align-items: center;
+  position: absolute;
+  left: 439px;
+  top: 3400px;
+  font-family: 'Aleo', sans-serif;
+  font-size: 32px;
+  font-weight: 500; /* Makes the text bold */
+  /* margin-top: 13px; */
+  letter-spacing: 7px;
+  line-height: auto;
+  text-shadow: 5px 5px 8px rgba(0, 0, 0, 0.2); /* Horizontal and Vertical offset, blur radius, color */
+
+}
+
 .art-cards-container2 {
   display: flex;
   width: 1000px;
   height: 231px;
   justify-content: space-between;
-  padding: 20px;
   position: absolute;
-  top: 3200px;
+  top: 3500px;
+  left: 51px;
+  gap: 30px;
+
+
+  
+}
+
+.art-cards-container3 {
+  display: flex;
+  width: 1000px;
+  height: 231px;
+  justify-content: space-between;
+  position: absolute;
+  top: 4100px;
+  left: 51px;
+  gap: 30px;
 
 
   

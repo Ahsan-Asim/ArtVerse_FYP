@@ -7,10 +7,12 @@ import SignUpPage from './pages/signup_page';
 
 import HomePage from './pages/home_page';
 import Landing_Page from './pages/Landing_Page';
+
+import Specific_Painting_Page from './pages/Specific_Painting_Page';
 function App() {
   return (
     <div className="App" style={{"backgroundColor":"black"}}>
-      <Landing_Page />
+      <Specific_Painting_Page />
     </div>
   );
 }
