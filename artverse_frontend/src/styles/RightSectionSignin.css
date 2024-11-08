@@ -1,10 +1,10 @@
 /* src/styles/RightSectionSignin.css */
-.logo {
+.logo10 {
   width: 155px;
   height: 97px;
   position: absolute; /* Position relative to the nearest positioned ancestor */
   top: 24px; /* 24px from the top of the container */
-  left: 507px; /* 507px from the left of the container */
+  left: 1000px; /* 507px from the left of the container */
   opacity: 1; /* Make it visible */
 }
 

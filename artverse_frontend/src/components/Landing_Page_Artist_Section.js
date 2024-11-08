@@ -9,7 +9,7 @@ function Landing_Page_Artist_Section() {
       <h1 className='main-heading1'>Meet Our Artists</h1>
       <div className="bold-line"></div>
 
-      <div className="artist-cards">
+      <div className="artist-cards1">
         {/* Each artist's card */}
         <div className="artist-card card1">
           <img src={Artist_Image} alt="Artist 1" className="artist-image" />

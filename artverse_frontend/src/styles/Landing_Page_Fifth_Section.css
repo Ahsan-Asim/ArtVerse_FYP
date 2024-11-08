@@ -1,11 +1,11 @@
-.main-headin3{
+.main-headin30{
   width: 560px;
   height: 38px;
   color: black;
  align-items: center;
   position: absolute;
   left: 525px;
-  top: 2420px;
+  top: 2400px;
   font-family: 'Aleo', sans-serif;
   font-size: 32px;
   font-weight: 500; /* Makes the text bold */
@@ -17,7 +17,7 @@
 }
 
 
-.art-cards-container {
+.art-cards-container10 {
   display: flex;
   width: 1000px;
   height: 231px;
@@ -25,12 +25,13 @@
   padding: 20px;
   position: absolute;
   top: 2500px;
+  left: 50px;
 
 
   
 }
 
-.art-card {
+.art-card10 {
   width: 50%;
   margin: 20px;
   border: 1px;
@@ -114,7 +115,7 @@
 
 
 
-.art-cards-container1 {
+.art-cards-container20 {
   display: flex;
   width: 1000px;
   height: 231px;
@@ -122,6 +123,8 @@
   padding: 20px;
   position: absolute;
   top: 3200px;
+  left: 50px;
+  gap: 50px;
 
 
   
@@ -210,14 +213,16 @@
 }
 
 
-.art-cards-container2 {
+.art-cards-container30 {
   display: flex;
   width: 1000px;
   height: 231px;
   justify-content: space-between;
   padding: 20px;
   position: absolute;
-  top: 3200px;
+  top: 3900px;
+  left: 50px;
+  gap: 50px;
 
 
   

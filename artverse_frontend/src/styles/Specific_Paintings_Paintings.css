@@ -17,7 +17,7 @@
 }
 
 
-.art-cards-container {
+.art-cards-container11 {
   display: flex;
   width: 600px;
   height: 231px;
@@ -25,7 +25,7 @@
   position: absolute;
   top: 2180px;
   left: 51px;
-  gap: 150px;
+  gap: 200px;
 
 
   
@@ -256,7 +256,7 @@
   
 }
 
-.art-cards-container3 {
+.art-cards-container33 {
   display: flex;
   width: 1000px;
   height: 231px;

@@ -18,7 +18,7 @@ function Home_Page_Header() {
         <a href="/why-us" className="why-us">Why Us</a>
         <a href="/explore-digital-art" className="explore-digital-art">Explore Digital Art</a>
       </div>
-      <div className="search-container">
+      <div className="search-container30">
         <img src={SearchIcon} alt="Search Icon" className="search-icon" />
         <input type="text" placeholder="Search" className="search-input" />
       </div>
