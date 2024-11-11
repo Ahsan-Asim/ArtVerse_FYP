@@ -8,15 +8,15 @@ import ShoppingIcon from '../assets/images/shopping_icon.png';
 function Landing_Page_fifth_Section() {
   return (
     <div>
-      <h1 className='main-headin30'><b>Explore inspiring designs</b></h1>
+      <h1 className='main-headin3'><b>Explore inspiring designs</b></h1>
 
 
 
 
 
-      <div className="art-cards-container10">
+      <div className="art-cards-container">
       {/* First Card */}
-      <div className="art-card10">
+      <div className="art-card">
         <div className="card-image" style={{ backgroundImage: `url(${require('../assets/images/home9.png')})` }}></div>
         <div className="card-details">
           <div className="left-details">
@@ -43,7 +43,7 @@ function Landing_Page_fifth_Section() {
       </div>
 
       {/* Second Card */}
-      <div className="art-card10">
+      <div className="art-card">
         <div className="card-image" style={{ backgroundImage: `url(${require('../assets/images/home10.png')})` }}></div>
         <div className="card-details">
           <div className="left-details">
@@ -71,7 +71,7 @@ function Landing_Page_fifth_Section() {
       </div>
 
       {/* Third Card */}
-      <div className="art-card10">
+      <div className="art-card">
         <div className="card-image" style={{ backgroundImage: `url(${require('../assets/images/home11.png')})` }}></div>
         <div className="card-details">
           <div className="left-details">
@@ -101,7 +101,7 @@ function Landing_Page_fifth_Section() {
 
 
 
-    <div className="art-cards-container20">
+    <div className="art-cards-container1">
       {/* First Card */}
       <div className="art-card1">
         <div className="card-image1" style={{ backgroundImage: `url(${require('../assets/images/home9.png')})` }}></div>
@@ -187,7 +187,7 @@ function Landing_Page_fifth_Section() {
 
 
 
-    <div className="art-cards-container30">
+    <div className="art-cards-container2">
       {/* First Card */}
       <div className="art-card1">
         <div className="card-image1" style={{ backgroundImage: `url(${require('../assets/images/home9.png')})` }}></div>

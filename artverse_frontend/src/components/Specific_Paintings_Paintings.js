@@ -11,7 +11,7 @@ function Specific_Paintings_Paintings() {
       <h1 className='main-headin3'><b>More From Artists</b></h1>
 
       
-      <div className="art-cards-container11">
+      <div className="art-cards-container">
       {/* First Card */}
       <div className="art-card">
         <div className="card-image" style={{ backgroundImage: `url(${require('../assets/images/home9.png')})` }}></div>
@@ -276,7 +276,7 @@ function Specific_Paintings_Paintings() {
 
 
 
-    <div className="art-cards-container33">
+    <div className="art-cards-container3">
       {/* First Card */}
       <div className="art-card1">
         <div className="card-image1" style={{ backgroundImage: `url(${require('../assets/images/home9.png')})` }}></div>

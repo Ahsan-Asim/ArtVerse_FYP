@@ -24,15 +24,12 @@
 
 
 /* Artist section container */
-.artist-cards1 {
+.artist-cards {
   display: flex;
   justify-content: space-between; /* This ensures the images are displayed in parallel */
   margin-top: 100px;
   margin-left: 50px;
   margin-right: 50px;
-  position: absolute;
-  left: 40px;
-  top: 930px;
 }
 
 /* Individual artist card */

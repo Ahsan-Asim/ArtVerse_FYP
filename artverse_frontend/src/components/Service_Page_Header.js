@@ -5,6 +5,7 @@ import SearchIcon from '../assets/images/search.png'; // Correct path to your se
 import ShoppingIcon from '../assets/images/shopping.png'; // Correct path to your shopping icon
 import LikeIcon from '../assets/images/heart.png'; // Correct path to your like icon
 import ProfileIcon from '../assets/images/profile.png'; // Correct path to your profile icon
+import '../styles/Header.css'; // Ensure to import your custom CSS
 
 function Service_Page_Header() {
   return (
@@ -19,7 +20,7 @@ function Service_Page_Header() {
         <a href="/why-us" className="why-us">Why Us</a>
         <a href="/explore-digital-art" className="explore-digital-art">Explore Digital Art</a>
       </div>
-      <div className="search-container50">
+      <div className="search-container">
         <img src={SearchIcon} alt="Search Icon" className="search-icon" />
         <input type="text" placeholder="Search" className="search-input" />
       </div>

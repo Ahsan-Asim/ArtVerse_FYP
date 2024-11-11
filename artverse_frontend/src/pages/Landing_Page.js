@@ -7,7 +7,8 @@ import Landing_Page_Forth_Section from '../components/Landing_Page_Forth_Section
 import Landing_Page_fifth_Section from '../components/Landing_Page_fifth_Section';
 import Landing_Page_Sixth_Section from '../components/Landing_Page_Sixth_Section';
 import Landing_Page_Seventh_Section from '../components/Landing_Page_Seventh_Section';
-import Landing_Page_Footer from '../components/Landing_Page_Footer';
+import Home_Page_Footer from '../components/Home_Page_Footer';
+
 
 function Landing_Page() {
   return (
@@ -19,7 +20,7 @@ function Landing_Page() {
       <Landing_Page_fifth_Section />
       <Landing_Page_Sixth_Section />
       <Landing_Page_Seventh_Section />
-      <Landing_Page_Footer />
+      <Home_Page_Footer />
       
     </div>
   )

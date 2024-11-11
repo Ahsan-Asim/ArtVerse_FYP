@@ -15,7 +15,7 @@ export default function Specific_Paintings_Image() {
   return (
     <div>
        <div className="featured-art1">
-      <img src={FeaturedImage} alt="Featured Art1" className="background-image11" />
+      <img src={FeaturedImage} alt="Featured Art1" className="background-image1" />
     </div>
     <div className="heading-icons-container">
         <h2 className='specific-h2'>Flowety</h2>

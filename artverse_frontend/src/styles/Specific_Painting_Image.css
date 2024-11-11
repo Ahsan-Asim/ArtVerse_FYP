@@ -6,8 +6,8 @@
   overflow: hidden; /* To clip any overflowing content */
 }
 
-.background-image11 {
-  width: 90%; /* Full width to fit the container */
+.background-image1 {
+  width: 100%; /* Full width to fit the container */
   height: 100%; /* Full height to fit the container */
   object-fit: cover; /* Ensures the image covers the area without distortion */
 }
