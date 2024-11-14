@@ -37,7 +37,7 @@ function Service_Page_Header() {
 
      {/* New Row of Headings */}
      <div className="sub-headings">
-        <a href="/paintings" className="sub-heading-item">Paintings</a>
+        <a href="/painting" className="sub-heading-item">Paintings</a>
         <a href="/sculptures" className="sub-heading-item">Sculptures</a>
         <a href="/photography" className="sub-heading-item">Photography</a>
         <a href="/digital-arts" className="sub-heading-item">Digital Arts</a>
