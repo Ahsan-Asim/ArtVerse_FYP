@@ -81,7 +81,7 @@ exports.signin = async (req, res) => {
 
   try {
     // Find the user by email
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email,password });
 
     if (!user) {
       return res.status(400).json({ message: 'Invalid email or password' });

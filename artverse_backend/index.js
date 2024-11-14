@@ -10,11 +10,14 @@ app.use(cors({ origin: 'http://localhost:3000' })); // Allow requests from your 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Import user and artist routers
 const userRouter = require("./Routes/user");
+const artistRouter = require("./Routes/artist");
 
 // Connect MongoDB and set up routes
 connectMongoDb('mongodb://localhost:27017/fyp');
 app.use('/api/users', userRouter);
+app.use('/api/artists', artistRouter); // Add the artist route
 
 const PORT = 4000;
 app.listen(PORT, () => {
