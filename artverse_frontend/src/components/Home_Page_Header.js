@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Logo from '../assets/images/ArtVerse_Logo.png'; // Correct path to your logo
 import SearchIcon from '../assets/images/search.png'; // Correct path to your search icon
 import ShoppingIcon from '../assets/images/shopping.png'; // Correct path to your shopping icon
@@ -7,35 +7,48 @@ import ProfileIcon from '../assets/images/profile.png'; // Correct path to your 
 import '../styles/Header.css'; // Ensure to import your custom CSS
 
 function Home_Page_Header() {
+  const [isArtistLoggedIn, setIsArtistLoggedIn] = useState(false);
+
+  useEffect(() => {
+    // Check if artistId exists in localStorage when the component mounts
+    const artistId = localStorage.getItem('artistId');
+    setIsArtistLoggedIn(!!artistId); // Set to true if artistId exists
+  }, []);
+
   return (
     <>
-    <header className="header">
-      <a href="/" className="logo-link">
-        <img src={Logo} alt="ArtVerse Logo" className="logo" />
-      </a>
-      <div className="headings">
-        <a href="/become-artist" className="become-artist">Become Artist</a>
-        <a href="/why-us" className="why-us">Why Us</a>
-        <a href="/explore-digital-art" className="explore-digital-art">Explore Digital Art</a>
-      </div>
-      <div className="search-container30">
-        <img src={SearchIcon} alt="Search Icon" className="search-icon" />
-        <input type="text" placeholder="Search" className="search-input" />
-      </div>
-      <a href="/cart" className="icon-link">
-        <img src={ShoppingIcon} alt="Shopping Icon" className="shopping-icon" />
-      </a>
-      <a href="/favorites" className="icon-link">
-        <img src={LikeIcon} alt="Like Icon" className="like-icon" />
-      </a>
-      <a href="/profile" className="icon-link">
-        <img src={ProfileIcon} alt="Profile Icon" className="profile-icon" />
-      </a>
-    </header>
+      <header className="header">
+        <a href="/" className="logo-link">
+          <img src={Logo} alt="ArtVerse Logo" className="logo" />
+        </a>
+        <div className="headings">
+          <a href="/become-artist" className="become-artist">Become Artist</a>
+          <a href="/why-us" className="why-us">Why Us</a>
+          <a href="/explore-digital-art" className="explore-digital-art">Explore Digital Art</a>
+        </div>
+        <div className="search-container30">
+          <img src={SearchIcon} alt="Search Icon" className="search-icon" />
+          <input type="text" placeholder="Search" className="search-input" />
+        </div>
+        <a href="/cart" className="icon-link">
+          <img src={ShoppingIcon} alt="Shopping Icon" className="shopping-icon" />
+        </a>
+        <a href="/favorites" className="icon-link">
+          <img src={LikeIcon} alt="Like Icon" className="like-icon" />
+        </a>
+        {isArtistLoggedIn ? (
+          <a href="/profile" className="icon-link">
+            <img src={ProfileIcon} alt="Profile Icon" className="profile-icon" />
+          </a>
+        ) : (
+          <a href="/login" className="icon-link">
+            <img src={ProfileIcon} alt="Profile Icon" className="profile-icon" />
+          </a>
+        )}
+      </header>
 
-
-     {/* New Row of Headings */}
-     <div className="sub-headings">
+      {/* New Row of Headings */}
+      <div className="sub-headings">
         <a href="/paintings" className="sub-heading-item">Paintings</a>
         <a href="/sculptures" className="sub-heading-item">Sculptures</a>
         <a href="/photography" className="sub-heading-item">Photography</a>
@@ -43,10 +56,7 @@ function Home_Page_Header() {
         <a href="/auctions" className="sub-heading-item">Auctions</a>
         <a href="/events" className="sub-heading-item">Events</a>
       </div>
-
-
     </>
-    
   );
 }
 
