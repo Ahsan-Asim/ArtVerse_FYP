@@ -15,7 +15,7 @@ const userRouter = require("./Routes/user");
 const artistRouter = require("./Routes/artist");
 
 // Connect MongoDB and set up routes
-connectMongoDb('mongodb://localhost:27017/fyp');
+connectMongoDb('mongodb://127.0.0.1:27017/fyp');
 app.use('/api/users', userRouter);
 app.use('/api/artists', artistRouter); // Add the artist route
 

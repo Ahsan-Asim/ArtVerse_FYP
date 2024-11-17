@@ -17,6 +17,7 @@ function Landing_Page_Header() {
         <Link to="/become-artist" className="become-artist">About Us</Link>
         <Link to="/why-us" className="why-us">Digital Art</Link>
         <Link to="/become-artist" className="explore-digital-art">Become Artist</Link>
+
       </div>
 
       <div className="search-container">
