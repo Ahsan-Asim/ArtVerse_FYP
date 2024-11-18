@@ -75,6 +75,10 @@ exports.signup = async (req, res) => {
 };
 
 
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+// const User = require('../Models/user');
+
 // Sign-in (login) functionality
 exports.signin = async (req, res) => {
   const { email, password } = req.body;
@@ -87,17 +91,25 @@ exports.signin = async (req, res) => {
       return res.status(400).json({ message: 'Invalid email or password' });
     }
 
-    // // Compare entered password with hashed password in the database
-    // const isMatch = await user.comparePassword(password);
+    // // Verify password
+    // const isMatch = await bcrypt.compare(password, user.password);
 
     // if (!isMatch) {
     //   return res.status(400).json({ message: 'Invalid email or password' });
     // }
 
-    // Successful login
+    // Create JWT token
+    const token = jwt.sign(
+      { userId: user._id, email: user.email },
+      '1234', // use a strong secret key
+      { expiresIn: '1h' } // Token expiration (you can adjust this)
+    );
+
+    // Send the token in response
     res.status(200).json({
       message: 'Login successful',
-      user: { name: user.name, email: user.email, phone: user.phone }, // Return user details without password
+      token, // Send the token to the client
+      user: { name: user.name, email: user.email, phone: user.phone },
     });
   } catch (error) {
     console.error(error);

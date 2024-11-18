@@ -38,6 +38,9 @@ const Right_Section_Signin_page = () => {
     try {
       const response = await axios.post('http://localhost:4000/api/users/signin', credentials);
       // Navigate to home page with email and password in location state
+
+      localStorage.setItem('token', response.data.token);
+
       navigate('/home', {
         state: {
           email: credentials.email,
@@ -49,6 +52,7 @@ const Right_Section_Signin_page = () => {
       console.log(error); // Log the error for debugging
     }
   };
+
 
   return (
     <div className="right-section">

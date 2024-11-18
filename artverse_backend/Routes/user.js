@@ -3,6 +3,10 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('../Controllers/user');
+const authMiddleware = require('../middleware/authMiddleware'); // Import the auth middleware
+const User = require('../Models/user');
+
+
 
 // Route for user signup
 router.post('/signup', userController.signup);
@@ -10,4 +14,21 @@ router.post('/signin', userController.signin);
 router.post('/google-signup', userController.googleSignup);
 
 
-module.exports = router;
+// Protected route for user profile
+
+router.get('/home', authMiddleware, async (req, res) => {
+  try {
+    // Access the user data from the decoded token
+    const user = await User.findOne({ email: req.user.email }); // Use findOne instead of findById
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    res.status(200).json({ user });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+
+module.exports=router
