@@ -13,6 +13,8 @@ import Become_Artist from './pages/Become_Artist';
 import Profile from './pages/profile';
 
 
+
+
 function App() {
   return (
     <GoogleOAuthProvider clientId="868206158931-8u3ftrs4ekvg4jitiu02bab01n5hj7q9.apps.googleusercontent.com">
