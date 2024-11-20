@@ -1,0 +1,110 @@
+.main-studio {
+    position: relative;
+    width: 1224px; /* Container width */
+    height: auto; /* Adjust height dynamically */
+    margin: 0 auto; /* Center the container */
+  }
+  
+  .main-studio h1 {
+    font-family: 'Aleo', sans-serif;
+    font-size: 40px;
+    text-align: center; /* Center align the main heading */
+    padding: 20px;
+  }
+  
+  .heading {
+    display: flex; /* Enables flex layout */
+    justify-content: space-between; /* Align left and right areas at extremes */
+    align-items: center; /* Vertically align content */
+    width: 1224px;
+    height: 200px;
+    margin: 0 auto;
+    padding: 0 20px; /* Add padding on left and right */
+  }
+  
+  .left-area h1 {
+    font-family: 'Aleo', sans-serif;
+    font-size: 30px;
+    margin: 0; /* Remove default margin */
+  }
+  
+  .right-area button {
+    font-family: 'Aleo', sans-serif;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px; /* Rounded button */
+    background-color: #333; /* Button background color */
+    color: #fff; /* Button text color */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth color change on hover */
+  }
+  
+  .right-area button:hover {
+    background-color: #555; /* Darker background on hover */
+  }
+  
+  /* Artwork List Styling */
+  .artwork-list {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    gap: 20px; /* Space between cards */
+    margin: 20px 0; /* Margin for the list */
+  }
+  
+  .artwork-card {
+    display: flex; /* Aligns content horizontally */
+    justify-content: space-between; /* Space out image and details */
+    align-items: center; /* Vertically center content */
+    padding: 20px;
+    border: 1px solid #ccc; /* Card border */
+    border-radius: 15px; /* Rounded corners */
+    background-color: #fffdf4; /* Matches your design */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    height: 250px;
+  }
+  
+  .artwork-image {
+    width: 100px; /* Image size */
+    height: 100px;
+    border-radius: 10px; /* Rounded image corners */
+    object-fit: cover; /* Ensures proper image fit */
+    margin-right: 20px; /* Space between image and details */
+  }
+  
+  .artwork-details {
+    flex: 1; /* Take up remaining space */
+    font-family: 'Aleo', sans-serif;
+  }
+  
+  .artwork-details h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  
+  .artwork-details p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #555; /* Subtle color for secondary text */
+  }
+  
+  .artwork-status {
+    text-align: right; /* Align content to the right */
+    font-family: 'Aleo', sans-serif;
+  }
+  
+  .artwork-status p {
+    margin: 5px 0;
+    font-size: 16px;
+  }
+  
+  .artwork-status p.status {
+    font-weight: 700;
+    color: green; /* Use color to differentiate status */
+  }
+  
+  .artwork-status p.draft {
+    color: #ff9800; /* Orange for drafts */
+  }
+  
