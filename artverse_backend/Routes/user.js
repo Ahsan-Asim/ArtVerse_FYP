@@ -12,6 +12,10 @@ const User = require('../Models/user');
 router.post('/signup', userController.signup);
 router.post('/signin', userController.signin);
 router.post('/google-signup', userController.googleSignup);
+router.post('/become-artist', userController.becomeArtist);
+router.get('/getUserByEmail/:email', userController.getUserByEmail);
+
+
 
 
 // Protected route for user profile

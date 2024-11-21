@@ -26,11 +26,13 @@ const ArtistRegistrationForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:4000/api/artists/register-artist', formData);
+      const response = await axios.post('http://localhost:4000/api/users/become-artist', formData);
       setMessage(response.data.message);
       setError('');
-      // Store artist's email in localStorage upon successful registration
-      localStorage.setItem('artistEmail', formData.email);
+
+      // Store updated user details in localStorage upon successful registration
+      sessionStorage.setItem('userEmail', formData.email);
+      sessionStorage.setItem('userRole', 'artist');
       setTimeout(() => {
         navigate('/home');
       }, 2000);
@@ -78,7 +80,7 @@ const ArtistRegistrationForm = () => {
           About:
           <textarea name="about" value={formData.about} onChange={handleChange} style={{ ...styles.input, height: '80px' }}></textarea>
         </label>
-        <button type="submit" style={styles.button}>Register Artist</button>
+        <button type="submit" style={styles.button}>Register as Artist</button>
       </form>
     </div>
   );
@@ -120,18 +122,16 @@ const styles = {
     backgroundColor: '#007bff',
     color: '#fff',
     border: 'none',
-    borderRadius: '4px',
     cursor: 'pointer',
+    borderRadius: '4px',
   },
   successMessage: {
     color: 'green',
     textAlign: 'center',
-    marginBottom: '10px',
   },
   errorMessage: {
     color: 'red',
     textAlign: 'center',
-    marginBottom: '10px',
   },
 };
 
