@@ -1,8 +1,9 @@
 // models/User.js
 
 const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
-const userSchema = new mongoose.Schema({
+const userSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -18,12 +19,21 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
-    match: [/^\d{10}$/, 'Please enter a valid phone number'], // Example: 10-digit validation
+    match: [/^\d{10}$/, 'Please enter a valid phone number'],
   },
   password: {
     type: String,
     required: true,
     minlength: 6,
+  },
+  role: {
+    type: String,
+    enum: ['user', 'artist'],
+    default: 'user',
+  },
+  artistDetails: {
+    type: Schema.Types.ObjectId,
+    ref: 'Artist',
   },
 });
 

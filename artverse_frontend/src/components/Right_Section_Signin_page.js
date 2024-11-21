@@ -37,14 +37,25 @@ const Right_Section_Signin_page = () => {
     e.preventDefault();
     try {
       const response = await axios.post('http://localhost:4000/api/users/signin', credentials);
-      // Navigate to home page with email and password in location state
+      
+      // Save the JWT token to localStorage
+      // localStorage.setItem('token', response.data.token);
+      sessionStorage.setItem('token', response.data.token);
 
-      localStorage.setItem('token', response.data.token);
+      
+      // Get the user details and role from the response
+      const { user, token } = response.data;
+      const userRole = user.role; // 'user' or 'artist'
 
+      console.log(userRole);
+      console.log(token);
+
+
+      // Navigate to home page with user email, password, and role
       navigate('/home', {
         state: {
           email: credentials.email,
-          password: credentials.password,
+          role: userRole, // Send the role along with email
         },
       });
     } catch (error) {
@@ -52,7 +63,6 @@ const Right_Section_Signin_page = () => {
       console.log(error); // Log the error for debugging
     }
   };
-
 
   return (
     <div className="right-section">

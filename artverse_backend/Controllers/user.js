@@ -1,6 +1,8 @@
 // controllers/userController.js
 
 const User = require('../Models/user');
+const Artist = require('../Models/artist'); // Import the Artist model
+
 
 // controllers/userController.js
 
@@ -100,7 +102,7 @@ exports.signin = async (req, res) => {
 
     // Create JWT token
     const token = jwt.sign(
-      { userId: user._id, email: user.email },
+      { userId: user._id, email: user.email,role:user.role},
       '1234', // use a strong secret key
       { expiresIn: '1h' } // Token expiration (you can adjust this)
     );
@@ -109,10 +111,89 @@ exports.signin = async (req, res) => {
     res.status(200).json({
       message: 'Login successful',
       token, // Send the token to the client
-      user: { name: user.name, email: user.email, phone: user.phone },
-    });
+      user: {
+        name: user.name,
+        email: user.email,
+        phone: user.phone,
+        role: user.role, // Include role if applicable
+      },    });
   } catch (error) {
     console.error(error);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+////////////////////
+// Update user to become an artist
+exports.becomeArtist = async (req, res) => {
+  const { name, email, country, state, city, address, education, about } = req.body;
+
+  try {
+    // Find the user by email
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ message: 'User not found.' });
+    }
+
+    // Check if the user is already an artist
+    if (user.role === 'artist') {
+      return res.status(400).json({ message: 'User is already an artist.' });
+    }
+
+   // Create a new artist
+   const artist = new Artist({
+    name,
+    email,
+    country,
+    state,
+    city,
+    address,
+    education,
+    about,
+  });
+    const savedArtist = await artist.save();
+
+    // Update user role and reference to artistDetails
+    user.role = 'artist';
+    user.artistDetails = savedArtist._id;
+
+    await user.save();
+
+    res.status(200).json({ message: 'User is now an artist!', user });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error', error });
+  }
+};
+
+
+// // Get artist profile by email
+// exports.getUserByEmail = async (req, res) => {
+//   const { email } = req.params;
+
+//   try {
+//     const artist = await User.findOne({ email: email });
+//     if (!artist) {
+//       return res.status(404).json({ message: 'User not found.' });
+//     }
+//     res.status(200).json(artist);
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: 'Server error.' });
+//   }
+// };
+
+// Example: Backend route to fetch user details
+exports.getUserByEmail = async (req, res) => {
+  const { email } = req.params;
+
+  try {
+    const user = await User.findOne({ email }).populate('artistDetails');
+    if (!user) {
+      return res.status(404).json({ message: 'User not found.' });
+    }
+    res.status(200).json(user);
+  } catch (error) {
+    console.error('Error fetching user:', error);
     res.status(500).json({ message: 'Server error' });
   }
 };

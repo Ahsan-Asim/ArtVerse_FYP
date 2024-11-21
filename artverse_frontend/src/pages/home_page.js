@@ -15,7 +15,7 @@ const HomePage = () => {
 
   // Fetch the user profile after checking token
   useEffect(() => {
-    const token = localStorage.getItem('token'); // Get the JWT token from localStorage
+    const token = sessionStorage.getItem('token'); // Get the JWT token from localStorage
 
     if (!token) {
       // If no token is found, redirect the user to the sign-in page
@@ -31,6 +31,7 @@ const HomePage = () => {
             Authorization: `Bearer ${token}`, // Attach the token to the header
           },
         });
+        console.log("The role of user is:",response.data.user.role);
         setUser(response.data.user); // Set the user data in state
       } catch (err) {
         setError('Failed to fetch profile.'); // Handle errors
