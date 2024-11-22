@@ -1,366 +1,102 @@
-import React from 'react'
-import '../styles/Artist_detail_main.css'; // Ensure to import your custom CSS
+import React, { useState } from "react";
+import "../styles/Artist_detail_main.css";
+import home4 from "../assets/images/home4.png"; // If you want to include an image for each artist, use it here
 
-import LikeIcon from '../assets/images/like_icon.png';
-import ShoppingIcon from '../assets/images/shopping_icon.png';
-
-function Artist_detail_main() {
+// Modal Component to display artist details and edit/delete buttons
+function Modal({ artist, closeModal }) {
   return (
-    <div>
-      <h1 className='main-headin3'><b>More From Artists</b></h1>
+    <div className="modal-overlay" onClick={closeModal}>
+      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <button className="close-btn" onClick={closeModal}>×</button> {/* Close button */}
+        <h3>{artist.name}</h3>
+        <p>{artist.city}</p>
+        <p>{artist.description}</p>
 
-      
-      <div className="art-cards-container11">
-      {/* First Card */}
-      <div className="art-card">
-        <div className="card-image" style={{ backgroundImage: `url(${require('../assets/images/home9.png')})` }}></div>
-        <div className="card-details">
-          <div className="left-details">
-            <h3 className="art-title">Flowery</h3>
-            <p className="artist-name">By Asif Hussain</p>
-            <p className="art-type">Painting</p>
-            <p className="art-material">Oil, Acrylic on Canvas</p>
-            <p className="dimensions">72 x 52 Inches</p>
-          </div>
-          <div className="right-details">
-            <p className="price-old">Rs. 80,000</p>
-            <p className="price-new">Rs. 71,000</p>
-            <p className="discount">30% OFF</p>
-          </div>
-        </div>
-        <div className="card-buttons">
-          <button className="icon-container">
-            <img src={LikeIcon} alt="Like" />
-          </button>
-          <button className="icon-container">
-            <img src={ShoppingIcon} alt="Shopping" />
-          </button>
-        </div>
-      </div>
-
-      {/* Second Card */}
-      <div className="art-card">
-        <div className="card-image" style={{ backgroundImage: `url(${require('../assets/images/home10.png')})` }}></div>
-        <div className="card-details">
-          <div className="left-details">
-            <h3 className="art-title">Colour Paintings</h3>
-            <p className="artist-name">By Artist Name</p>
-            <p className="art-type">Artist Spotlights</p>
-            <p className="art-material">Oil, Acrylic on Canvas</p>
-
-            <p className="dimensions">60 x 40 Inches</p>
-          </div>
-          <div className="right-details">
-            <p className="price-old">Rs. 90,000</p>
-            <p className="price-new">Rs. 81,000</p>
-            <p className="discount">10% OFF</p>
-          </div>
-        </div>
-        <div className="card-buttons">
-          <button className="icon-container">
-            <img src={LikeIcon} alt="Like" />
-          </button>
-          <button className="icon-container">
-            <img src={ShoppingIcon} alt="Shopping" />
-          </button>
-        </div>
-      </div>
-
-      {/* Third Card */}
-      <div className="art-card">
-        <div className="card-image" style={{ backgroundImage: `url(${require('../assets/images/home11.png')})` }}></div>
-        <div className="card-details">
-          <div className="left-details">
-            <h3 className="art-title">Asian Mysticism</h3>
-            <p className="artist-name">By Artist Name</p>
-            <p className="art-type">Englo Art</p>
-            <p className="art-material">Acrylic on Canvas</p>
-            <p className="dimensions">50 x 70 Inches</p>
-          </div>
-          <div className="right-details">
-            <p className="price-old">Rs. 100,000</p>
-            <p className="price-new">Rs. 90,000</p>
-            <p className="discount">15% OFF</p>
-          </div>
-        </div>
-        <div className="card-buttons">
-          <button className="icon-container">
-            <img src={LikeIcon} alt="Like" />
-          </button>
-          <button className="icon-container">
-            <img src={ShoppingIcon} alt="Shopping" />
-          </button>
+        <div className="modal-buttons">
+          <button>Edit</button>
+          <button>Delete</button>
         </div>
       </div>
     </div>
-
-
-
-
-    <div className="art-cards-container1">
-      {/* First Card */}
-      <div className="art-card1">
-        <div className="card-image1" style={{ backgroundImage: `url(${require('../assets/images/home9.png')})` }}></div>
-        <div className="card-details1">
-          <div className="left-details1">
-            <h3 className="art-title1">Flowery</h3>
-            <p className="artist-name1">By Asif Hussain</p>
-            <p className="art-type1">Painting</p>
-            <p className="art-material1">Oil, Acrylic on Canvas</p>
-            <p className="dimensions1">72 x 52 Inches</p>
-          </div>
-          <div className="right-details1">
-            <p className="price-old1">Rs. 80,000</p>
-            <p className="price-new1">Rs. 71,000</p>
-            <p className="discount1">30% OFF</p>
-          </div>
-        </div>
-        <div className="card-buttons1">
-          <button className="icon-container1">
-            <img src={LikeIcon} alt="Like" />
-          </button>
-          <button className="icon-container1">
-            <img src={ShoppingIcon} alt="Shopping1" />
-          </button>
-        </div>
-      </div>
-
-      {/* Second Card */}
-      <div className="art-card1">
-        <div className="card-image1" style={{ backgroundImage: `url(${require('../assets/images/home10.png')})` }}></div>
-        <div className="card-details1">
-          <div className="left-details1">
-            <h3 className="art-title1">Colour Paintings</h3>
-            <p className="artist-name1">By Artist Name</p>
-            <p className="art-type1">Artist Spotlights</p>
-            <p className="art-material1">Oil, Acrylic on Canvas</p>
-
-            <p className="dimensions1">60 x 40 Inches</p>
-          </div>
-          <div className="right-details1">
-            <p className="price-old1">Rs. 90,000</p>
-            <p className="price-new1">Rs. 81,000</p>
-            <p className="discount1">10% OFF</p>
-          </div>
-        </div>
-        <div className="card-buttons1">
-          <button className="icon-container1">
-            <img src={LikeIcon} alt="Like" />
-          </button>
-          <button className="icon-container1">
-            <img src={ShoppingIcon} alt="Shopping1" />
-          </button>
-        </div>
-      </div>
-
-      {/* Third Card */}
-      <div className="art-card1">
-        <div className="card-image1" style={{ backgroundImage: `url(${require('../assets/images/home11.png')})` }}></div>
-        <div className="card-details1">
-          <div className="left-details1">
-            <h3 className="art-title1">Asian Mysticism</h3>
-            <p className="artist-name1">By Artist Name</p>
-            <p className="art-type1">Englo Art</p>
-            <p className="art-material1">Acrylic on Canvas</p>
-            <p className="dimensions1">50 x 70 Inches</p>
-          </div>
-          <div className="right-details1">
-            <p className="price-old1">Rs. 100,000</p>
-            <p className="price-new1">Rs. 90,000</p>
-            <p className="discount1">15% OFF</p>
-          </div>
-        </div>
-        <div className="card-buttons1">
-          <button className="icon-container1">
-            <img src={LikeIcon} alt="Like1" />
-          </button>
-          <button className="icon-container1">
-            <img src={ShoppingIcon} alt="Shopping1" />
-          </button>
-        </div>
-      </div>
-    </div>
-
-
-    <hr className='pain-line'></hr>
-    <h1 className='main-headin4'><b>Similar Artwork</b></h1>
-
-
-
-
-    <div className="art-cards-container2">
-      {/* First Card */}
-      <div className="art-card1">
-        <div className="card-image1" style={{ backgroundImage: `url(${require('../assets/images/home9.png')})` }}></div>
-        <div className="card-details1">
-          <div className="left-details1">
-            <h3 className="art-title1">Flowery</h3>
-            <p className="artist-name1">By Asif Hussain</p>
-            <p className="art-type1">Painting</p>
-            <p className="art-material1">Oil, Acrylic on Canvas</p>
-            <p className="dimensions1">72 x 52 Inches</p>
-          </div>
-          <div className="right-details1">
-            <p className="price-old1">Rs. 80,000</p>
-            <p className="price-new1">Rs. 71,000</p>
-            <p className="discount1">30% OFF</p>
-          </div>
-        </div>
-        <div className="card-buttons1">
-          <button className="icon-container1">
-            <img src={LikeIcon} alt="Like" />
-          </button>
-          <button className="icon-container1">
-            <img src={ShoppingIcon} alt="Shopping1" />
-          </button>
-        </div>
-      </div>
-
-      {/* Second Card */}
-      <div className="art-card1">
-        <div className="card-image1" style={{ backgroundImage: `url(${require('../assets/images/home10.png')})` }}></div>
-        <div className="card-details1">
-          <div className="left-details1">
-            <h3 className="art-title1">Colour Paintings</h3>
-            <p className="artist-name1">By Artist Name</p>
-            <p className="art-type1">Artist Spotlights</p>
-            <p className="art-material1">Oil, Acrylic on Canvas</p>
-
-            <p className="dimensions1">60 x 40 Inches</p>
-          </div>
-          <div className="right-details1">
-            <p className="price-old1">Rs. 90,000</p>
-            <p className="price-new1">Rs. 81,000</p>
-            <p className="discount1">10% OFF</p>
-          </div>
-        </div>
-        <div className="card-buttons1">
-          <button className="icon-container1">
-            <img src={LikeIcon} alt="Like" />
-          </button>
-          <button className="icon-container1">
-            <img src={ShoppingIcon} alt="Shopping1" />
-          </button>
-        </div>
-      </div>
-
-      {/* Third Card */}
-      <div className="art-card1">
-        <div className="card-image1" style={{ backgroundImage: `url(${require('../assets/images/home11.png')})` }}></div>
-        <div className="card-details1">
-          <div className="left-details1">
-            <h3 className="art-title1">Asian Mysticism</h3>
-            <p className="artist-name1">By Artist Name</p>
-            <p className="art-type1">Englo Art</p>
-            <p className="art-material1">Acrylic on Canvas</p>
-            <p className="dimensions1">50 x 70 Inches</p>
-          </div>
-          <div className="right-details1">
-            <p className="price-old1">Rs. 100,000</p>
-            <p className="price-new1">Rs. 90,000</p>
-            <p className="discount1">15% OFF</p>
-          </div>
-        </div>
-        <div className="card-buttons1">
-          <button className="icon-container1">
-            <img src={LikeIcon} alt="Like1" />
-          </button>
-          <button className="icon-container1">
-            <img src={ShoppingIcon} alt="Shopping1" />
-          </button>
-        </div>
-      </div>
-    </div>
-
-
-
-
-    <div className="art-cards-container33">
-      {/* First Card */}
-      <div className="art-card1">
-        <div className="card-image1" style={{ backgroundImage: `url(${require('../assets/images/home9.png')})` }}></div>
-        <div className="card-details1">
-          <div className="left-details1">
-            <h3 className="art-title1">Flowery</h3>
-            <p className="artist-name1">By Asif Hussain</p>
-            <p className="art-type1">Painting</p>
-            <p className="art-material1">Oil, Acrylic on Canvas</p>
-            <p className="dimensions1">72 x 52 Inches</p>
-          </div>
-          <div className="right-details1">
-            <p className="price-old1">Rs. 80,000</p>
-            <p className="price-new1">Rs. 71,000</p>
-            <p className="discount1">30% OFF</p>
-          </div>
-        </div>
-        <div className="card-buttons1">
-          <button className="icon-container1">
-            <img src={LikeIcon} alt="Like" />
-          </button>
-          <button className="icon-container1">
-            <img src={ShoppingIcon} alt="Shopping1" />
-          </button>
-        </div>
-      </div>
-
-      {/* Second Card */}
-      <div className="art-card1">
-        <div className="card-image1" style={{ backgroundImage: `url(${require('../assets/images/home10.png')})` }}></div>
-        <div className="card-details1">
-          <div className="left-details1">
-            <h3 className="art-title1">Colour Paintings</h3>
-            <p className="artist-name1">By Artist Name</p>
-            <p className="art-type1">Artist Spotlights</p>
-            <p className="art-material1">Oil, Acrylic on Canvas</p>
-
-            <p className="dimensions1">60 x 40 Inches</p>
-          </div>
-          <div className="right-details1">
-            <p className="price-old1">Rs. 90,000</p>
-            <p className="price-new1">Rs. 81,000</p>
-            <p className="discount1">10% OFF</p>
-          </div>
-        </div>
-        <div className="card-buttons1">
-          <button className="icon-container1">
-            <img src={LikeIcon} alt="Like" />
-          </button>
-          <button className="icon-container1">
-            <img src={ShoppingIcon} alt="Shopping1" />
-          </button>
-        </div>
-      </div>
-
-      {/* Third Card */}
-      <div className="art-card1">
-        <div className="card-image1" style={{ backgroundImage: `url(${require('../assets/images/home11.png')})` }}></div>
-        <div className="card-details1">
-          <div className="left-details1">
-            <h3 className="art-title1">Asian Mysticism</h3>
-            <p className="artist-name1">By Artist Name</p>
-            <p className="art-type1">Englo Art</p>
-            <p className="art-material1">Acrylic on Canvas</p>
-            <p className="dimensions1">50 x 70 Inches</p>
-          </div>
-          <div className="right-details1">
-            <p className="price-old1">Rs. 100,000</p>
-            <p className="price-new1">Rs. 90,000</p>
-            <p className="discount1">15% OFF</p>
-          </div>
-        </div>
-        <div className="card-buttons1">
-          <button className="icon-container1">
-            <img src={LikeIcon} alt="Like1" />
-          </button>
-          <button className="icon-container1">
-            <img src={ShoppingIcon} alt="Shopping1" />
-          </button>
-        </div>
-      </div>
-    </div>
-    </div>
-
-  )
+  );
 }
 
-export default Artist_detail_main
+function ArtistCard({ image, name, city, description, onClick }) {
+  return (
+    <div className="artist-card" onClick={onClick}>
+      <img src={image || home4} alt={name} />
+      
+      <div className="artist-details">
+        <h3>{name}</h3>
+        <p>{city}</p>
+        <p>{description}</p>
+      </div>
+    </div>
+  );
+}
+
+function Artist_detail_main() {
+  const [selectedArtist, setSelectedArtist] = useState(null); // state for selected artist for the modal
+
+  const artists = [
+    {
+      image: home4,
+      name: "Wajeeha Kashaf",
+      city: "Faisalabad",
+      description: "Hardworking, creative, and passionate about design and art.",
+    },
+    {
+      image: home4,
+      name: "Rohit Kumar",
+      city: "Islamabad",
+      description: "An artist blending intricate details with bold abstract elements.",
+    },
+    {
+      image: home4,
+      name: "Ali Hassan",
+      city: "Lahore",
+      description: "Inspired by nature, Ali creates minimalist art with a modern twist.",
+    },
+    {
+      image: home4,
+      name: "Sarah Khan",
+      city: "Karachi",
+      description: "A photographer turned visual artist, exploring light and shadows.",
+    },
+    {
+      image: home4,
+      name: "Usman Ali",
+      city: "Rawalpindi",
+      description: "An experimental artist known for mixing traditional with digital art.",
+    },
+  ];
+
+  // Handle opening the modal and setting the selected artist
+  const handleCardClick = (artist) => {
+    setSelectedArtist(artist);
+  };
+
+  // Handle closing the modal
+  const closeModal = () => {
+    setSelectedArtist(null);
+  };
+
+  return (
+    <div className="main-studio">
+      <h1>Manage Artist Profile</h1>
+      <div className="heading">Welcome to Artist Portfolios</div>
+
+      <div className="artist-list">
+        {artists.map((artist, index) => (
+          <ArtistCard key={index} {...artist} onClick={() => handleCardClick(artist)} />
+        ))}
+      </div>
+
+      {selectedArtist && (
+        <Modal artist={selectedArtist} closeModal={closeModal} />
+      )}
+    </div>
+  );
+}
+
+export default Artist_detail_main;
