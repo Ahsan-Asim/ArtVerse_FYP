@@ -1,45 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom'; // Import Link for routing
+
 
 const Profile = () => {
   const [userData, setUserData] = useState(null);
   const [roleData, setRoleData] = useState(null);
   const [editableData, setEditableData] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
-
-  // useEffect(() => {
-  //   const token = sessionStorage.getItem('token');
-  //   if (token) {
-  //     axios
-  //       .get('http://localhost:4000/api/users/home', {
-  //         headers: { Authorization: `Bearer ${token}` },
-  //       })
-  //       .then((response) => {
-  //         const user = response.data.user;
-  //         setUserData(user);
-
-  //         // Fetch additional data based on role and email
-  //         if (user.email) {
-  //           axios
-  //             .get(`http://localhost:4000/api/users/getUserByEmail/${user.email}`)
-  //             .then((res) => {
-  //               // if (res.data.role == "artist"){
-  //               //   setRoleData(res.data);
-  //               // setEditableData(res.data); // Make data editable
-  //               // }
-  //               setRoleData(res.data);
-  //               setEditableData(res.data); // Make data editable
-  //             })
-  //             .catch((error) => {
-  //               console.error('Error fetching role data:', error);
-  //             });
-  //         }
-  //       })
-  //       .catch((error) => {
-  //         console.error('Error fetching user data:', error);
-  //       });
-  //   }
-  // }, []);
 
   useEffect(() => {
     const token = sessionStorage.getItem('token');
@@ -51,7 +19,7 @@ const Profile = () => {
         .then((response) => {
           const user = response.data.user;
           setUserData(user);
-  
+
           // Fetch user details including artist data
           if (user.email) {
             axios
@@ -74,7 +42,6 @@ const Profile = () => {
         });
     }
   }, []);
-  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -202,20 +169,34 @@ const Profile = () => {
             </div>
           </>
         )}
-        {isEditing ? (
-          <>
-            <button type="button" onClick={handleSave} style={styles.button}>
-              Save
-            </button>
-            <button type="button" onClick={handleCancel} style={styles.button}>
-              Cancel
-            </button>
-          </>
-        ) : (
-          <button type="button" onClick={() => setIsEditing(true)} style={styles.button}>
-            Edit Profile
-          </button>
-        )}
+
+        <div style={styles.buttonContainer}>
+          {isEditing ? (
+            <>
+              <button type="button" onClick={handleSave} style={styles.button}>
+                Save
+              </button>
+              <button type="button" onClick={handleCancel} style={styles.button}>
+                Cancel
+              </button>
+            </>
+          ) : (
+            <>
+              <button type="button" onClick={() => setIsEditing(true)} style={styles.button}>
+                Edit Profile
+              </button>
+              {/* <button type="button" onClick={() => alert('Upload artwork feature coming soon!')} style={styles.button}>
+                Upload Artwork
+              </button> */}
+
+              <Link to="/upload_artwork" className="upload-artwork">Upload Artwork</Link>
+
+              <button type="button" onClick={() => alert('View your artwork feature coming soon!')} style={styles.button}>
+                View Work
+              </button>
+            </>
+          )}
+        </div>
       </form>
     </div>
   );
@@ -262,6 +243,11 @@ const styles = {
     borderRadius: '5px',
     cursor: 'pointer',
     marginTop: '10px',
+    marginRight: '10px',
+  },
+  buttonContainer: {
+    display: 'flex',
+    justifyContent: 'space-between',
   },
 };
 

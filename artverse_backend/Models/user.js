@@ -35,6 +35,10 @@ const userSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Artist',
   },
+  artworks: [{  // Array of references to the Artwork model
+    type: Schema.Types.ObjectId,
+    ref: 'Artwork',
+  }],
 });
 
 module.exports = mongoose.model('User', userSchema);
