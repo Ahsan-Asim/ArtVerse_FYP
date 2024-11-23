@@ -65,7 +65,6 @@
   object-fit: cover;
   height: 200px;
 }
-
 /* Modal Overlay */
 .modal-overlay {
   position: fixed;
@@ -73,7 +72,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  background: rgba(0, 0, 0, 0.7); /* Darker semi-transparent background */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -83,21 +82,24 @@
 /* Modal Content */
 .modal-content {
   background-color: white;
-  padding: 20px;
+  padding: 40px; /* Increased padding for full-page modal */
   border-radius: 10px;
-  max-width: 500px;
-  width: 80%;
+  max-width: 90vw; /* Cover most of the width */
+  max-height: 90vh; /* Cover most of the height */
+  width: 100%; /* Responsive width */
+  height: auto; /* Adjust height dynamically */
   text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   position: relative;
+  overflow-y: auto; /* Allow scrolling if content overflows */
 }
 
-/* Close Button (cross at the top-left) */
+/* Close Button (cross at the top-right corner) */
 .close-btn {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 24px;
+  top: 20px;
+  right: 20px;
+  font-size: 30px;
   color: #333;
   background: none;
   border: none;
@@ -111,8 +113,8 @@
 
 /* Modal Buttons */
 .modal-buttons button {
-  margin: 10px;
-  padding: 10px;
+  margin: 15px;
+  padding: 15px 20px;
   background-color: #007bff;
   color: white;
   border: none;
@@ -122,19 +124,4 @@
 
 .modal-buttons button:hover {
   background-color: #0056b3;
-}
-
-/* Close Button (for modal) */
-.close-btn {
-  margin-top: 15px;
-  padding: 8px 15px;
-  background-color: #f44336;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.close-btn:hover {
-  background-color: #e31c1c;
 }
