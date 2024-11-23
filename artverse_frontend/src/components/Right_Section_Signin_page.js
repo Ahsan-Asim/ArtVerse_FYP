@@ -41,14 +41,25 @@ const Right_Section_Signin_page = () => {
       // Save the JWT token to localStorage
       // localStorage.setItem('token', response.data.token);
       sessionStorage.setItem('token', response.data.token);
+     
+
 
       
       // Get the user details and role from the response
       const { user, token } = response.data;
       const userRole = user.role; // 'user' or 'artist'
+      const userEmail = user.email; // 'user' or 'artist'
+      const isVerified1 = user.isVerified; // 'user' or 'artist'
 
-      console.log(userRole);
+
+
+      console.log(isVerified1);
       console.log(token);
+
+      sessionStorage.setItem('email', userEmail);
+      sessionStorage.setItem('role', userRole);
+      // sessionStorage.setItem('isVerified', isVerified1);
+
 
 
       // Navigate to home page with user email, password, and role

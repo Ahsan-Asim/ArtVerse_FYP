@@ -14,12 +14,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const userRouter = require("./Routes/user");
 const artistRouter = require("./Routes/artist");
 const artworkRouter = require("./Routes/artwork");
+const adminRouter = require("./Routes/admin");
 
 // Connect MongoDB and set up routes
 connectMongoDb('mongodb://127.0.0.1:27017/fyp');
 app.use('/api/users', userRouter);
 app.use('/api/artists', artistRouter); // Add the artist route
 app.use('/api/artwork', artworkRouter); // Add the artist route
+app.use('/api/admin', adminRouter); // Add the artist route
+
 
 
 const PORT = 4000;

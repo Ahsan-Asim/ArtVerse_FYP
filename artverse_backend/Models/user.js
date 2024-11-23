@@ -17,13 +17,13 @@ const userSchema = new Schema({
   },
   phone: {
     type: String,
-    required: true,
-    unique: true,
+    // required: true,
+    // unique: true,
     match: [/^\d{10}$/, 'Please enter a valid phone number'],
   },
   password: {
     type: String,
-    required: true,
+    // required: true,
     minlength: 6,
   },
   role: {
@@ -31,14 +31,27 @@ const userSchema = new Schema({
     enum: ['user', 'artist'],
     default: 'user',
   },
+  googleId: {
+    type: String,
+  },
   artistDetails: {
     type: Schema.Types.ObjectId,
     ref: 'Artist',
   },
-  artworks: [{  // Array of references to the Artwork model
-    type: Schema.Types.ObjectId,
-    ref: 'Artwork',
-  }],
+  artworks: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Artwork',
+    },
+  ],
+  isVerified: {
+    type: Boolean,
+    default: false, // Default value set to false
+  },
+  isBlocked: {
+    type: Boolean,
+    default: false, // Default value set to false
+  },
 });
 
 module.exports = mongoose.model('User', userSchema);

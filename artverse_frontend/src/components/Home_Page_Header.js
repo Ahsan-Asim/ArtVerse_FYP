@@ -41,7 +41,7 @@ function Home_Page_Header() {
             <img src={ProfileIcon} alt="Profile Icon" className="profile-icon" />
           </a>
         ) : (
-          <a href="/login" className="icon-link">
+          <a href="/profile" className="icon-link">
             <img src={ProfileIcon} alt="Profile Icon" className="profile-icon" />
           </a>
         )}

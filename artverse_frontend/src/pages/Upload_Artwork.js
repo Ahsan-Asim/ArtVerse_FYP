@@ -69,9 +69,14 @@ const Upload_Artwork = () => {
         alert("Artwork uploaded successfully!");
         setArtworkDetails({}); // Clear form fields after successful submission
       }
-    } catch (error) {
-      console.error("Error uploading artwork:", error);
-      alert("Failed to upload artwork.");
+    }  catch (error) {
+      if (error.response && error.response.status === 403) {
+        // User is not verified
+        alert('Your account is under verification. You cannot upload artwork yet.');
+      } else {
+        // Other errors
+        alert('Error uploading artwork.');
+      }
     }
   };
 
