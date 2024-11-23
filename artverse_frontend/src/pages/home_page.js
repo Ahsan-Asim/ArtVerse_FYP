@@ -16,7 +16,7 @@ const HomePage = () => {
   // Fetch the user profile after checking token
   useEffect(() => {
     const token = sessionStorage.getItem('token'); // Get the JWT token from localStorage
-
+    console.log(token);
     if (!token) {
       // If no token is found, redirect the user to the sign-in page
       navigate('/signin');

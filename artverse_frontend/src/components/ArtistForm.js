@@ -31,8 +31,8 @@ const ArtistRegistrationForm = () => {
       setError('');
 
       // Store updated user details in localStorage upon successful registration
-      sessionStorage.setItem('userEmail', formData.email);
-      sessionStorage.setItem('userRole', 'artist');
+      sessionStorage.setItem('email', formData.email);
+      sessionStorage.setItem('role', 'artist');
       setTimeout(() => {
         navigate('/home');
       }, 2000);

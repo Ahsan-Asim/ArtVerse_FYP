@@ -6,6 +6,48 @@ const Artist = require('../Models/artist'); // Import the Artist model
 
 // controllers/userController.js
 
+// const { OAuth2Client } = require('google-auth-library');
+
+// // Initialize Google OAuth Client with your client ID
+// const client = new OAuth2Client('868206158931-8u3ftrs4ekvg4jitiu02bab01n5hj7q9.apps.googleusercontent.com');
+
+// exports.googleSignup = async (req, res) => {
+//   const { token } = req.body;
+  
+//   try {
+//     // Verify the Google token
+//     const ticket = await client.verifyIdToken({
+//       idToken: token,
+//       audience: '868206158931-8u3ftrs4ekvg4jitiu02bab01n5hj7q9.apps.googleusercontent.com', // Your Google OAuth 2.0 Client ID
+//     });
+
+//     const payload = ticket.getPayload();
+//     const { email} = payload;
+
+//     // Check if the user already exists
+//     const existingUser = await User.findOne({ email });
+//     if (existingUser) {
+//       return res.status(200).json({ message: 'User already exists!' });
+//     }
+
+//     // Create new user with the Google data
+//     const user = new User({
+//       email
+//     });
+
+//     console.log(user.email);
+//     console.log(user.name);
+
+//     await user.save();
+
+//     res.status(201).json({ message: 'User registered successfully via Google!' });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: 'Google authentication failed', error });
+//   }
+// };
+
+
 const { OAuth2Client } = require('google-auth-library');
 
 // Initialize Google OAuth Client with your client ID
@@ -13,38 +55,39 @@ const client = new OAuth2Client('868206158931-8u3ftrs4ekvg4jitiu02bab01n5hj7q9.a
 
 exports.googleSignup = async (req, res) => {
   const { token } = req.body;
-  
+
   try {
     // Verify the Google token
     const ticket = await client.verifyIdToken({
       idToken: token,
-      audience: '868206158931-8u3ftrs4ekvg4jitiu02bab01n5hj7q9.apps.googleusercontent.com', // Your Google OAuth 2.0 Client ID
+      audience: '868206158931-8u3ftrs4ekvg4jitiu02bab01n5hj7q9.apps.googleusercontent.com', // Replace with your Google OAuth 2.0 Client ID
     });
 
     const payload = ticket.getPayload();
-    const { email, name, picture } = payload;
+    const { email, name, sub: googleId } = payload; // `sub` is the Google ID
 
     // Check if the user already exists
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
-      return res.status(200).json({ message: 'User already exists!' });
+    let user = await User.findOne({ email });
+    if (user) {
+      return res.status(200).json({ message: 'User already exists!', user });
     }
 
-    // Create new user with the Google data
-    const user = new User({
-      name,
+    // Create a new user with the Google data
+    user = new User({
       email,
-      password: '', // Password is empty since it's from Google OAuth
+      name,
+      googleId, // Store the unique Google ID
     });
 
     await user.save();
 
-    res.status(201).json({ message: 'User registered successfully via Google!' });
+    res.status(201).json({ message: 'User registered successfully via Google!', user });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Google authentication failed', error });
   }
 };
+
 
 
 

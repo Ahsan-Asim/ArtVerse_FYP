@@ -3,6 +3,8 @@ const router = express.Router();
 const multer = require('multer');
 const artworkController = require('../Controllers/artwork');
 const authMiddleware = require('../middleware/authMiddleware');
+const checkVerification = require('../middleware/checkVerification');
+
 const path = require('path'); // Add this line to require the 'path' module
 
 
@@ -19,6 +21,6 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // Route to upload artwork
-router.post('/upload',authMiddleware,upload.single('image'), artworkController.uploadArtwork);
+router.post('/upload', authMiddleware, checkVerification, upload.single('image'), artworkController.uploadArtwork);
 
 module.exports = router;
