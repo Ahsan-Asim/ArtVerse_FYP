@@ -13,7 +13,7 @@ import Become_Artist from './pages/Become_Artist';
 import Profile from './pages/profile';
 import Artist_studio from './pages/Artist_studio';
 import Upload_Artwork from './pages/Upload_Artwork';
-
+import CartPage from './pages/CartPage.js';
 
 
 function App() {
@@ -33,6 +33,9 @@ function App() {
             <Route path="/become-artist" element={<Become_Artist />} />
             <Route path="/artist_studio" element={<Artist_studio />} />
             <Route path="/upload_artwork" element={<Upload_Artwork />} />
+            <Route path="/cartpage" element={<CartPage />} />
+
+
           </Routes>
         </div>
       </Router>
