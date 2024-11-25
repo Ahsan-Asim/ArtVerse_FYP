@@ -43,8 +43,12 @@ router.post('/signin', async (req, res) => {
       return res.status(400).json({ message: 'Invalid credentials' });
     }
 
-    // Signin successful
-    res.status(200).json({ message: 'Signin successful' });
+
+    // Signin successful, send redirection URL
+    res.status(200).json({
+      message: 'Signin successful',
+      redirectTo: '/admin/artist_detail', // Frontend can use this to navigate
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Error signing in', error: error.message });
@@ -58,16 +62,14 @@ const Artist = require('../Models/artist'); // Path to Artist model
 // Route to show all artists with details
 router.get('/artists', async (req, res) => {
   try {
-    // Find users with role 'artist' and populate their artist details
     const artists = await User.find({ role: 'artist' })
-      .populate('artistDetails') // Populate the artist details
-      .exec();
+      .populate('artistDetails') // Populate artist-related fields if needed
+      .select('name city description image'); // Select relevant fields only
 
-    if (artists.length === 0) {
+    if (!artists.length) {
       return res.status(404).json({ message: 'No artists found' });
     }
 
-    // Send the response with all artist details
     res.status(200).json(artists);
   } catch (error) {
     console.error(error);
