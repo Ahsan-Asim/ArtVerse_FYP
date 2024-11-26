@@ -118,3 +118,35 @@ h1 {
 .rounded-input {
   border-radius: 8px;
 }
+.input-container {
+  position: relative;
+}
+
+.input-error {
+  border: 2px solid red;
+  animation: shake 0.2s linear;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.8rem;
+  position: absolute;
+  top: 80%;
+  left: 5%;
+  margin-bottom: px;
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-4px);
+  }
+  50% {
+    transform: translateX(4px);
+  }
+  75% {
+    transform: translateX(-4px);
+  }
+}
