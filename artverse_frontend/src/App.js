@@ -13,6 +13,8 @@ import Become_Artist from './pages/Become_Artist';
 import Profile from './pages/profile';
 import Artist_studio from './pages/Artist_studio';
 import Upload_Artwork from './pages/Upload_Artwork';
+import Artist_detail from './pages/Artist_detail';
+
 
 
 
@@ -33,6 +35,7 @@ function App() {
             <Route path="/become-artist" element={<Become_Artist />} />
             <Route path="/artist_studio" element={<Artist_studio />} />
             <Route path="/upload_artwork" element={<Upload_Artwork />} />
+            <Route path="/artist_detail" element={<Artist_detail />} />
           </Routes>
         </div>
       </Router>
