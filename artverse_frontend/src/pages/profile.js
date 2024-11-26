@@ -80,7 +80,7 @@ const Profile = () => {
       alert('Your account is blocked. You cannot upload artwork.');
       navigate('/profile');
     } else {
-      navigate('/upload_artwork');
+      navigate('/artist_studio');
     }
   };
 
@@ -248,20 +248,22 @@ const Profile = () => {
               <button type="button" onClick={() => setIsEditing(true)} style={styles.button}>
                 Edit Profile
               </button>
-              <button
-                type="button"
-                onClick={handleUploadArtworkClick}
-                style={styles.button}
-              >
-                Upload Artwork
-              </button>
-              <button
+              {userData.role === 'artist' && (
+        <button
+          type="button"
+          onClick={handleUploadArtworkClick}
+          style={styles.button}
+        >
+          Artist Studio
+        </button>
+      )}
+              {/* <button
                 type="button"
                 onClick={() => alert('View your artwork feature coming soon!')}
                 style={styles.button}
               >
                 View Work
-              </button>
+              </button> */}
             </>
           )}
         </div>

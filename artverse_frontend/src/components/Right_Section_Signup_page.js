@@ -45,14 +45,23 @@ function Right_Section_Signup_page() {
   const handleGoogleLogin = async (response) => {
     const { credential } = response;
     try {
-      // Send the Google token to your backend for verification and user creation
+      // Send the Google token to your backend
       const res = await axios.post('http://localhost:4000/api/users/google-signup', { token: credential });
-      setMessage(res.data.message); // Show success message from the backend
-      navigate('/home');
+  
+      const { user } = res.data; // Extract user details from the response
+  
+      // Navigate to the sign-in page with user email and Google ID
+      navigate('/signin', {
+        state: {
+          email: user.email,
+          password: user.googleId,
+        },
+      });
     } catch (error) {
       setMessage(error.response?.data?.message || 'Google login failed');
     }
   };
+  
 
   return (
     <div className='right-section'>
