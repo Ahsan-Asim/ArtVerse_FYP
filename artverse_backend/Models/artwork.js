@@ -1,11 +1,9 @@
-// models/Artwork.js
-
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const artworkSchema = new Schema({
   image: {
-    type: String,  // Can store a URL or path to the image
+    type: String,
     required: true,
   },
   title: {
@@ -40,11 +38,9 @@ const artworkSchema = new Schema({
   dimensions: {
     height: {
       type: Number,
-      // required: true,
     },
     width: {
       type: Number,
-      // required: true,
     },
     depth: {
       type: Number,
@@ -54,10 +50,29 @@ const artworkSchema = new Schema({
     type: String,
     required: true,
   },
-  artist: { type: String, ref: 'User', required: true }, // Reference to User model
-
+  artist: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
+  price: {
+    type: Number,
+    required: true,
+    min: 0,
+  },
+  isAvailable: {
+    type: Boolean,
+    default: true,
+  },
+  tags: [
+    {
+      type: String,
+    },
+  ],
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
-// artist: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }, // Reference to User model
 
-
-module.exports = mongoose.model('Artwork', artworkSchema);
+module.exports = mongoose.model("Artwork", artworkSchema);

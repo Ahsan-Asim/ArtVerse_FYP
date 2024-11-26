@@ -1,8 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const cors = require("cors"); // Import the cors package
+const cors = require("cors");
 
-const { connectMongoDb } = require('./connection');
+const { connectMongoDb } = require('./connection.js');
 
 const app = express();
 
@@ -10,20 +10,20 @@ app.use(cors({ origin: 'http://localhost:3000' })); // Allow requests from your 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Import user and artist routers
+// Import routers
 const userRouter = require("./Routes/user");
 const artistRouter = require("./Routes/artist");
 const artworkRouter = require("./Routes/artwork");
 const adminRouter = require("./Routes/admin");
+const cartRouter = require("../artverse_backend/Routes/cartRoutes.js"); // Import cart routes
 
 // Connect MongoDB and set up routes
 connectMongoDb('mongodb://127.0.0.1:27017/fyp');
 app.use('/api/users', userRouter);
-app.use('/api/artists', artistRouter); // Add the artist route
-app.use('/api/artwork', artworkRouter); // Add the artist route
-app.use('/api/admin', adminRouter); // Add the artist route
-
-
+app.use('/api/artists', artistRouter);
+app.use('/api/artwork', artworkRouter);
+app.use('/api/admin', adminRouter);
+app.use('/api/cart', cartRouter); // Add the cart route
 
 const PORT = 4000;
 app.listen(PORT, () => {

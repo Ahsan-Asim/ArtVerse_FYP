@@ -1,6 +1,4 @@
-// models/User.js
-
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
@@ -17,41 +15,50 @@ const userSchema = new Schema({
   },
   phone: {
     type: String,
-    // required: true,
-    // unique: true,
-    match: [/^\d{10}$/, 'Please enter a valid phone number'],
+    match: [/^\d{10}$/, "Please enter a valid phone number"],
   },
   password: {
     type: String,
-    // required: true,
     minlength: 6,
   },
   role: {
     type: String,
-    enum: ['user', 'artist'],
-    default: 'user',
+    enum: ["user", "artist"],
+    default: "user",
   },
   googleId: {
     type: String,
   },
   artistDetails: {
     type: Schema.Types.ObjectId,
-    ref: 'Artist',
+    ref: "Artist",
   },
   artworks: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Artwork',
+      ref: "Artwork",
     },
   ],
   isVerified: {
     type: Boolean,
-    default: false, // Default value set to false
+    default: false,
   },
   isBlocked: {
     type: Boolean,
-    default: false, // Default value set to false
+    default: false,
+  },
+  cart: {
+    items: [
+      {
+        productId: {
+          type: Schema.Types.ObjectId,
+          ref: "Product",
+          required: true,
+        },
+        quantity: { type: Number, default: 1 },
+      },
+    ],
   },
 });
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model("User", userSchema);
