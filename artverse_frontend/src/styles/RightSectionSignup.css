@@ -36,7 +36,7 @@
 /* Email Heading */
 .email-label {
   position: absolute;
-  top: 290px;
+  top: 330px;
   left: 546px;
   font-family: 'Aleo', sans-serif;
   font-size: 24px;
@@ -50,7 +50,7 @@
   width: 631px;
   height: 50px;
   position: absolute;
-  top: 334px;
+  top: 374px;
   left: 536px;
   border: 3px solid rgba(135, 130, 130, 1);
   border-radius: 15px;
@@ -301,3 +301,59 @@ height: 19px;
   color: #fff;
   margin-bottom: 10px;
 }
+
+
+/* General styling for input fields */
+input {
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s ease, transform 0.3s ease-in-out;
+}
+
+/* Red border for invalid inputs */
+.invalid-input {
+  border-color: red;
+}
+
+/* Shaking animation */
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+}
+
+/* Apply the shake animation */
+.shake {
+  animation: shake 0.3s ease-in-out;
+}
+
+/* Error message styling */
+.error-message {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 5px;
+}
+
+.error-message1 {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 65px;
+}
+.error-message2 {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 305px;
+}
+/* Additional general styles (as per your design) */
+

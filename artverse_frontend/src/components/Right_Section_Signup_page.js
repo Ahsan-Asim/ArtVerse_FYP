@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-import { GoogleLogin } from '@react-oauth/google';  // Import GoogleLogin
+import { GoogleLogin } from '@react-oauth/google';
 import Logo from '../assets/images/ArtVerse_Logo.png';
 import '../styles/RightSectionSignup.css';
-import GoogleLogo from '../assets/images/Google.png'; // Import your Google logo
+import GoogleLogo from '../assets/images/Google.png';
 
 function Right_Section_Signup_page() {
   const navigate = useNavigate();
@@ -15,21 +15,102 @@ function Right_Section_Signup_page() {
     password: '',
   });
   const [message, setMessage] = useState('');
+  const [errors, setErrors] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    password: '',
+  });
 
-  // Handle input changes
+  // Regex for validations
+  const nameRegex = /^[A-Za-z\s]+$/;
+  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+  const phoneRegex = /^[0-9]{10}$/;
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+
+  // Handle input change
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
+
+    // Clear validation error and styling on input change
+    setErrors({
+      ...errors,
+      [e.target.name]: '',
+    });
+    e.target.classList.remove('invalid-input');
   };
 
-  // Handle form submission for email signup
+  // Validate a field
+  const validateField = (name, value, element) => {
+    let errorMessage = '';
+
+    // Perform validation
+    if (value.trim() === '') {
+      // Do not add error or styling for empty fields
+      errorMessage = '';
+    } else if (name === 'name' && !nameRegex.test(value)) {
+      errorMessage = 'Name must only contain alphabetic characters and spaces';
+    } else if (name === 'email' && !emailRegex.test(value)) {
+      errorMessage = 'Invalid email format';
+    } else if (name === 'phone' && !phoneRegex.test(value)) {
+      errorMessage = 'Phone number must be 10 digits';
+    } else if (name === 'password' && !passwordRegex.test(value)) {
+      errorMessage =
+        'Password must be at least 8 characters, including one uppercase letter, one lowercase letter, and one number';
+    }
+
+    // Apply error state and styles if applicable
+    if (errorMessage) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        [name]: errorMessage,
+      }));
+
+      // Add invalid styles only if input is non-empty
+      if (value.trim() !== '') {
+        element.classList.add('invalid-input', 'shake');
+        setTimeout(() => {
+          element.classList.remove('shake');
+        }, 300); // Match shake animation duration
+      }
+    } else {
+      element.classList.remove('invalid-input');
+    }
+
+    return errorMessage === ''; // Return true if valid
+  };
+
+  // Handle blur event
+  const handleBlur = (e) => {
+    const { name, value } = e.target;
+    validateField(name, value, e.target);
+  };
+
+  // Validate the entire form before submission
+  const validateForm = () => {
+    let valid = true;
+
+    Object.keys(formData).forEach((key) => {
+      const element = document.querySelector(`[name=${key}]`);
+      if (!validateField(key, formData[key], element)) {
+        valid = false;
+      }
+    });
+
+    return valid;
+  };
+
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!validateForm()) return;
+
     try {
       const response = await axios.post('http://localhost:4000/api/users/signup', formData);
-      setMessage(response.data.message); // Success message from server
+      setMessage(response.data.message);
       navigate('/signin', {
         state: {
           email: formData.email,
@@ -41,13 +122,11 @@ function Right_Section_Signup_page() {
     }
   };
 
-  // Handle Google login response
   const handleGoogleLogin = async (response) => {
     const { credential } = response;
     try {
-      // Send the Google token to your backend for verification and user creation
       const res = await axios.post('http://localhost:4000/api/users/google-signup', { token: credential });
-      setMessage(res.data.message); // Show success message from the backend
+      setMessage(res.data.message);
       navigate('/home');
     } catch (error) {
       setMessage(error.response?.data?.message || 'Google login failed');
@@ -55,7 +134,7 @@ function Right_Section_Signup_page() {
   };
 
   return (
-    <div className='right-section'>
+    <div className="right-section">
       <img src={Logo} alt="ArtVerse Logo" className="logo" />
       <div className="sign_div1"><p>Sign up To ArtVerse</p></div>
 
@@ -64,24 +143,28 @@ function Right_Section_Signup_page() {
           <div className="name-container">
             <label className="name-label">Name</label>
             <input
-              type='text'
+              type="text"
               name="name"
-              className='name-input'
+              className="name-input"
               value={formData.name}
               onChange={handleChange}
+              onBlur={handleBlur}
               required
             />
+            {errors.name && <p className="error-message">{errors.name}</p>}
           </div>
           <div className="phone-container">
             <label className="phone-label">Phone</label>
             <input
-              type='text'
+              type="text"
               name="phone"
-              className='phone-input'
+              className="phone-input"
               value={formData.phone}
               onChange={handleChange}
+              onBlur={handleBlur}
               required
             />
+            {errors.phone && <p className="error-message">{errors.phone}</p>}
           </div>
         </div>
 
@@ -92,8 +175,10 @@ function Right_Section_Signup_page() {
           className="email-input"
           value={formData.email}
           onChange={handleChange}
+          onBlur={handleBlur}
           required
         />
+        {errors.email && <p className="error-message1">{errors.email}</p>}
 
         <div className="password-container">
           <label className="password-label">Password</label>
@@ -104,25 +189,25 @@ function Right_Section_Signup_page() {
           className="password-input"
           value={formData.password}
           onChange={handleChange}
+          onBlur={handleBlur}
           required
         />
+        {errors.password && <p className="error-message2">{errors.password}</p>}
 
         <button type="submit" className="signin-button">Create Account</button>
       </form>
 
       {message && <p className="message">{message}</p>}
 
-      {/* Google login button */}
       <div className="sign_div2" style={{ textAlign: "center" }}>
-        <span className='Google_Text'>Continue With Google</span>
-        {/* Custom Google login button */}
+        <span className="Google_Text">Continue With Google</span>
         <GoogleLogin
-          onSuccess={handleGoogleLogin} // Handle successful Google login
+          onSuccess={handleGoogleLogin}
           onError={() => setMessage('Google login failed')}
           render={(renderProps) => (
             <button
               className="google-login-btn"
-              onClick={renderProps.onClick} // Trigger Google login
+              onClick={renderProps.onClick}
               disabled={renderProps.disabled}
             >
               <img src={GoogleLogo} alt="Google Logo" className="google-logo" />
