@@ -13,6 +13,12 @@ const adminSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+
+    role: {
+      type: String,
+      enum: ['user', 'artist','admin'],
+      default: 'admin',
+    },
   },
   {
     timestamps: true, // adds createdAt and updatedAt fields automatically

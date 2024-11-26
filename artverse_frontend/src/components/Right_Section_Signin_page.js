@@ -37,6 +37,7 @@ const Right_Section_Signin_page = () => {
     e.preventDefault();
     try {
       const response = await axios.post('http://localhost:4000/api/users/signin', credentials);
+      console.log(response.role);
       
       // Save the JWT token to localStorage
       // localStorage.setItem('token', response.data.token);
@@ -59,8 +60,14 @@ const Right_Section_Signin_page = () => {
       sessionStorage.setItem('email', userEmail);
       sessionStorage.setItem('role', userRole);
       // sessionStorage.setItem('isVerified', isVerified1);
+      console.log("The the role is:",userRole);
 
+    if (userRole == "admin"){
+      navigate('/artist_detail', {
+      });
 
+    }
+    else {
 
       // Navigate to home page with user email, password, and role
       navigate('/home', {
@@ -69,6 +76,7 @@ const Right_Section_Signin_page = () => {
           role: userRole, // Send the role along with email
         },
       });
+    }
     } catch (error) {
       setError('An error occurred during signin. Please check your credentials and try again.');
       console.log(error); // Log the error for debugging
