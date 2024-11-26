@@ -96,7 +96,7 @@ exports.googleSignup = async (req, res) => {
 // Controller to handle user signup
 exports.signup = async (req, res) => {
   try {
-    const { name, email, phone, password } = req.body;
+    const { name, email, phone, password,role } = req.body;
 
     // Check if the email or phone already exists in the database
     const existingUser = await User.findOne({ $or: [{ email }, { phone }] });
@@ -109,7 +109,8 @@ exports.signup = async (req, res) => {
       name,
       email,
       phone,
-      password, // Ideally, hash the password before saving
+      password,
+      role, // Ideally, hash the password before saving
     });
 
     await user.save();

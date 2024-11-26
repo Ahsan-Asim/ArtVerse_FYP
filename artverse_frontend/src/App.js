@@ -18,6 +18,7 @@ import Artist_detail from './pages/Artist_detail';
 
 
 
+
 function App() {
   return (
     <GoogleOAuthProvider clientId="868206158931-8u3ftrs4ekvg4jitiu02bab01n5hj7q9.apps.googleusercontent.com">

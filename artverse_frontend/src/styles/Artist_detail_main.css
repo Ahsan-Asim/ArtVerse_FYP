@@ -43,28 +43,48 @@
 
 .artist-card:hover {
   transform: scale(1.05); /* Add a hover effect */
+  background: linear-gradient(90deg, #FFFDF4 65.5%, #998486 100%);
+  border: 3px solid rgba(135, 130, 130, 1);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.4);
+  width: 350px; /* Increased width */
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: box-shadow 0.3s ease;
+  outline: none;
+}
+
+.artist-card:hover {
+  box-shadow: 0px 4px 60px rgba(0, 0, 0, 0.6); /* More intense shadow on hover */
 }
 
 /* Artist Details */
 .artist-details h3 {
   font-family: 'Aleo', sans-serif;
-  font-size: 20px;
+  font-size: 22px;
   margin: 10px 0;
   color: #333;
 }
 
-.artist-details p {
-  font-size: 16px;
-  color: #555;
+.artist-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-/* Optional: Add an image to each card */
-.artist-card img {
-  width: 100%;
-  border-radius: 8px;
-  object-fit: cover;
-  height: 200px;
+.artist-info p {
+  font-size: 16px;
+  color: #555;
+  margin: 5px 0;
 }
+
+.artist-info strong {
+  color: #333;
+}
+
 /* Modal Overlay */
 .modal-overlay {
   position: fixed;
@@ -72,7 +92,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.7); /* Darker semi-transparent background */
+  background-color: rgba(0, 0, 0, 0.7); /*Darker semi-transparent background*/
   display: flex;
   justify-content: center;
   align-items: center;
@@ -81,17 +101,18 @@
 
 /* Modal Content */
 .modal-content {
-  background-color: white;
+  background-color: #fff !important; /* Force white background */
   padding: 40px; /* Increased padding for full-page modal */
   border-radius: 10px;
   max-width: 90vw; /* Cover most of the width */
   max-height: 90vh; /* Cover most of the height */
   width: 100%; /* Responsive width */
   height: auto; /* Adjust height dynamically */
-  text-align: center;
+  text-align: left;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   position: relative;
   overflow-y: auto; /* Allow scrolling if content overflows */
+  z-index: 1001; /* Make sure the modal content is above the overlay */
 }
 
 /* Close Button (cross at the top-right corner) */
