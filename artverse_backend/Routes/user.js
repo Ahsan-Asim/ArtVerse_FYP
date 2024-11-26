@@ -15,6 +15,13 @@ router.post('/google-signup', userController.googleSignup);
 router.post('/become-artist', userController.becomeArtist);
 router.get('/getUserByEmail/:email', userController.getUserByEmail);
 
+router.put('/updateArtistByEmail/:email', userController.updateArtist); // Add a new PUT route for updating artist profile
+
+router.put('/updateData/:email', userController.updateData); // Add a new PUT route for updating artist profile
+router.get('/getUserByEmail1/:email', userController.getUserByEmail1);
+
+
+
 
 
 

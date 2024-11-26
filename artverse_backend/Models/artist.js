@@ -33,6 +33,12 @@ const artistSchema = new mongoose.Schema({
   about: {
     type: String,
   },
+  awards: {
+    type: String,
+  },
+  certificates: {
+    type: String,
+  },
 });
 
 module.exports = mongoose.model('Artist', artistSchema);
