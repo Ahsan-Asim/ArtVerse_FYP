@@ -240,3 +240,101 @@ exports.getUserByEmail = async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 };
+
+
+exports.updateArtist = async (req, res) => {
+  const { email } = req.params;
+  const { name, country, state, city, address, education, about } = req.body;
+
+  try {
+    const artist = await Artist.findOneAndUpdate(
+      { email },
+      { name, country, state, city, address, education, about },
+      { new: true } // Return the updated document
+    );
+
+    if (!artist) {
+      return res.status(404).json({ message: 'Artist not found.' });
+    }
+
+    res.status(200).json(artist); // Return the updated artist data
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error.' });
+  }
+};
+
+
+exports.updateData = async (req, res) => {
+  const { email } = req.params;
+  const { name, country, state, city, address, education, about, phone,awards,certificates } = req.body;
+
+  try {
+    // Fetch user from User model using the provided email
+    const user = await User.findOne({ email });
+
+    // If no user is found, return an error message
+    if (!user) {
+      return res.status(404).json({ message: 'User not found.' });
+    }
+
+    // Determine the role from the User model
+    const role = user.role; // Assuming `role` is a field in the User model
+
+    if (role === 'user') {
+      // Handle update for User model
+      const updatedUser = await User.findOneAndUpdate(
+        { email },
+        { name, phone }, // Update only name and phone for User
+        { new: true }
+      );
+
+      if (!updatedUser) {
+        return res.status(404).json({ message: 'User not found for update.' });
+      }
+
+      return res.status(200).json(updatedUser); // Return the updated user data
+    }
+
+    if (role === 'artist') {
+      // Handle update for Artist model
+      const artist = await Artist.findOneAndUpdate(
+        { email },
+        { name, country, state, city, address, education, about,awards,certificates },
+        { new: true }
+      );
+
+      if (!artist) {
+        return res.status(404).json({ message: 'Artist not found for update.' });
+      }
+
+      return res.status(200).json(artist); // Return the updated artist data
+    }
+
+    // If role doesn't match any expected role
+    return res.status(403).json({ message: 'Unauthorized role.' });
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error.' });
+  }
+};
+
+
+
+//the below give user detail without populating its artist detail:
+// Get artist profile by email
+exports.getUserByEmail1 = async (req, res) => {
+  const { userEmail } = req.params;
+
+  try {
+    const user = await User.findOne({ email: userEmail });
+    if (!user) {
+      return res.status(404).json({ message: 'User not found.' });
+    }
+    res.status(200).json(user);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error.' });
+  }
+};
