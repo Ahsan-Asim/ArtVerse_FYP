@@ -178,7 +178,7 @@ function Right_Section_Signup_page() {
           onBlur={handleBlur}
           required
         />
-        {errors.email && <p className="error-message1">{errors.email}</p>}
+        {errors.email && <p className="error-message">{errors.email}</p>}
 
         <div className="password-container">
           <label className="password-label">Password</label>
@@ -192,7 +192,7 @@ function Right_Section_Signup_page() {
           onBlur={handleBlur}
           required
         />
-        {errors.password && <p className="error-message2">{errors.password}</p>}
+        {errors.password && <p className="error-message">{errors.password}</p>}
 
         <button type="submit" className="signin-button">Create Account</button>
       </form>
