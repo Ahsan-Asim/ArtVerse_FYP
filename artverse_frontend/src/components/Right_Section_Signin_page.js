@@ -8,14 +8,16 @@ import GoogleLogo from '../assets/images/Google.png';
 
 const Right_Section_Signin_page = () => {
   const location = useLocation();
-  const navigate = useNavigate(); // Correctly import and use navigate
+  const navigate = useNavigate();
   const [credentials, setCredentials] = useState({
     email: '',
     password: '',
   });
-  const [error, setError] = useState(null); // State for error message
+  const [error, setError] = useState(null);
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [showPassword, setShowPassword] = useState(false); // Toggle password visibility
 
-  // Check for email and password in location.state
   useEffect(() => {
     if (location.state) {
       setCredentials({
@@ -30,66 +32,87 @@ const Right_Section_Signin_page = () => {
       ...credentials,
       [e.target.name]: e.target.value,
     });
+
+    if (e.target.name === 'email') setEmailError('');
+    if (e.target.name === 'password') setPasswordError('');
   };
 
-  // Handle form submission
+  const validateEmail = () => {
+    if (!credentials.email) {
+      setEmailError('');
+      return;
+    }
+  
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(credentials.email)) {
+      setEmailError('Invalid email format.');
+    } else {
+      setEmailError('');
+    }
+  };
+  
+  const validatePassword = () => {
+    if (!credentials.password) {
+      setPasswordError('');
+      return;
+    }
+  
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    if (!passwordRegex.test(credentials.password)) {
+      setPasswordError(
+        'Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character.'
+      );
+    } else {
+      setPasswordError('');
+    }
+  };
+  
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   const handleLogin = async (e) => {
     e.preventDefault();
+  
+    validateEmail();
+    validatePassword();
+  
+    // If there are errors, stop login
+    if (emailError || passwordError) return;
+  
     try {
       const response = await axios.post('http://localhost:4000/api/users/signin', credentials);
-      console.log(response.role);
-      
-      // Save the JWT token to localStorage
-      // localStorage.setItem('token', response.data.token);
       sessionStorage.setItem('token', response.data.token);
-     
-
-
-      
-      // Get the user details and role from the response
-      const { user, token } = response.data;
-      const userRole = user.role; // 'user' or 'artist'
-      const userEmail = user.email; // 'user' or 'artist'
-      const isVerified1 = user.isVerified; // 'user' or 'artist'
-
-
-
-      console.log(isVerified1);
-      console.log(token);
-
-      sessionStorage.setItem('email', userEmail);
-      sessionStorage.setItem('role', userRole);
-      // sessionStorage.setItem('isVerified', isVerified1);
-      console.log("The the role is:",userRole);
-
-    if (userRole == "admin"){
-      navigate('/artist_detail', {
-      });
-
-    }
-    else {
-
-      // Navigate to home page with user email, password, and role
-      navigate('/home', {
-        state: {
-          email: credentials.email,
-          role: userRole, // Send the role along with email
-        },
-      });
-    }
+  
+      const { user } = response.data;
+      const userRole = user.role;
+  
+      if (userRole === 'admin') {
+        navigate('/artist_detail');
+      } else {
+        navigate('/home', {
+          state: {
+            email: credentials.email,
+            role: userRole,
+          },
+        });
+      }
     } catch (error) {
       setError('An error occurred during signin. Please check your credentials and try again.');
-      console.log(error); // Log the error for debugging
     }
   };
+  
 
   return (
     <div className="right-section">
       <img src={Logo} alt="ArtVerse Logo" className="logo10" />
-      <div className="sign_div1"><p>Sign in To ArtVerse</p></div>
+      <div className="sign_div1">
+        <p>Sign in To ArtVerse</p>
+      </div>
 
-      <div className="sign_div2" style={{ textAlign: "center" }}>
-        <span className='Google_Text'>Sign in With Google</span>
+      <div className="sign_div2" style={{ textAlign: 'center' }}>
+        <span className="Google_Text">Sign in With Google</span>
         <img src={GoogleLogo} alt="Google Logo" className="google-logo" />
       </div>
 
@@ -100,6 +123,7 @@ const Right_Section_Signin_page = () => {
       </div>
 
       <form className="signin-form" onSubmit={handleLogin}>
+        {/* Email Field */}
         <label className="email-label">Email</label>
         <input
           type="email"
@@ -107,31 +131,48 @@ const Right_Section_Signin_page = () => {
           className="email-input"
           value={credentials.email}
           onChange={handleChange}
+          onBlur={validateEmail}
           placeholder="Enter your email"
           required
+          
         />
+        {emailError && <div className="error-message1">{emailError}</div>}
 
+        {/* Password Field */}
         <div className="password-container">
           <label className="password-label">Password</label>
           <span className="forgot-password">Forget?</span>
         </div>
-        <input
-          type="password"
-          name="password"
-          className="password-input"
-          placeholder="8+ Characters"
-          value={credentials.password}
-          onChange={handleChange}
-          required
-        />
+        <div className="password-field-wrapper">
+          <input
+            type={showPassword ? 'text' : 'password'}
+            name="password"
+            className="password-input"
+            placeholder="8+ Characters"
+            value={credentials.password}
+            onChange={handleChange}
+            onBlur={validatePassword}
+            required
+          />
+          
+           {passwordError && <div className="error-message">{passwordError}</div>}
+        </div>
+        
+       
 
-        <button type="submit" className="signin-button">Sign In</button>
+        {/* Submit Button */}
+        <button type="submit" className="signin-button">
+          Sign In
+        </button>
       </form>
 
-      {error && <div className="error-message">{error}</div>} {/* Display error message */}
+      {error && <div className="error-message">{error}</div>}
 
       <div className="signup-text">
-        Don't have an ArtVerse Account? <Link to="/signup" className="signup-link">Signup</Link>
+        Don't have an ArtVerse Account?{' '}
+        <Link to="/signup" className="signup-link">
+          Signup
+        </Link>
       </div>
     </div>
   );

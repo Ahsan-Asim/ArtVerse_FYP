@@ -238,3 +238,18 @@ text-align: left;
   cursor: pointer;
   text-decoration: underline;
 }
+
+
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 305px;
+  margin-left: 20px;
+}
+
+.error-message1 {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: px;
+  margin-left: 0px;
+}
