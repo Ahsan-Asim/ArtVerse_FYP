@@ -1,25 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addToCart, removeFromCart, clearCart } from "../feature/slice/Add_to_cart_slice.js";
-import "../styles/Cart.css"; // Include custom styles
+import { fetchCart, addToCart, removeFromCart, clearCart } from "../feature/slice/Add_to_cart_slice.js";
+import "../styles/Cart.css";
 
 const Cart = () => {
-  const cartItems = useSelector((state) => state.cart.items); // Get items from Redux state
+  const cartItems = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
+
+  // Fetch the cart on component load
+  useEffect(() => {
+    dispatch(fetchCart());
+  }, [dispatch]);
 
   const handleAddToCart = (item) => {
     dispatch(addToCart(item));
   };
 
-  const handleRemove = (id) => {
-    dispatch(removeFromCart({ id }));
+  const handleRemove = (item) => {
+    dispatch(removeFromCart(item));
   };
 
   const handleClearCart = () => {
     dispatch(clearCart());
   };
 
-  const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+  const totalPrice = cartItems.reduce((total, item) => total + item.priceAtAddition * item.quantity, 0);
 
   return (
     <div className="cart-page">
@@ -29,17 +34,16 @@ const Cart = () => {
       ) : (
         <div className="cart-items">
           {cartItems.map((item) => (
-            <div className="cart-item" key={item.id}>
-              <img src={item.image} alt={item.name} className="item-image" />
+            <div className="cart-item" key={item.artwork._id}>
+              <img src={item.artwork.image} alt={item.artwork.title} className="item-image" />
               <div className="item-details">
-                <h3>{item.name}</h3>
-                <p>{item.description}</p>
-                <p>Price: ${item.price}</p>
+                <h3>{item.artwork.title}</h3>
+                <p>Price: ${item.priceAtAddition}</p>
                 <p>Quantity: {item.quantity}</p>
               </div>
               <div className="item-actions">
-                <button onClick={() => handleAddToCart(item)}>Add</button>
-                <button onClick={() => handleRemove(item.id)}>Remove</button>
+                <button onClick={() => handleAddToCart(item.artwork)}>Add</button>
+                <button onClick={() => handleRemove(item.artwork)}>Remove</button>
               </div>
             </div>
           ))}

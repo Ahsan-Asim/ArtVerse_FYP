@@ -1,10 +1,11 @@
 .header {
-  width: 1224px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between; /* Space elements evenly */
-  padding: 40px 20px 50px 50px; 
+  padding: 40px 20px ; 
   background-color: rgba(255, 253, 244, 1); /* Match your home page background */
+  box-sizing: border-box;
 }
 
 .logo {
