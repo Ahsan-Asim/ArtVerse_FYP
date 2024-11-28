@@ -1,94 +1,12 @@
-// import React from "react";
-// import "../styles/Artist_studio_main.css";
-
-// import home4 from "../assets/images/home4.png";
-// function ArtworkCard({ image, title, type, dimensions, date, price, forSale, status }) {
-//   return (
-//     <div className="artwork-card">
-//       <img className="artwork-image" src={home4} alt={title} />
-//       <div className="artwork-details">
-//         <h3>{title}</h3>
-//         <p>{type}</p>
-//         <p>{dimensions}</p>
-//       </div>
-//       <div className="artwork-status">
-//         <p>{date}</p>
-//         <p>${price}</p>
-//         <p>{forSale ? "Yes" : "Not for Sale"}</p>
-//         <p className={`status ${status === "Draft" ? "draft" : ""}`}>{status}</p>
-//       </div>
-//     </div>
-//   );
-// }
-
-// function Artist_studio_main() {
-//   const artworks = [
-//     {
-//       image: "home4",
-//       title: "Abstract Paint",
-//       type: "Painting",
-//       dimensions: "11 x 34 x 45",
-//       date: "May 17, 2024",
-//       price: 2300,
-//       forSale: true,
-//       status: "Published",
-//     },
-//     {
-//       image: "home4",
-//       title: "Artwork",
-//       type: "Painting",
-//       dimensions: "11 x 34 x 45",
-//       date: "May 17, 2024",
-//       price: 2300,
-//       forSale: true,
-//       status: "Draft",
-//     },
-//     {
-//       image: "home4",
-//       title: "Artwork",
-//       type: "Painting",
-//       dimensions: "11 x 34 x 45",
-//       date: "May 17, 2024",
-//       price: 2300,
-//       forSale: false,
-//       status: "Draft",
-//     },
-//   ];
-
-//   return (
-//     <div className="main-studio">
-//       <h1>Manage Artworks</h1>
-//       <div className="heading">
-//         <div className="left-area">
-//           <h1>My Original Artworks</h1>
-//         </div>
-//         <div className="right-area">
-//           <button type="submit">Upload New Artwork</button>
-//         </div>
-//       </div>
-
-//       <div className="artwork-list">
-//         {artworks.map((artwork, index) => (
-//           <ArtworkCard key={index} {...artwork} />
-//         ))}
-//       </div>
-//     </div>
-//   );
-// }
-
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; // Corrected import
 import "../styles/Artist_studio_main.css";
 
-function ArtworkCard({ image, title, category, dimensions, yearProduced, price }) {
+function ArtworkCard({ image, title, type, dimensions, date, price, forSale, status }) {
   return (
     <div className="artwork-card">
-      <img
-        className="artwork-image"
-        src={image || "/default-image.png"} // Use a default image if `image` is not available
-        alt={title}
-      />
+      <img className="artwork-image" src={image} alt={title} />
       <div className="artwork-details">
         <h3>{title}</h3>
         <p>Category: {category}</p>
@@ -105,24 +23,31 @@ function ArtworkCard({ image, title, category, dimensions, yearProduced, price }
 function Artist_studio_main() {
   const [artworks, setArtworks] = useState([]);
   const [loading, setLoading] = useState(true);
-  const email = sessionStorage.getItem("email");
+  const [isVerified, setIsVerified] = useState(false);  // New state for verification status
+  const [isBlocked, setIsBlocked] = useState(false);   // New state for block status
+  const email = sessionStorage.getItem('email');
+  const navigate = useNavigate(); // Corrected: Use useNavigate hook
 
   useEffect(() => {
     if (email) {
+      // Fetch user details to get isVerified and isBlocked
+      axios
+        .get(`http://localhost:4000/api/users/getUserStatus/${email}`)
+        .then((response) => {
+          const { isVerified, isBlocked } = response.data;
+          console.log(isVerified);
+          setIsVerified(isVerified);
+          setIsBlocked(isBlocked);
+        })
+        .catch((error) => {
+          console.error("Error fetching user status:", error);
+        });
+
+      // Fetch artworks
       axios
         .get(`http://localhost:4000/api/artwork/getArtwork/${email}`)
         .then((response) => {
-          // Map API response to match expected props
-          const mappedArtworks = response.data.map((artwork) => ({
-            image: `http://localhost:4000${artwork.image}`, // Ensure full URL for the image
-            title: artwork.title,
-            category: artwork.category,
-            dimensions: `${artwork.dimensions?.height || "N/A"} x ${artwork.dimensions?.width || "N/A"} x ${artwork.dimensions?.depth || "N/A"}`,
-            yearProduced: artwork.yearProduced,
-            price: artwork.description, // If "price" is part of the description, adjust accordingly
-          }));
-          
-          setArtworks(mappedArtworks);
+          setArtworks(response.data);
           setLoading(false);
         })
         .catch((error) => {
@@ -131,6 +56,16 @@ function Artist_studio_main() {
         });
     }
   }, [email]);
+
+  const handleUploadClick = () => {
+    if (isVerified && !isBlocked) {
+      // User is verified and not blocked, allow them to upload artwork
+      window.open("/upload_artwork", "_blank"); // Open in a new tab
+    } else {
+      // Show alert if user is not verified or is blocked
+      alert("You need to be verified and not blocked to upload artwork.");
+    }
+  };
 
   if (loading) {
     return <div>Loading...</div>;
@@ -146,11 +81,17 @@ function Artist_studio_main() {
         <div className="right-area">
           <button
             type="button"
-            onClick={() => window.open("/upload_artwork", "_blank")}
+            onClick={handleUploadClick} // Trigger the upload logic on click
           >
             Upload New Artwork
           </button>
         </div>
+      </div>
+
+      {/* Show user status */}
+      <div className="user-status">
+        <p>User Status: {isVerified ? "Verified" : "Not Verified"}</p>
+        <p>{isBlocked ? "Account is Blocked" : "Account is Active"}</p>
       </div>
 
       <div className="artwork-list">

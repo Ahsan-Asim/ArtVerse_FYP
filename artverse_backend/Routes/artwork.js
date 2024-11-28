@@ -4,7 +4,7 @@ const multer = require('multer');
 const artworkController = require('../Controllers/artwork');
 const authMiddleware = require('../middleware/authMiddleware');
 const checkVerification = require('../middleware/checkVerification');
-const User = require('../Models/user');
+const User = require('../Models/user'); // Import the User model
 const Artwork = require('../Models/artwork');
 
 
@@ -25,7 +25,6 @@ const upload = multer({ storage });
 
 // Route to upload artwork
 router.post('/upload', authMiddleware, checkVerification, upload.single('image'), artworkController.uploadArtwork);
-
 
 router.get('/getArtwork/:email', async (req, res) => {
   try {
