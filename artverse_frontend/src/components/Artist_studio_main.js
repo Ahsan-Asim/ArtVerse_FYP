@@ -9,14 +9,12 @@ function ArtworkCard({ image, title, type, dimensions, date, price, forSale, sta
       <img className="artwork-image" src={image} alt={title} />
       <div className="artwork-details">
         <h3>{title}</h3>
-        <p>{type}</p>
-        <p>{dimensions}</p>
+        <p>Category: {category}</p>
+        <p>Dimensions: {dimensions}</p>
       </div>
       <div className="artwork-status">
-        <p>{date}</p>
-        <p>${price}</p>
-        <p>{forSale ? "Yes" : "Not for Sale"}</p>
-        <p className={`status ${status === "Draft" ? "draft" : ""}`}>{status}</p>
+        <p>Year: {yearProduced}</p>
+        <p>Price: ${price}</p>
       </div>
     </div>
   );
@@ -97,9 +95,13 @@ function Artist_studio_main() {
       </div>
 
       <div className="artwork-list">
-        {artworks.map((artwork, index) => (
-          <ArtworkCard key={index} {...artwork} />
-        ))}
+        {artworks.length > 0 ? (
+          artworks.map((artwork, index) => (
+            <ArtworkCard key={index} {...artwork} />
+          ))
+        ) : (
+          <p>No artworks found.</p>
+        )}
       </div>
     </div>
   );

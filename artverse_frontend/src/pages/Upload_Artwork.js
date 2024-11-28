@@ -93,7 +93,6 @@ const handleSubmit = async (e) => {
   }
 };
 
-
   return (
     <div className="upload-artwork-page">
       <h1>Upload Artwork</h1>

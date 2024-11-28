@@ -20,7 +20,7 @@ const Right_Section_Signin_page = () => {
     if (location.state) {
       setCredentials({
         email: location.state.email || '',
-        password: location.state.password || '',
+        password: location.state.password || location.state.googleId || '',
       });
     }
   }, [location.state]);

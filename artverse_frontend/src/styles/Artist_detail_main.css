@@ -29,6 +29,20 @@
 
 /* Artist Card Styling */
 .artist-card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Make each card take up the full page width */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease;
+}
+
+.artist-card:hover {
+  transform: scale(1.05); /* Add a hover effect */
   background: linear-gradient(90deg, #FFFDF4 65.5%, #998486 100%);
   border: 3px solid rgba(135, 130, 130, 1);
   border-radius: 15px;

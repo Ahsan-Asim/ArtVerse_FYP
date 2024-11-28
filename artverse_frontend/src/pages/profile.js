@@ -80,7 +80,7 @@ const Profile = () => {
       alert('Your account is blocked. You cannot upload artwork.');
       navigate('/profile');
     } else {
-      navigate('/upload_artwork');
+      navigate('/artist_studio');
     }
   };
 

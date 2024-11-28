@@ -4,7 +4,11 @@ const multer = require('multer');
 const artworkController = require('../Controllers/artwork');
 const authMiddleware = require('../middleware/authMiddleware');
 const checkVerification = require('../middleware/checkVerification');
+<<<<<<< HEAD
 const User = require('../Models/user'); // Import the User model
+=======
+const User = require('../Models/user');
+>>>>>>> 62a8d73403a3b56ee9c4089adbecf93a4bb59c6d
 const Artwork = require('../Models/artwork');
 
 
@@ -26,6 +30,10 @@ const upload = multer({ storage });
 // Route to upload artwork
 router.post('/upload', authMiddleware, checkVerification, upload.single('image'), artworkController.uploadArtwork);
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 62a8d73403a3b56ee9c4089adbecf93a4bb59c6d
 router.get('/getArtwork/:email', async (req, res) => {
   try {
     const { email } = req.params;
