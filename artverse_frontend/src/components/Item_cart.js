@@ -1,25 +1,27 @@
-import React from "react";
+import React, { useEffect, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addToCart, removeFromCart, clearCart } from "../feature/slice/Add_to_cart_slice.js";
-import "../styles/Cart.css"; // Include custom styles
+import { fetchCart, addItemToCart, removeItemFromCart, clearCart } from "../feature/slice/Add_to_cart_slice.js";
 
 const Cart = () => {
-  const cartItems = useSelector((state) => state.cart.items); // Get items from Redux state
   const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cart.items);
+  const userEmail = sessionStorage.getItem("email");
+
+  useEffect(() => {
+    if (userEmail) dispatch(fetchCart(userEmail));
+  }, [dispatch, userEmail]);
 
   const handleAddToCart = (item) => {
-    dispatch(addToCart(item));
+    if (userEmail) dispatch(addItemToCart({ ...item, userEmail }));
+    else alert("Please log in to perform this action.");
   };
 
-  const handleRemove = (id) => {
-    dispatch(removeFromCart({ id }));
-  };
+  const handleRemove = (id) => userEmail && dispatch(removeItemFromCart({ id, userEmail }));
+  const handleClearCart = () => userEmail && dispatch(clearCart(userEmail));
 
-  const handleClearCart = () => {
-    dispatch(clearCart());
-  };
-
-  const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+  const totalPrice = useMemo(() => {
+    return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+  }, [cartItems]);
 
   return (
     <div className="cart-page">
@@ -27,29 +29,22 @@ const Cart = () => {
       {cartItems.length === 0 ? (
         <p>Your cart is empty</p>
       ) : (
-        <div className="cart-items">
-          {cartItems.map((item) => (
-            <div className="cart-item" key={item.id}>
-              <img src={item.image} alt={item.name} className="item-image" />
-              <div className="item-details">
-                <h3>{item.name}</h3>
-                <p>{item.description}</p>
-                <p>Price: ${item.price}</p>
-                <p>Quantity: {item.quantity}</p>
-              </div>
-              <div className="item-actions">
-                <button onClick={() => handleAddToCart(item)}>Add</button>
-                <button onClick={() => handleRemove(item.id)}>Remove</button>
-              </div>
+        <>
+          {cartItems.map((item, index) => (
+            <div key={index}>
+              <h3>{item.name}</h3>
+              <p>Price: {item.price}</p>
+              <p>Quantity: {item.quantity}</p>
+              <button onClick={() => handleAddToCart(item)}>Add more</button>
+              <button onClick={() => handleRemove(item.id)}>Remove</button>
             </div>
           ))}
-        </div>
+          <div>
+            <h3>Total: Rs. {totalPrice}</h3>
+            <button onClick={handleClearCart}>Clear Cart</button>
+          </div>
+        </>
       )}
-      <div className="cart-summary">
-        <h3>Total: ${totalPrice.toFixed(2)}</h3>
-        <button className="clear-cart-btn" onClick={handleClearCart}>Clear Cart</button>
-        <button className="checkout-btn">Checkout</button>
-      </div>
     </div>
   );
 };

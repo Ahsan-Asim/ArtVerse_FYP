@@ -22,7 +22,8 @@ app.use('/api/users', userRouter);
 app.use('/api/artists', artistRouter); // Add the artist route
 app.use('/api/artwork', artworkRouter); // Add the artist route
 app.use('/api/admin', adminRouter); // Add the artist route
-
+const cartRoutes = require('./Routes/cart');
+app.use('/api/cart', cartRoutes);
 
 
 const PORT = 4000;
