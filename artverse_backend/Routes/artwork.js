@@ -4,7 +4,7 @@ const multer = require('multer');
 const artworkController = require('../Controllers/artwork');
 const authMiddleware = require('../middleware/authMiddleware');
 const checkVerification = require('../middleware/checkVerification');
-const User = require('../Models/user');
+const User = require('../Models/user'); // Import the User model
 const Artwork = require('../Models/artwork');
 
 
@@ -26,7 +26,6 @@ const upload = multer({ storage });
 // Route to upload artwork
 router.post('/upload', authMiddleware, checkVerification, upload.single('image'), artworkController.uploadArtwork);
 
-
 router.get('/getArtwork/:email', async (req, res) => {
   try {
     const { email } = req.params;
@@ -43,5 +42,29 @@ router.get('/getArtwork/:email', async (req, res) => {
   }
 });
 
+// Route to search artworks by title
+router.get('/search', async (req, res) => {
+  try {
+    const { title } = req.query; // Get the search query from the request query string
+
+    if (!title) {
+      return res.status(400).json({ message: 'Title is required for search.' });
+    }
+
+    // Find artworks where the title contains the search query (case-insensitive)
+    const artworks = await Artwork.find({
+      title: { $regex: title, $options: 'i' } // 'i' for case-insensitivity
+    });
+
+    if (artworks.length === 0) {
+      return res.status(404).json({ message: 'No artworks found with the given title.' });
+    }
+
+    res.status(200).json(artworks);
+  } catch (error) {
+    console.error("Error searching for artworks:", error);
+    res.status(500).json({ message: 'Server Error.' });
+  }
+});
 
 module.exports = router;
