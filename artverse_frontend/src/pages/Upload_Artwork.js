@@ -34,51 +34,65 @@ const Upload_Artwork = () => {
   };
 
   // Handle form submission
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    const formData = new FormData();
-    formData.append("image", artworkDetails.image); // Append image
-    formData.append("title", artworkDetails.title);
-    formData.append("category", artworkDetails.category);
-    formData.append("subject", artworkDetails.subject);
-    formData.append("yearProduced", artworkDetails.yearProduced);
-    formData.append("medium", artworkDetails.medium);
-    formData.append("material", artworkDetails.material);
-    formData.append("style", artworkDetails.style);
-    formData.append("price", artworkDetails.price);
-    formData.append("height", artworkDetails.height);
-    formData.append("width", artworkDetails.width);
-    formData.append("depth", artworkDetails.depth);
-    formData.append("description", artworkDetails.description);
+  const formData = new FormData();
+  formData.append("image", artworkDetails.image); // Append image
+  formData.append("title", artworkDetails.title);
+  formData.append("category", artworkDetails.category);
+  formData.append("subject", artworkDetails.subject);
+  formData.append("yearProduced", artworkDetails.yearProduced);
+  formData.append("medium", artworkDetails.medium);
+  formData.append("material", artworkDetails.material);
+  formData.append("style", artworkDetails.style);
+  formData.append("price", artworkDetails.price);
+  formData.append("height", artworkDetails.height);
+  formData.append("width", artworkDetails.width);
+  formData.append("depth", artworkDetails.depth);
+  formData.append("description", artworkDetails.description);
 
-    try {
-      // const response = await axios.post("/api/artwork/upload", formData, {
-        const token = sessionStorage.getItem('token');
-        console.log(token);
+  try {
+    const token = sessionStorage.getItem('token');
+    console.log(token);
 
-        const response = await axios.post("http://localhost:4000/api/artwork/upload", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          "Authorization": `Bearer ${token}`, // Make sure token is stored and available
+    const response = await axios.post("http://localhost:4000/api/artwork/upload", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        "Authorization": `Bearer ${token}`, // Token for authentication
+      },
+    });
 
-        },
+    if (response.status === 200) {
+      alert("Artwork uploaded successfully!");
+      // Clear form fields after successful submission
+      setArtworkDetails({
+        title: "",
+        category: "",
+        subject: "",
+        yearProduced: "",
+        medium: "",
+        material: "",
+        style: "",
+        price: "",
+        height: "",
+        width: "",
+        depth: "",
+        description: "",
+        image: null, // Reset image to null
       });
-
-      if (response.status === 200) {
-        alert("Artwork uploaded successfully!");
-        setArtworkDetails({}); // Clear form fields after successful submission
-      }
-    }  catch (error) {
-      if (error.response && error.response.status === 403) {
-        // User is not verified
-        alert('Your account is under verification. You cannot upload artwork yet.');
-      } else {
-        // Other errors
-        alert('Error uploading artwork.');
-      }
     }
-  };
+  } catch (error) {
+    if (error.response && error.response.status === 403) {
+      // User is not verified
+      alert('Your account is under verification. You cannot upload artwork yet.');
+    } else {
+      // Other errors
+      alert('Error uploading artwork.');
+    }
+  }
+};
+
 
   return (
     <div className="upload-artwork-page">

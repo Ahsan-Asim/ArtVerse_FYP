@@ -14,6 +14,8 @@ router.post('/signin', userController.signin);
 router.post('/google-signup', userController.googleSignup);
 router.post('/become-artist', userController.becomeArtist);
 router.get('/getUserByEmail/:email', userController.getUserByEmail);
+router.get('/getUserStatus/:email', userController.getUserStatus);
+
 
 router.put('/updateArtistByEmail/:email', userController.updateArtist); // Add a new PUT route for updating artist profile
 

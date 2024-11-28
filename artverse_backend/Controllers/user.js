@@ -121,6 +121,29 @@ exports.signup = async (req, res) => {
 };
 
 
+exports.getUserStatus = async (req, res) => {
+  const { email } = req.params; // Get the email from the URL parameter
+
+  try {
+    // Find the user in the database by email
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      // If no user is found, send a 404 error
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Return the user's verification and block status
+    return res.status(200).json({
+      isVerified: user.isVerified,  // Assuming you have isVerified field in your User model
+      isBlocked: user.isBlocked     // Assuming you have isBlocked field in your User model
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Server error" });
+  }
+};
+
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 // const User = require('../Models/user');

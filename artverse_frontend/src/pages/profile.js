@@ -94,144 +94,144 @@ const Profile = () => {
         {userData.role === 'artist' ? `${roleData.name}'s` : 'User'} Profile
       </h2>
       <form style={styles.form}>
-  {/* Common Fields for Both User and Artist */}
-  <div style={styles.fieldContainer}>
-    <label style={styles.label}>Name:</label>
-    <input
-      type="text"
-      name="name"
-      value={editableData?.name || ''}
-      onChange={handleChange}
-      disabled={!isEditing}
-      style={styles.input}
-    />
-  </div>
-  <div style={styles.fieldContainer}>
-    <label style={styles.label}>Email:</label>
-    <input
-      type="email"
-      name="email"
-      value={editableData?.email || ''}
-      onChange={handleChange}
-      disabled
-      style={styles.input}
-    />
-  </div>
-  <div style={styles.fieldContainer}>
-    <label style={styles.label}>Role:</label>
-    <input
-      type="text"
-      name="role"
-      value={editableData?.role || ''}
-      onChange={handleChange}
-      disabled
-      style={styles.input}
-    />
-  </div>
-  <div style={styles.fieldContainer}>
-    <label style={styles.label}>Phone:</label>
-    <input
-      type="text"
-      name="phone"
-      value={editableData?.phone || ''}
-      onChange={handleChange}
-      disabled={!isEditing}
-      style={styles.input}
-    />
-  </div>
+        {/* Common Fields for Both User and Artist */}
+        <div style={styles.fieldContainer}>
+          <label style={styles.label}>Name:</label>
+          <input
+            type="text"
+            name="name"
+            value={editableData?.name || ''}
+            onChange={handleChange}
+            disabled={!isEditing}
+            style={styles.input}
+          />
+        </div>
+        <div style={styles.fieldContainer}>
+          <label style={styles.label}>Email:</label>
+          <input
+            type="email"
+            name="email"
+            value={editableData?.email || ''}
+            onChange={handleChange}
+            disabled
+            style={styles.input}
+          />
+        </div>
+        <div style={styles.fieldContainer}>
+          <label style={styles.label}>Role:</label>
+          <input
+            type="text"
+            name="role"
+            value={editableData?.role || ''}
+            onChange={handleChange}
+            disabled
+            style={styles.input}
+          />
+        </div>
+        <div style={styles.fieldContainer}>
+          <label style={styles.label}>Phone:</label>
+          <input
+            type="text"
+            name="phone"
+            value={editableData?.phone || ''}
+            onChange={handleChange}
+            disabled={!isEditing}
+            style={styles.input}
+          />
+        </div>
 
-  {/* Additional Fields for Artists Only */}
-  {userData.role === 'artist' && (
-    <>
-      <div style={styles.fieldContainer}>
-        <label style={styles.label}>Country:</label>
-        <input
-          type="text"
-          name="country"
-          value={editableData?.country || ''}
-          onChange={handleChange}
-          disabled={!isEditing}
-          style={styles.input}
-        />
-      </div>
-      <div style={styles.fieldContainer}>
-        <label style={styles.label}>State:</label>
-        <input
-          type="text"
-          name="state"
-          value={editableData?.state || ''}
-          onChange={handleChange}
-          disabled={!isEditing}
-          style={styles.input}
-        />
-      </div>
-      <div style={styles.fieldContainer}>
-        <label style={styles.label}>City:</label>
-        <input
-          type="text"
-          name="city"
-          value={editableData?.city || ''}
-          onChange={handleChange}
-          disabled={!isEditing}
-          style={styles.input}
-        />
-      </div>
-      <div style={styles.fieldContainer}>
-        <label style={styles.label}>Address:</label>
-        <input
-          type="text"
-          name="address"
-          value={editableData?.address || ''}
-          onChange={handleChange}
-          disabled={!isEditing}
-          style={styles.input}
-        />
-      </div>
-      <div style={styles.fieldContainer}>
-        <label style={styles.label}>Education:</label>
-        <input
-          type="text"
-          name="education"
-          value={editableData?.education || ''}
-          onChange={handleChange}
-          disabled={!isEditing}
-          style={styles.input}
-        />
-      </div>
-      <div style={styles.fieldContainer}>
-        <label style={styles.label}>About:</label>
-        <textarea
-          name="about"
-          value={editableData?.about || ''}
-          onChange={handleChange}
-          disabled={!isEditing}
-          style={{ ...styles.input, height: '80px' }}
-        />
-      </div>
-      <div style={styles.fieldContainer}>
-        <label style={styles.label}>Awards:</label>
-        <input
-          type="text"
-          name="awards"
-          value={editableData?.awards || ''}
-          onChange={handleChange}
-          disabled={!isEditing}
-          style={styles.input}
-        />
-      </div>
-      <div style={styles.fieldContainer}>
-        <label style={styles.label}>Certificates:</label>
-        <input
-          type="text"
-          name="certificates"
-          value={editableData?.certificates || ''}
-          onChange={handleChange}
-          disabled={!isEditing}
-          style={styles.input}
-        />
-      </div>
-    </>
-  )}
+        {/* Additional Fields for Artists Only */}
+        {userData.role === 'artist' && (
+          <>
+            <div style={styles.fieldContainer}>
+              <label style={styles.label}>Country:</label>
+              <input
+                type="text"
+                name="country"
+                value={editableData?.country || ''}
+                onChange={handleChange}
+                disabled={!isEditing}
+                style={styles.input}
+              />
+            </div>
+            <div style={styles.fieldContainer}>
+              <label style={styles.label}>State:</label>
+              <input
+                type="text"
+                name="state"
+                value={editableData?.state || ''}
+                onChange={handleChange}
+                disabled={!isEditing}
+                style={styles.input}
+              />
+            </div>
+            <div style={styles.fieldContainer}>
+              <label style={styles.label}>City:</label>
+              <input
+                type="text"
+                name="city"
+                value={editableData?.city || ''}
+                onChange={handleChange}
+                disabled={!isEditing}
+                style={styles.input}
+              />
+            </div>
+            <div style={styles.fieldContainer}>
+              <label style={styles.label}>Address:</label>
+              <input
+                type="text"
+                name="address"
+                value={editableData?.address || ''}
+                onChange={handleChange}
+                disabled={!isEditing}
+                style={styles.input}
+              />
+            </div>
+            <div style={styles.fieldContainer}>
+              <label style={styles.label}>Education:</label>
+              <input
+                type="text"
+                name="education"
+                value={editableData?.education || ''}
+                onChange={handleChange}
+                disabled={!isEditing}
+                style={styles.input}
+              />
+            </div>
+            <div style={styles.fieldContainer}>
+              <label style={styles.label}>About:</label>
+              <textarea
+                name="about"
+                value={editableData?.about || ''}
+                onChange={handleChange}
+                disabled={!isEditing}
+                style={{ ...styles.input, height: '80px' }}
+              />
+            </div>
+            <div style={styles.fieldContainer}>
+              <label style={styles.label}>Awards:</label>
+              <input
+                type="text"
+                name="awards"
+                value={editableData?.awards || ''}
+                onChange={handleChange}
+                disabled={!isEditing}
+                style={styles.input}
+              />
+            </div>
+            <div style={styles.fieldContainer}>
+              <label style={styles.label}>Certificates:</label>
+              <input
+                type="text"
+                name="certificates"
+                value={editableData?.certificates || ''}
+                onChange={handleChange}
+                disabled={!isEditing}
+                style={styles.input}
+              />
+            </div>
+          </>
+        )}
 
         <div style={styles.buttonContainer}>
           {isEditing ? (
@@ -248,22 +248,31 @@ const Profile = () => {
               <button type="button" onClick={() => setIsEditing(true)} style={styles.button}>
                 Edit Profile
               </button>
-              <button
+              {/* <button
                 type="button"
                 onClick={handleUploadArtworkClick}
                 style={styles.button}
               >
                 Upload Artwork
-              </button>
-              <button
+              </button> */}
+              {/* <button
                 type="button"
                 onClick={() => alert('View your artwork feature coming soon!')}
                 style={styles.button}
               >
                 View Work
-              </button>
+              </button> */}
             </>
           )}
+        </div>
+
+        {/* Artist Studio Button */}
+        <div style={styles.buttonContainer}>
+          <Link to="/artist_studio" style={{ textDecoration: 'none' }}>
+            <button type="button" style={styles.button}>
+              Artist Studio
+            </button>
+          </Link>
         </div>
       </form>
     </div>
