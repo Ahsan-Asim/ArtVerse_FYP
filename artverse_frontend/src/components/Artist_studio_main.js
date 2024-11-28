@@ -3,13 +3,13 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom"; // Corrected import
 import "../styles/Artist_studio_main.css";
 
-function ArtworkCard({ image, title, type, dimensions, date, price, forSale, status }) {
+function ArtworkCard({ image, title, type, Category,yearProduced, dimensions, date, price, forSale, status }) {
   return (
     <div className="artwork-card">
       <img className="artwork-image" src={image} alt={title} />
       <div className="artwork-details">
         <h3>{title}</h3>
-        <p>Category: {category}</p>
+        <p>Category: {Category}</p>
         <p>Dimensions: {dimensions}</p>
       </div>
       <div className="artwork-status">
