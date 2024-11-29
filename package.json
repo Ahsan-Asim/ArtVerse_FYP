@@ -5,5 +5,14 @@
     "bcryptjs": "^2.4.3",
     "bootstrap": "^5.3.3",
     "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0",
+    "nodemon": "^2.0.22"
+  },
+  "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "nodemon server/index.js", 
+    "client": "npm start --prefix index.js"
   }
 }
