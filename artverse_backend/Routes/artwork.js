@@ -42,29 +42,13 @@ router.get('/getArtwork/:email', async (req, res) => {
   }
 });
 
-router.get('/search', async (req, res) => {
-  try {
-    const { title } = req.query;
-    console.log(`Search request received with title: ${title}`); // Debug log for request query
-
-    if (!title) {
-      console.warn('No title provided in search query'); // Warning for missing query
-      return res.status(400).json({ message: 'Title is required for search.' });
-    }
-
-    const artworks = await Artwork.find({ title: { $regex: title, $options: 'i' } });
-    console.log(`Artworks found: ${artworks.length}`); // Log number of results
-
-    if (artworks.length === 0) {
-      console.warn('No artworks found for the given title'); // Warn if no results
-      return res.status(404).json({ message: 'No artworks found with the given title.' });
-    }
-
-    res.status(200).json(artworks);
-  } catch (error) {
-    console.error('Error searching for artworks:', error); // Log any error
-    res.status(500).json({ message: 'Server Error.' });
-  }
+// Your artwork search route
+router.get('/search', (req, res) => {
+  const { title } = req.query;
+  // Your logic to fetch artworks by title
+  Artwork.find({ title: new RegExp(title, 'i') })
+    .then(artworks => res.json(artworks))
+    .catch(err => res.status(500).json({ error: err.message }));
 });
 
 module.exports = router;
