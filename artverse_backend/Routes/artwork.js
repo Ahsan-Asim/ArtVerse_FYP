@@ -42,27 +42,27 @@ router.get('/getArtwork/:email', async (req, res) => {
   }
 });
 
-// Route to search artworks by title
 router.get('/search', async (req, res) => {
   try {
-    const { title } = req.query; // Get the search query from the request query string
+    const { title } = req.query;
+    console.log(`Search request received with title: ${title}`); // Debug log for request query
 
     if (!title) {
+      console.warn('No title provided in search query'); // Warning for missing query
       return res.status(400).json({ message: 'Title is required for search.' });
     }
 
-    // Find artworks where the title contains the search query (case-insensitive)
-    const artworks = await Artwork.find({
-      title: { $regex: title, $options: 'i' } // 'i' for case-insensitivity
-    });
+    const artworks = await Artwork.find({ title: { $regex: title, $options: 'i' } });
+    console.log(`Artworks found: ${artworks.length}`); // Log number of results
 
     if (artworks.length === 0) {
+      console.warn('No artworks found for the given title'); // Warn if no results
       return res.status(404).json({ message: 'No artworks found with the given title.' });
     }
 
     res.status(200).json(artworks);
   } catch (error) {
-    console.error("Error searching for artworks:", error);
+    console.error('Error searching for artworks:', error); // Log any error
     res.status(500).json({ message: 'Server Error.' });
   }
 });
