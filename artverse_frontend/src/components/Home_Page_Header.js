@@ -21,7 +21,7 @@ function Home_Page_Header() {
   const handleSearch = () => {
     if (searchQuery.trim()) {
       // Navigate to the search results page with the search query
-      window.location.href = `/search?query=${encodeURIComponent(searchQuery)}`;
+      window.location.href = `/search?title=${searchQuery}`;
     }
   };
 

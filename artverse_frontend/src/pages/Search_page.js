@@ -11,29 +11,31 @@ function SearchPage() {
     const title = params.get('title');
     if (title) {
       setSearchQuery(title);
-      fetchArtworks(title); // Automatically fetch artworks
+      fetchArtworks(title); // Automatically fetch artworks when title is found
     }
   }, []);
 
   const fetchArtworks = async (query) => {
-  console.log(`Fetching artworks with query: ${query}`); // Debug log for query
-  try {
-    const response = await fetch(`/api/artworks/search?title=${encodeURIComponent(query)}`);
-    console.log(`Response status: ${response.status}`); // Log the HTTP response status
-
-    if (!response.ok) {
-      console.error('Failed to fetch artworks');
-      throw new Error('Failed to fetch artworks');
+    console.log(`Fetching artworks with query: ${query}`);
+    try {
+      // Ensure you are using the correct URL for the API
+      const response = await fetch(`http://localhost:4000/api/artwork/search?title=${encodeURIComponent(query)}`);
+  
+      // Check if the response is ok
+      if (!response.ok) {
+        throw new Error(`Error: ${response.statusText}`);
+      }
+  
+      // Parse the JSON response
+      const data = await response.json();
+      console.log('Fetched artworks:', data);
+  
+      // Update the state with the fetched data
+      setArtworks(data);
+    } catch (error) {
+      console.error('Error fetching artworks:', error);
     }
-
-    const data = await response.json();
-    console.log('Artworks fetched successfully:', data); // Log fetched data
-    setArtworks(data);
-  } catch (error) {
-    console.error('Error fetching artworks:', error); // Log the error
-  }
-};
-
+  };
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' && searchQuery.trim()) {

@@ -19,8 +19,7 @@ function Service_Page_Header() {
     e.preventDefault();
     if (searchQuery) {
       // Redirect to the search results page with the query parameter
-      window.location.href = `/search?query=${searchQuery}`;
-    }
+      window.location.href = `/search?title=${searchQuery}`;    }
   };
 
   const handleKeyPress = (e) => {
