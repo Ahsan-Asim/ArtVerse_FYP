@@ -1,28 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/search.css';
 
 function SearchPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [artworks, setArtworks] = useState([]);
 
-  // Fetch artworks from the server
-  const fetchArtworks = async (query) => {
-    try {
-      const response = await fetch(`/api/artworks/search?title=${encodeURIComponent(query)}`);
-      if (!response.ok) {
-        throw new Error('Failed to fetch artworks');
-      }
-      const data = await response.json();
-      setArtworks(data);
-    } catch (error) {
-      console.error('Error fetching artworks:', error);
+  useEffect(() => {
+    // Extract 'title' query parameter from URL
+    const params = new URLSearchParams(window.location.search);
+    const title = params.get('title');
+    if (title) {
+      setSearchQuery(title);
+      fetchArtworks(title); // Automatically fetch artworks
     }
-  };
+  }, []);
 
-  // Handle "Enter" key press in the search bar
+  const fetchArtworks = async (query) => {
+  console.log(`Fetching artworks with query: ${query}`); // Debug log for query
+  try {
+    const response = await fetch(`/api/artworks/search?title=${encodeURIComponent(query)}`);
+    console.log(`Response status: ${response.status}`); // Log the HTTP response status
+
+    if (!response.ok) {
+      console.error('Failed to fetch artworks');
+      throw new Error('Failed to fetch artworks');
+    }
+
+    const data = await response.json();
+    console.log('Artworks fetched successfully:', data); // Log fetched data
+    setArtworks(data);
+  } catch (error) {
+    console.error('Error fetching artworks:', error); // Log the error
+  }
+};
+
+
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' && searchQuery.trim()) {
-      e.preventDefault(); // Prevent default form submission behavior
+      e.preventDefault();
       fetchArtworks(searchQuery);
     }
   };
@@ -35,7 +50,7 @@ function SearchPage() {
         placeholder="Search for artworks..."
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
-        onKeyDown={handleKeyDown} // Trigger search on Enter key
+        onKeyDown={handleKeyDown}
         className="search-input"
       />
 

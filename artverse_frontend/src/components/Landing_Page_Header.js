@@ -12,11 +12,12 @@ function Landing_Page_Header() {
   };
 
   const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    if (searchQuery) {
-      window.location.href = `/search?query=${searchQuery}`;
-    }
-  };
+  e.preventDefault();
+  if (searchQuery) {
+    window.location.href = `/search?title=${searchQuery}`;
+  }
+};
+
 
   const handleKeyPress = (e) => {
     if (e.key === 'Enter' && searchQuery) {
