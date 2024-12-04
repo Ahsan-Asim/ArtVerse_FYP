@@ -1,5 +1,3 @@
-// models/User.js
-
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
@@ -7,29 +5,26 @@ const userSchema = new Schema({
   name: {
     type: String,
     required: true,
-    trim: true,
+    trim: true, // Removes extra spaces
   },
   email: {
     type: String,
     required: true,
-    unique: true,
+    unique: true, 
     lowercase: true,
   },
   phone: {
     type: String,
-    // required: true,
-    // unique: true,
-    match: [/^\d{10}$/, 'Please enter a valid phone number'],
+    match: [/^\d{10}$/, 'Please enter a valid phone number'], 
   },
   password: {
     type: String,
-    // required: true,
-    minlength: 6,
+    minlength: 6, 
   },
   role: {
     type: String,
-    enum: ['user', 'artist','admin'],
-    default: 'user',
+    enum: ['user', 'artist', 'admin'], 
+    default: 'user', 
   },
   googleId: {
     type: String,
@@ -41,17 +36,18 @@ const userSchema = new Schema({
   artworks: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Artwork',
+      ref: 'Artwork', 
     },
   ],
   isVerified: {
     type: Boolean,
-    default: false, // Default value set to false
+    default: false, 
   },
   isBlocked: {
     type: Boolean,
-    default: false, // Default value set to false
+    default: false, 
   },
 });
 
+// Export the User model
 module.exports = mongoose.model('User', userSchema);

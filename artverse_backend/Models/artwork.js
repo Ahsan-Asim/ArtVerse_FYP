@@ -1,63 +1,21 @@
-// models/Artwork.js
-
 const mongoose = require('mongoose');
-const { Schema } = mongoose;
 
-const artworkSchema = new Schema({
-  image: {
-    type: String,  // Can store a URL or path to the image
-    required: true,
-  },
-  title: {
-    type: String,
-    required: true,
-    trim: true,
-  },
-  category: {
-    type: String,
-    required: true,
-  },
-  subject: {
-    type: String,
-    required: true,
-  },
-  yearProduced: {
-    type: Number,
-    required: true,
-  },
-  medium: {
-    type: String,
-    required: true,
-  },
-  material: {
-    type: String,
-    required: true,
-  },
-  style: {
-    type: String,
-    required: true,
-  },
-  dimensions: {
-    height: {
-      type: Number,
-      // required: true,
-    },
-    width: {
-      type: Number,
-      // required: true,
-    },
-    depth: {
-      type: Number,
-    },
-  },
-  description: {
-    type: String,
-    required: true,
-  },
-  artist: { type: String, ref: 'User', required: true }, // Reference to User model
-
+const artworkSchema = new mongoose.Schema({
+  image: { type: String, required: true }, // Path to the uploaded image
+  title: { type: String, required: true },
+  category: { type: String },
+  subject: { type: String },
+  yearProduced: { type: Number },
+  medium: { type: String },
+  material: { type: String },
+  style: { type: String },
+  price: { type: Number, required: true },
+  height: { type: Number },
+  width: { type: Number },
+  depth: { type: Number },
+  description: { type: String },
+  artist: { type: String, required: true }, // Reference to the artist's email
+  createdAt: { type: Date, default: Date.now }
 });
-// artist: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }, // Reference to User model
-
 
 module.exports = mongoose.model('Artwork', artworkSchema);

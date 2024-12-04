@@ -42,5 +42,13 @@ router.get('/getArtwork/:email', async (req, res) => {
   }
 });
 
+// Your artwork search route
+router.get('/search', (req, res) => {
+  const { title } = req.query;
+  // Your logic to fetch artworks by title
+  Artwork.find({ title: new RegExp(title, 'i') })
+    .then(artworks => res.json(artworks))
+    .catch(err => res.status(500).json({ error: err.message }));
+});
 
 module.exports = router;
