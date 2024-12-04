@@ -31,7 +31,7 @@ function Landing_Page_Header() {
         <img src={Logo} alt="ArtVerse Logo" className="logo" />
       </Link>
       <div className="headings">
-        <Link to="/become-artist" className="become-artist">About Us</Link>
+        <Link to="/About_Us" className="become-artist">About Us</Link>
         <Link to="/why-us" className="why-us">Digital Art</Link>
         <Link to="/become-artist" className="explore-digital-art">Become Artist</Link>
       </div>

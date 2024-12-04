@@ -16,6 +16,7 @@ import Upload_Artwork from './pages/Upload_Artwork';
 import CartPage from './pages/CartPage.js';
 import Artist_detail from './pages/Artist_detail';
 import SearchPage from './pages/Search_page.js';
+import About_Us from './pages/About_Us';
 
 
 
@@ -41,6 +42,7 @@ function App() {
             <Route path="/artist_detail" element={<Artist_detail />} />
             <Route path="/search" element={<SearchPage />} />
 
+            <Route path="/About_Us" element={<About_Us />} />
           </Routes>
         </div>
       </Router>
