@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "../styles/search_page_main.css";
 function Search_page_main() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -53,16 +54,22 @@ function Search_page_main() {
         {artworks.length > 0 ? (
           artworks.map((artwork) => (
             <div key={artwork._id} className="artwork-card">
-              <div className="artwork-image">
-                <img src={artwork.image} alt={artwork.title} />
-              </div>
-              <div className="artwork_detail">
-                <h2 className="artwork-title">{artwork.title}</h2>
-                <p className="artwork-details">
-                  {artwork.category} | {artwork.yearProduced}
-                </p>
-                <p className="artwork-description">{artwork.description}</p>
+              <Link
+                to="/painting" // Navigates to the specific painting page
+                state={{ artwork }} // Pass artwork data
+                className="artwork-link"
+              >
+                <div className="artwork-image">
+                  <img src={artwork.image} alt={artwork.title} />
                 </div>
+                <div className="artwork_detail">
+                  <h2 className="artwork-title">{artwork.title}</h2>
+                  <p className="artwork-details">
+                    {artwork.category} | {artwork.yearProduced}
+                  </p>
+                  <p className="artwork-description">{artwork.description}</p>
+                </div>
+              </Link>
             </div>
           ))
         ) : (
