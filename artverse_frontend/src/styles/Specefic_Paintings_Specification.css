@@ -53,6 +53,8 @@
   border-radius: 20px;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2); /* Smoky shadow */
   background-color: #fff;
+  font-size: calc(1rem + 0.5vw); /* Adjust font size based on viewport */
+  overflow-y: auto;
 }
 
 /* Artist Image and Info */

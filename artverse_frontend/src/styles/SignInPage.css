@@ -2,7 +2,7 @@
 .container {
   width: 100%; /* Full width for responsiveness */
   height: 830px; /* Fixed height */
-  background: black; /* Background color */
+  background-color: white;
   border-radius: 20px 0 0 0; /* Rounded corners */
   display: flex; /* Use flexbox for layout */
 }
@@ -10,6 +10,7 @@
 .left-image-container {
   flex: 0 0 468px; /* Fixed width for the left image section */
   height: 100%; /* Full height */
+  background-color: white;
 }
 
 .right-section {
