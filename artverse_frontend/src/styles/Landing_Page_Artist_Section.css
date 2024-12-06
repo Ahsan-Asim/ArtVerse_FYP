@@ -33,6 +33,7 @@
   position: absolute;
   left: 40px;
   top: 930px;
+  gap: 50px;
 }
 
 /* Individual artist card */
