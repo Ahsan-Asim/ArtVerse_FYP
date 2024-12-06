@@ -1,10 +1,11 @@
 /* src/styles/SignInPage.css */
 .container {
   width: 100%; /* Full width for responsiveness */
-  height: 830px; /* Fixed height */
+  height: auto; /* Allow height to adjust based on content */
   background-color: white;
   border-radius: 20px 0 0 0; /* Rounded corners */
   display: flex; /* Use flexbox for layout */
+  overflow: hidden; /* Prevent overflow */
 }
 
 .left-image-container {
