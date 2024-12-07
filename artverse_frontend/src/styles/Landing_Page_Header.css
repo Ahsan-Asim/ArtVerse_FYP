@@ -87,3 +87,21 @@
 .login_button:hover {
   color: gray;
 }
+.search-btn {
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 5px 15px;
+  font-size: 14px;
+  font-family: 'Aleo', sans-serif;
+  cursor: pointer;
+  margin-left: 10px; /* Adjust space between input and button */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.search-btn:hover {
+  background-color: white;
+  color: black;
+}
+
