@@ -26,94 +26,12 @@
   position: absolute;
   top: 2500px;
   left: 50px;
+  gap: 50px;
+
 
 
   
 }
-
-.art-card10 {
-  width: 50%;
-  margin: 20px;
-  border: 1px;
-  border-radius: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Background shadow effect */
-}
-
-
-.card-image {
-  background-size: cover;
-  width: 400px;
-  height: 232px;
-  border: 1px;
-  border-radius: 20px;
-  box-shadow: 0px 4px 70px rgba(0, 0, 0, 0.5); /* Soft, smoky shadow */
-
-}
-
-
-
-.card-details {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 0;
-  background-color: white;
-}
-
-.left-details {
-  text-align: left;
-}
-
-.art-title {
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.artist-name, .art-type, .art-material, .dimensions {
-  font-size: 16px;
-  color: #333;
-}
-
-.right-details {
-  text-align: right;
-}
-
-.price-old {
-  text-decoration: line-through;
-  color: #888;
-}
-
-.price-new {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.discount {
-  color: green;
-  font-weight: bold;
-}
-
-.card-buttons {
-  display: flex;
-  justify-content: space-between;
-}
-
-.icon-container {
-  background-color: #FFFFFF;
-  border: 1px solid #000000;
-  border-radius: 30px;
-  width: 146.58px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.icon-container img {
-  width: 24px;
-  height: 24px;
-}
-
-
 
 .art-cards-container20 {
   display: flex;
@@ -125,11 +43,22 @@
   top: 3200px;
   left: 50px;
   gap: 50px;
+}
+
+.art-cards-container30 {
+  display: flex;
+  width: 1000px;
+  height: 231px;
+  justify-content: space-between;
+  padding: 20px;
+  position: absolute;
+  top: 3900px;
+  left: 50px;
+  gap: 50px;
 
 
   
 }
-
 .art-card1 {
   width: 50%;
   margin: 20px;
@@ -213,17 +142,3 @@
 }
 
 
-.art-cards-container30 {
-  display: flex;
-  width: 1000px;
-  height: 231px;
-  justify-content: space-between;
-  padding: 20px;
-  position: absolute;
-  top: 3900px;
-  left: 50px;
-  gap: 50px;
-
-
-  
-}

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../styles/Landing_Page_Sixth_Section.css?v=1";
 import SideImage from "../assets/images/Landing_Page_Image3.png"; // Correct path to your profile icon
 import ArtistsSign from "../assets/images/Artist_Sign.png"; // Correct path to your profile icon
@@ -6,9 +7,11 @@ import ArtistsSign from "../assets/images/Artist_Sign.png"; // Correct path to y
 function Landing_Page_Sixth_Section() {
   return (
     <div className="sixth-sec-main">
+      <Link to="/signup" className="button-link">
       <button className="sixth-sec-button">
         <b>Explore More</b>
       </button>
+      </Link>
       <div className="sixth-sec-container">
         <div className="sixth-sec-image-container">
           <img src={SideImage} alt="Description" className="sixth-sec-styled-image" />
