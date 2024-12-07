@@ -1,55 +1,56 @@
-.sixth-button {
+.sixth-sec-main {
+  position: relative;
+  width: 100%;
+}
+
+.sixth-sec-button {
   background-color: white; /* Button background color */
   color: black; /* Text color */
   position: absolute;
   left: 580px;
-  top: 4500px;
+  top: 3900px;
   width: 220px;
   height: 50px;
-  border: 3px solid black; /* No border */
+  border: 3px solid black;
   border-radius: 30px;
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.5); /* Soft, smoky shadow */
-  padding: 10px 20px; /* Padding for size */
-  font-size: 22px; /* Font size */
-  font-family: 'Aleo', sans-serif; /* Font style */
+  padding: 10px 20px;
+  font-size: 22px;
+  font-family: 'Aleo', sans-serif;
   cursor: pointer; /* Pointer cursor on hover */
-  
 }
 
-
-.container1 {
-  display: flex;
+.sixth-sec-container {
+  display: flex !important;
   margin-top: 20px;
-  position: absolute;
-  top: 4650px;
+  position: absolute !important;
+  top: 4000px;
   left: 40px;
 }
 
-.image-container {
+.sixth-sec-image-container {
   flex: 1;
 }
 
-.styled-image {
+.sixth-sec-styled-image {
   width: 687px;
   height: 700px;
   border-radius: 20px;
 }
 
-.text-container {
+.sixth-sec-text-container {
   flex: 1;
   background-color: pink;
   display: flex;
-
   flex-direction: column;
   justify-content: center;
   padding: 20px;
   width: 687px;
   height: 700px;
   border-radius: 20px;
-
 }
 
-.con-heading{
+.sixth-sec-heading {
   position: absolute;
   top: 40px;
   left: 741px;
@@ -57,9 +58,9 @@
   height: 58px;
   font-family: 'Aleo';
   font-size: 48px;
-  /* text-shadow: 100px 100px 100px 100px rgba(0, 0, 0, 0.5); Soft, smoky shadow */
 }
-.con-para{
+
+.sixth-sec-para {
   position: absolute;
   top: 200px;
   left: 741px;
@@ -68,16 +69,16 @@
   font-family: 'Aleo';
   font-size: 20px;
 }
-.con-pic{
+
+.sixth-sec-pic {
   position: absolute;
   top: 500px;
   left: 741px;
   width: 375px;
   height: 112px;
-  font-family: 'Aleo';
-
 }
-.con-head3{
+
+.sixth-sec-head3 {
   position: absolute;
   top: 625px;
   left: 741px;
@@ -85,6 +86,4 @@
   height: 38px;
   font-family: 'Aleo';
   font-size: 20px;
-  /* text-shadow: 100px 100px 100px 100px rgba(0, 0, 0, 0.5); Soft, smoky shadow */
-
 }
