@@ -1,27 +1,27 @@
-import React from 'react'
+import React from 'react';
 import Logo from '../assets/images/ArtVerse_Logo.png'; // Correct path to your logo
 import ProfileIcon from '../assets/images/profile.png'; // Correct path to your profile icon
 import '../styles/Artist_studio_header.css'; // Ensure to import your custom CSS
 
-function Artist_studio_header() {
+function ArtistStudioHeader() {
   return (
     <div>
-      <header className="header">
-      <a href="/" className="logo-link">
-        <img src={Logo} alt="ArtVerse Logo" className="logo" />
-      </a>
-      <div className="headings">
-        <a href="/profile" className="profile">Profile</a>
-        <a href="/manage_artworks" className="manage-artworks">Manage Artworks</a>
-        <a href="/sales_dashboard" className="sales-dashboard">Sales Dashboard</a>
-        <a href="/offers_dashboard" className="offers-dashboard">Offers Dashboard</a>
-      </div>
-      <a href="/profile" className="icon-link">
-        <img src={ProfileIcon} alt="Profile Icon" className="profile-icon" />
-      </a>
-    </header>
+      <header className="header-container">
+        <a href="/" className="logo-link">
+          <img src={Logo} alt="ArtVerse Logo" className="logo-img" />
+        </a>
+        <div className="nav-links">
+          <a href="/profile" className="nav-link profile-link">Profile</a>
+          <a href="/manage_artworks" className="nav-link manage-artworks-link">Manage Artworks</a>
+          <a href="/sales_dashboard" className="nav-link sales-dashboard-link">Sales Dashboard</a>
+          <a href="/offers_dashboard" className="nav-link offers-dashboard-link">Offers Dashboard</a>
+        </div>
+        <a href="/profile" className="profile-icon-link">
+          <img src={ProfileIcon} alt="Profile Icon" className="profile-icon-img" />
+        </a>
+      </header>
     </div>
-  )
+  );
 }
 
-export default Artist_studio_header
+export default ArtistStudioHeader;

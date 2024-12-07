@@ -1,4 +1,4 @@
-.header {
+.header-container {
   width: 1224px;
   display: flex;
   align-items: center;
@@ -14,20 +14,16 @@
   text-decoration: none;
 }
 
-.logo {
+.logo-img {
   width: 180px;
   height: 122px;
 }
 
-
-.headings {
+.nav-links {
   display: flex;
 }
 
-.profile,
-.manage-artworks,
-.sales-dashboard,
-.offers-dashboard {
+.nav-link {
   font-family: 'Aleo', sans-serif;
   font-size: 16px;
   font-weight: 500;
@@ -38,21 +34,21 @@
   transition: color 0.3s ease-in-out;
 }
 
-.profile:hover,
-.manage-artworks:hover,
-.sales-dashboard:hover,
-.offers-dashboard:hover {
+.profile-link:hover,
+.manage-artworks-link:hover,
+.sales-dashboard-link:hover,
+.offers-dashboard-link:hover {
   color: #0077cc; /* Blue hover effect */
 }
 
 /* Active Menu Item */
-.active {
+.active-link {
   color: #0077cc; /* Highlight active menu item */
   border-bottom: 2px solid #0077cc; /* Underline active menu item */
 }
 
 /* Profile Icon */
-.profile-icon {
+.profile-icon-img {
   border-radius: 50%; /* Circular profile icon */
   background-color: #e0e0e0; /* Light gray background */
   width: 50px;
@@ -61,18 +57,18 @@
   transition: background-color 0.3s ease-in-out;
 }
 
-.profile-icon:hover {
+.profile-icon-img:hover {
   background-color: #0077cc; /* Blue hover effect */
 }
 
 /* Add Visual Consistency for the Header */
-.header a {
+.header-container a {
   text-decoration: none; /* Remove underline from links */
   font-size: 16px;
   color: #4a4a4a; /* Neutral gray for links */
   transition: color 0.3s ease-in-out;
 }
 
-.header a:hover {
+.header-container a:hover {
   color: #0077cc; /* Blue hover for links */
 }
