@@ -92,35 +92,43 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7); /*Darker semi-transparent background*/
+  background-color: rgba(0, 0, 0, 0.7);
+  background-image: url('../assets/images/home9.png'); 
+  background-size: cover; /* Ensures the image covers the entire viewport */
+  background-position: center center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  background-attachment: fixed; /* Makes the background image fixed while scrolling */
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out; /* Fade-in animation */
+  
 }
 
 /* Modal Content */
 .modal-content {
-  background-color: #fff !important; /* Force white background */
-  padding: 40px; /* Increased padding for full-page modal */
-  border-radius: 10px;
-  max-width: 90vw; /* Cover most of the width */
-  max-height: 90vh; /* Cover most of the height */
-  width: 100%; /* Responsive width */
-  height: auto; /* Adjust height dynamically */
+  background: linear-gradient(145deg, #fff, #b66990); /* Gradient background */
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 80vw;
+  max-height: 80vh;
+  width: 100%;
+  height: auto;
   text-align: left;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Soft shadow */
   position: relative;
-  overflow-y: auto; /* Allow scrolling if content overflows */
-  z-index: 1001; /* Make sure the modal content is above the overlay */
+  overflow-y: auto;
+  z-index: 1001;
+  animation: scaleUp 0.3s ease-out; /* Scale-up animation */
 }
 
-/* Close Button (cross at the top-right corner) */
+/* Close Button */
 .close-btn {
   position: absolute;
   top: 20px;
   right: 20px;
-  font-size: 30px;
+  font-size: 35px;
   color: #333;
   background: none;
   border: none;
@@ -136,13 +144,65 @@
 .modal-buttons button {
   margin: 15px;
   padding: 15px 20px;
-  background-color: #007bff;
+  background-color: #4CAF50; /* Green button */
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .modal-buttons button:hover {
-  background-color: #0056b3;
+  background-color: #45a049;
+  transform: translateY(-5px); /* Slight lift effect on hover */
+}
+
+.modal-buttons button:active {
+  transform: translateY(2px); /* Slight press effect on click */
+}
+
+/* Modal Title */
+.modal-content h3 {
+  font-family: 'Aleo', sans-serif;
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 10px;
+
+}
+
+/* Modal Paragraphs */
+.modal-content p {
+  font-size: 16px;
+  color: #555;
+  margin: 5px 0;
+}
+
+.modal-content strong {
+  color: #333;
+}
+
+/* Add Animations for Modal Visibility */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.8);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Style for Modal Text */
+.modal-content p {
+  line-height: 1.6; /* Better readability */
 }

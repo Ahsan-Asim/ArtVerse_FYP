@@ -3,6 +3,11 @@
     width: 1224px; /* Container width */
     height: auto; /* Adjust height dynamically */
     margin: 0 auto; /* Center the container */
+    background-image: url('../assets/images/home10.png'); 
+  background-size: cover; /* Ensures the image covers the entire viewport */
+  background-position: center center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  background-attachment: fixed; /* Makes the background image fixed while scrolling */
   }
   
   .main-studio h1 {
