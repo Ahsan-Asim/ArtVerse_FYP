@@ -39,6 +39,8 @@ const artistSchema = new mongoose.Schema({
   certificates: {
     type: String,
   },
+  image: { type: String }, // New field for the image path
+
 });
 
 module.exports = mongoose.model('Artist', artistSchema);

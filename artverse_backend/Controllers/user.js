@@ -88,6 +88,38 @@ exports.googleSignup = async (req, res) => {
   }
 };
 
+exports.googleSignin = async (req, res) => {
+  const { token } = req.body;
+
+  try {
+    // Verify Google token
+    const ticket = await client.verifyIdToken({
+      idToken: token,
+      audience: '868206158931-8u3ftrs4ekvg4jitiu02bab01n5hj7q9.apps.googleusercontent.com', // Replace with your Google OAuth 2.0 Client ID
+    });
+    const { email, name } = ticket.getPayload();
+
+    // Check if user exists
+    let user = await User.findOne({ email });
+    if (!user) {
+      // Create a new user if not exists
+      user = new User({ email, name, googleId: token });
+      await user.save();
+    }
+
+    // Generate JWT token
+    const jwtToken = jwt.sign(
+      { id: user._id, email: user.email, role: user.role },
+      { expiresIn: '1h' }
+    );
+
+    // Send the token and role
+    res.status(200).json({ token: jwtToken, role: user.role });
+  } catch (error) {
+    res.status(500).json({ message: 'Google Sign-In failed', error });
+  }
+};
+
 
 
 
@@ -193,46 +225,119 @@ exports.signin = async (req, res) => {
 };
 ////////////////////
 // Update user to become an artist
+// exports.becomeArtist = async (req, res) => {
+//   const { name, email, country, state, city, address, education, about } = req.body;
+
+//   try {
+//     // Find the user by email
+//     const user = await User.findOne({ email });
+//     if (!user) {
+//       return res.status(404).json({ message: 'User not found.' });
+//     }
+
+//     // Check if the user is already an artist
+//     if (user.role === 'artist') {
+//       return res.status(400).json({ message: 'User is already an artist.' });
+//     }
+
+//    // Create a new artist
+//    const artist = new Artist({
+//     name,
+//     email,
+//     country,
+//     state,
+//     city,
+//     address,
+//     education,
+//     about,
+//   });
+//     const savedArtist = await artist.save();
+
+//     // Update user role and reference to artistDetails
+//     user.role = 'artist';
+//     user.artistDetails = savedArtist._id;
+
+//     await user.save();
+
+//     res.status(200).json({ message: 'User is now an artist!', user });
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: 'Server error', error });
+//   }
+// };
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
+
+// Set up multer storage (Local file storage)
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        const uploadPath = 'uploads/artist_images'; // Directory to save images
+        // Ensure the directory exists
+        if (!fs.existsSync(uploadPath)) {
+            fs.mkdirSync(uploadPath, { recursive: true });
+        }
+        cb(null, uploadPath);
+    },
+    filename: (req, file, cb) => {
+        const ext = path.extname(file.originalname); // Get file extension
+        cb(null, Date.now() + ext); // Save the file with a timestamp name
+    },
+});
+
+const upload = multer({ storage }).single('image'); // Single file upload
+
 exports.becomeArtist = async (req, res) => {
-  const { name, email, country, state, city, address, education, about } = req.body;
+    upload(req, res, async (err) => {
+        if (err) {
+            return res.status(500).json({ message: 'Image upload failed', error: err });
+        }
 
-  try {
-    // Find the user by email
-    const user = await User.findOne({ email });
-    if (!user) {
-      return res.status(404).json({ message: 'User not found.' });
-    }
+        const { name, email, country, state, city, address, education, about, awards, certificates } = req.body;
+        const imagePath = req.file ? req.file.path : null; // Get the uploaded image path
 
-    // Check if the user is already an artist
-    if (user.role === 'artist') {
-      return res.status(400).json({ message: 'User is already an artist.' });
-    }
+        try {
+            // Find the user by email
+            const user = await User.findOne({ email });
+            if (!user) {
+                return res.status(404).json({ message: 'User not found.' });
+            }
 
-   // Create a new artist
-   const artist = new Artist({
-    name,
-    email,
-    country,
-    state,
-    city,
-    address,
-    education,
-    about,
-  });
-    const savedArtist = await artist.save();
+            // Check if the user is already an artist
+            if (user.role === 'artist') {
+                return res.status(400).json({ message: 'User is already an artist.' });
+            }
 
-    // Update user role and reference to artistDetails
-    user.role = 'artist';
-    user.artistDetails = savedArtist._id;
+            // Create a new artist
+            const artist = new Artist({
+                name,
+                email,
+                country,
+                state,
+                city,
+                address,
+                education,
+                about,
+                awards,
+                certificates,
+                image: imagePath, // Save the image path
+            });
+            const savedArtist = await artist.save();
 
-    await user.save();
+            // Update user role and reference to artistDetails
+            user.role = 'artist';
+            user.artistDetails = savedArtist._id;
 
-    res.status(200).json({ message: 'User is now an artist!', user });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Server error', error });
-  }
+            await user.save();
+
+            res.status(200).json({ message: 'User is now an artist!', user });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Server error', error });
+        }
+    });
 };
+
 
 
 // // Get artist profile by email

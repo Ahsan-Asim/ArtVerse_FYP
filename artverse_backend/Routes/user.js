@@ -12,6 +12,8 @@ const User = require('../Models/user');
 router.post('/signup', userController.signup);
 router.post('/signin', userController.signin);
 router.post('/google-signup', userController.googleSignup);
+router.post('/google-signin', userController.googleSignin);
+
 router.post('/become-artist', userController.becomeArtist);
 router.get('/getUserByEmail/:email', userController.getUserByEmail);
 router.get('/getUserStatus/:email', userController.getUserStatus);

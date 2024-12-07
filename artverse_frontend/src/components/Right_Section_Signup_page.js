@@ -49,6 +49,7 @@ function Right_Section_Signup_page() {
       const res = await axios.post('http://localhost:4000/api/users/google-signup', { token: credential });
   
       const { user } = res.data; // Extract user details from the response
+      console.log(res)
   
       // Navigate to the sign-in page with user email and Google ID
       navigate('/signin', {
@@ -57,6 +58,8 @@ function Right_Section_Signup_page() {
           password: user.googleId,
         },
       });
+
+    
     } catch (error) {
       setMessage(error.response?.data?.message || 'Google login failed');
     }
@@ -121,11 +124,11 @@ function Right_Section_Signup_page() {
 
       {message && <p className="message">{message}</p>}
 
-      {/* Google login button */}
+      {/* Google login button
       <div className="sign_div2" style={{ textAlign: "center" }}>
         <span className='Google_Text'>Continue With Google</span>
         {/* Custom Google login button */}
-        <GoogleLogin
+        {/*<GoogleLogin
           onSuccess={handleGoogleLogin} // Handle successful Google login
           onError={() => setMessage('Google login failed')}
           render={(renderProps) => (
@@ -139,7 +142,26 @@ function Right_Section_Signup_page() {
             </button>
           )}
         />
-      </div>
+      </div> */}
+
+<div className="sign_div2">
+  <GoogleLogin
+    onSuccess={handleGoogleLogin}
+    onError={() => setMessage('Google login failed')}
+    render={(renderProps) => (
+      <button
+        className="google-login-btn"
+        onClick={renderProps.onClick}
+        disabled={renderProps.disabled}
+      >
+        <img src={GoogleLogo} alt="Google Logo" className="google-logo" />
+        <span className="Google_Text">Continue With Google</span>
+      </button>
+    )}
+  />
+</div>
+
+      
 
       <div className="signup-text">
         Already have an ArtVerse Account? <Link to="/signin" className="signup-link">Login</Link>

@@ -1,6 +1,6 @@
 import React from 'react'
 import Logo from '../assets/images/ArtVerse_Logo.png'; // Correct path to your logo
-import ProfileIcon from '../assets/images/profile.png'; // Correct path to your profile icon
+import ProfileIcon from '../assets/images/default_profile.jpeg'; // Correct path to your profile icon
 import '../styles/Artist_detail_header.css'; // Ensure to import your custom CSS
 
 function ArtistDetailHeader() {

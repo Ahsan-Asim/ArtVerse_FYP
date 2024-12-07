@@ -5,6 +5,8 @@ import { useLocation } from 'react-router-dom';
 import '../styles/RightSectionSignin.css';
 import Logo from '../assets/images/ArtVerse_Logo.png';
 import GoogleLogo from '../assets/images/Google.png';
+  import { GoogleLogin } from '@react-oauth/google'; // Import GoogleLogin
+
 
 const Right_Section_Signin_page = () => {
   const location = useLocation();
@@ -14,6 +16,29 @@ const Right_Section_Signin_page = () => {
     password: '',
   });
   const [error, setError] = useState(null); // State for error message
+
+  /////////////////////////////////////////////////////
+
+// Inside your Right_Section_Signin_page component
+const handleGoogleLogin = async (response) => {
+  const { credential } = response;
+  try {
+    // Send the Google token to your backend for login
+    const res = await axios.post('http://localhost:4000/api/users/google-signin', { token: credential });
+
+    const { token, role } = res.data; // Extract token and role from the response
+
+    // Save JWT token in session storage
+    sessionStorage.setItem('token', token);
+
+    // Redirect to the /home page
+    navigate('/home', { state: { role } });
+  } catch (error) {
+    setError(error.response?.data?.message || 'Google login failed');
+  }
+};
+
+/////////////////////////////////////////////////////////////
 
   // Check for email and password in location.state
   useEffect(() => {
@@ -88,10 +113,22 @@ const Right_Section_Signin_page = () => {
       <img src={Logo} alt="ArtVerse Logo" className="logo10" />
       <div className="sign_div1"><p>Sign in To ArtVerse</p></div>
 
-      <div className="sign_div2" style={{ textAlign: "center" }}>
-        <span className='Google_Text'>Sign in With Google</span>
-        <img src={GoogleLogo} alt="Google Logo" className="google-logo" />
-      </div>
+    {/* <div className="sign_div2" style={{ textAlign: "center" }}>
+    <GoogleLogin
+  onSuccess={handleGoogleLogin}
+  onError={() => setError('Google login failed')}
+  render={(renderProps) => (
+    <button
+      className="google-login-btn"
+      onClick={renderProps.onClick}
+      disabled={renderProps.disabled}
+    >
+      <img src={GoogleLogo} alt="Google Logo" className="google-logo" />
+      <span className="Google_Text">Continue With Google</span>
+    </button>
+  )}
+/> */}
+
 
       <div className="sign_div4">
         <div className="line left-line"></div>
@@ -127,6 +164,10 @@ const Right_Section_Signin_page = () => {
 
         <button type="submit" className="signin-button">Sign In</button>
       </form>
+
+      
+
+
 
       {error && <div className="error-message">{error}</div>} {/* Display error message */}
 

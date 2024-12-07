@@ -7,6 +7,7 @@ const Profile_main = () => {
   const [userData, setUserData] = useState(null);
   const [roleData, setRoleData] = useState(null);
   const [editableData, setEditableData] = useState(null);
+  const [originalData, setOriginalData] = useState(null); // Added state for original data
   const [isEditing, setIsEditing] = useState(false);
   const [isVerified, setIsVerified] = useState(true);
   const [isBlocked, setIsBlocked] = useState(false);
@@ -31,11 +32,12 @@ const Profile_main = () => {
               .then((res) => {
                 const fullData = res.data;
                 setRoleData(fullData);
-                setEditableData({
+                const combinedData = {
                   ...fullData,
                   ...fullData.artistDetails,
-                });
-
+                };
+                setEditableData(combinedData);
+                setOriginalData(combinedData); // Save original data
                 setIsVerified(fullData.isVerified);
                 setIsBlocked(fullData.isBlocked);
               })
@@ -71,7 +73,7 @@ const Profile_main = () => {
   };
 
   const handleCancel = () => {
-    setEditableData(roleData);
+    setEditableData(originalData); // Revert to the original data
     setIsEditing(false);
   };
 
@@ -239,7 +241,7 @@ const Profile_main = () => {
           </>
         )}
 
-        <div className="buttonContainer">
+        <div className="button-container">
           {isEditing ? (
             <>
               <button type="button" className="button" onClick={handleSave}>
@@ -258,19 +260,20 @@ const Profile_main = () => {
               Edit Profile
             </button>
           )}
+
+          {userData.role === "artist" && (
+            <div>
+              <button
+                onClick={handleUploadArtworkClick}
+                className="button"
+                style={{ width: "auto" }}
+              >
+                Upload Artwork
+              </button>
+            </div>
+          )}
         </div>
       </form>
-      {userData.role === "artist" && (
-        <div>
-          <button
-            onClick={handleUploadArtworkClick}
-            className="button"
-            style={{ width: "100%" }}
-          >
-            Upload Artwork
-          </button>
-        </div>
-      )}
     </div>
   );
 };

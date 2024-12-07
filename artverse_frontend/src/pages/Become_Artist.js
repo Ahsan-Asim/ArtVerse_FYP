@@ -15,12 +15,12 @@ function Become_Artist() {
                 <h2>Become Artist at Artverse</h2>
             </div>
             
-            <div className="profile-photo-section">
+            {/* <div className="profile-photo-section">
                 <div className="photo-upload-circle">
                     <span>Upload Photo</span>
                 </div>
                 <p>Profile Photo</p>
-            </div>
+            </div> */}
             
             <ArtistForm />
         </div>

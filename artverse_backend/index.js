@@ -1,6 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors"); // Import the cors package
+const path = require("path");
+const Artist = require('./Models/artist'); // Import the Artist model
 
 const { connectMongoDb } = require('./connection');
 
@@ -15,6 +17,35 @@ const userRouter = require("./Routes/user");
 const artistRouter = require("./Routes/artist");
 const artworkRouter = require("./Routes/artwork");
 const adminRouter = require("./Routes/admin");
+
+
+
+// Serve static files from the 'uploads' folder
+// app.use('/uploads', express.static('uploads'));
+// Serve static files (images) from the 'uploads' folder
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+// Route to get artist details by email
+app.get('/api/artist/image', async (req, res) => {
+  const artistEmail = req.query.email;  // Fetch email from query string
+
+  try {
+    const artist = await Artist.findOne({ email: artistEmail }); // Find artist by email
+    if (artist) {
+      res.json({
+        name: artist.name,
+        email: artist.email,
+        profileImage: artist.image, // Send the profile image path
+      });
+    } else {
+      res.status(404).json({ message: 'Artist not found' });
+    }
+  } catch (err) {
+    console.error('Error fetching artist data:', err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
 
 // Connect MongoDB and set up routes
 connectMongoDb('mongodb://127.0.0.1:27017/fyp');

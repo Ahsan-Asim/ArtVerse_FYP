@@ -17,6 +17,7 @@ import CartPage from './pages/CartPage.js';
 import Artist_detail from './pages/Artist_detail';
 import SearchPage from './pages/Search_page.js';
 import About_Us from './pages/About_Us';
+import EditArtwork from './pages/Edit_Artwork.js';
 
 
 
@@ -43,6 +44,8 @@ function App() {
             <Route path="/search" element={<SearchPage />} />
 
             <Route path="/About_Us" element={<About_Us />} />
+                    {/* <Route path="/edit_artwork" element={<EditArtwork />} /> */}
+
           </Routes>
         </div>
       </Router>

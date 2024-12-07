@@ -9,7 +9,7 @@ function Artist_studio() {
     <div className='artist-studio'>
       <Artist_studio_header />
       <Artist_studio_main />
-      <Artist_studio_footer />
+      {/* <Artist_studio_footer /> */}
     </div>
   )
 }
