@@ -27,7 +27,7 @@
 
 }
 
-.sign_div2{
+/* .sign_div2{
   width: 425.89px;
   height: 52.02px;
   position: absolute;
@@ -39,23 +39,23 @@
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 
 
-}
+} */
 
-.Google_Text{
+/* .Google_Text{
   width: 245px;
   height: 30.17px;
 top: 148.44px;
 left: 702px;
-font-family: 'Aleo', sans-serif; /* Apply the Aleo font */
+font-family: 'Aleo', sans-serif; /* Apply the Aleo font 
 font-size: 24px;
 font-weight: 400;
 line-height: 28.8px;
 text-align: left;
 
 
-}
+} */
 
-.google-logo{
+/* .google-logo{
   width: 41px;
 height: 40px;
 top: 143px;
@@ -63,7 +63,7 @@ left: 980px;
 margin-left: 10px;
 
 
-}
+} */
 
 
 .sign_div4 {
@@ -239,17 +239,3 @@ text-align: left;
   text-decoration: underline;
 }
 
-
-.error-message {
-  color: red;
-  font-size: 0.9rem;
-  margin-top: 305px;
-  margin-left: 20px;
-}
-
-.error-message1 {
-  color: red;
-  font-size: 0.9rem;
-  margin-top: px;
-  margin-left: 0px;
-}
