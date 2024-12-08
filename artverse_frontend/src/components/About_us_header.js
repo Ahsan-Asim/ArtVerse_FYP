@@ -28,19 +28,7 @@ function About_us_header() {
           <img src={SearchIcon} alt="Search Icon" className="search-icon" />
           <input type="text" placeholder="Search" className="search-input" />
         </div>
-        <a href="/cart" className="icon-link">
-          <img
-            src={ShoppingIcon}
-            alt="Shopping Icon"
-            className="shopping-icon"
-          />
-        </a>
-        <a href="/favorites" className="icon-link">
-          <img src={LikeIcon} alt="Like Icon" className="like-icon" />
-        </a>
-        <a href="/profile" className="icon-link">
-          <img src={ProfileIcon} alt="Profile Icon" className="profile-icon" />
-        </a>
+
       </header>
 
       {/* New Row of Headings */}
