@@ -97,14 +97,14 @@ function Profile_header() {
         )}
       </form>
 
-      <div className="buttons">
+      {/* <div className="buttons">
         <Link to="/signin" className="login_button" style={{ textDecoration: "none" }}>
           Login
         </Link>
         <Link to="/signup" className="signup_button" style={{ textDecoration: "none" }}>
           Signup
         </Link>
-      </div>
+      </div> */}
 
       {/* Modal for Followed Artists */}
       {modalVisible && (
