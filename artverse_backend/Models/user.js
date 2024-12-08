@@ -47,12 +47,6 @@ const userSchema = new Schema({
     type: Boolean,
     default: false, 
   },
-  follows: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Artist', // Referencing the Artist model
-    },
-  ],
 });
 
 // Export the User model

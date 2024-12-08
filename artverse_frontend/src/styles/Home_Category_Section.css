@@ -1,21 +1,6 @@
-/* General Styles */
-body {
-  font-family: 'Aleo', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f5f5f5;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-/* Category Section */
 .category-section {
   text-align: center;
-  margin-top: 100px;
+  margin-top: 100px; /* Positioning space from the top, adjust as needed */
 }
 
 .category-title {
@@ -30,14 +15,14 @@ body {
 .category-items {
   display: flex;
   justify-content: center;
-  gap: 40px;
-  margin-top: 20px;
+  gap: 40px; /* Space between items */
+  margin-top: 20px; /* Space between title and images */
 }
 
 .category-item {
   display: flex;
-  align-items: center;
-  gap: 20px;
+  align-items: center; /* Center vertically */
+  gap: 20px; /* Space between image and text */
 }
 
 .category-image {
@@ -49,10 +34,13 @@ body {
   font-family: 'Aleo', sans-serif;
   font-size: 24px;
   font-weight: 600;
-  text-align: left;
+  text-align: left; /* Align text to the left */
 }
 
-/* Curated Collections */
+
+
+
+
 .curated-collections {
   text-align: center;
   margin-top: 50px;
@@ -75,18 +63,18 @@ body {
   width: 367px;
   text-align: center;
   text-decoration: none;
-  color: inherit;
+  color: inherit; /* Maintain default color */
 }
 
 .collection-image {
   width: 100%;
   height: auto;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3); /* Soft smoky shadow */
+  transition: transform 0.3s; /* Smooth scale effect on hover */
 }
 
 .collection-image:hover {
-  transform: scale(1.05);
+  transform: scale(1.05); /* Slight zoom effect */
 }
 
 .collection-text {
@@ -107,7 +95,9 @@ body {
   margin: 0;
 }
 
-/* Art by Price */
+
+
+
 .art-by-price {
   text-align: center;
   margin-top: 60px;
@@ -129,119 +119,19 @@ body {
 .price-button {
   width: 183px;
   height: 61px;
-  background-color: #FE9A17;
+  background-color: #FE9A17; /* Button color */
   color: black;
   font-family: 'Aleo', sans-serif;
   font-size: 18px;
   font-weight: 600;
   border: none;
-  border-radius: 40px;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 40px; /* Rounded corners */
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3); /* Smoky shadow */
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: transform 0.2s; /* Smooth scale effect on hover */
 }
 
 .price-button:hover {
-  transform: scale(1.05);
-}
-
-/* Art Card */
-.art-card-container {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
-  flex-wrap: nowrap;
-}
-
-.art-card {
-  width: 30%;
-  margin: 10px;
-}
-
-.card-image {
-  background-size: cover;
-  height: 232px;
-}
-
-.card-details {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 0;
-}
-
-.left-details {
-  text-align: left;
-  flex: 1;
-}
-
-.right-details {
-  text-align: right;
-  flex: 1;
-}
-
-.art-title {
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.artist-name,
-.art-type,
-.art-material,
-.dimensions {
-  font-size: 16px;
-  color: #333;
-}
-
-.price-old {
-  text-decoration: line-through;
-  color: #888;
-}
-
-.price-new {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.discount {
-  color: green;
-  font-weight: bold;
-}
-
-.card-buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-}
-
-.like-button, .add-to-cart-button {
-  background-color: #fff;
-  border: 1px solid #000;
-  border-radius: 30px;
-  width: 140px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.icon {
-  width: 24px;
-  height: 24px;
-}
-
-.icon-container {
-  background-color: #ffffff;
-  border: 1px solid #000000;
-  border-radius: 30px;
-  width: 146.58px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.icon-container img {
-  width: 24px;
-  height: 24px;
+  transform: scale(1.05); /* Slight zoom effect on hover */
 }
 

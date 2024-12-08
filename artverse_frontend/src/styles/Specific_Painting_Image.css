@@ -1,65 +1,52 @@
 .featured-art1 {
   position: relative;
-  display: flex; /* Ensures the content inside is flexible and centered */
-  justify-content: center; /* Horizontally center the image */
-  align-items: center; /* Vertically center the image */
-  width: 350px; /* Slightly larger width */
-  height: 250px; /* Slightly larger height */
-  margin: 20px auto; /* Center the container on the page with some margin */
-  overflow: hidden; /* Hide any overflow */
-  border-radius: 8px; /* Optional: Adds rounded corners */
-    background: none !important; /* Forcefully remove any background */
-
-  
+  width: 1224px; /* Set custom width */
+  height: 636px; /* Set custom height */
+  margin: 0 auto; /* Center align */
+  overflow: hidden; /* To clip any overflowing content */
 }
 
 .background-image11 {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* Ensures the entire image is shown without cropping */
-  display: block; /* Ensures proper rendering */
-  border: none; /* Removes any border that might appear */
+  width: 90%; /* Full width to fit the container */
+  height: 100%; /* Full height to fit the container */
+  object-fit: cover; /* Ensures the image covers the area without distortion */
 }
-
 
 .heading-icons-container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin: 10px 0;
+  justify-content: space-between;
+  position: absolute;
+  top: 888px;
+  left: 50px;
+  width: 100%; /* Take full width for correct spacing */
+  max-width: 1000px; /* Match width to image container */
 }
 
 .specific-h2 {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin: 0;
+  font-family: 'Aleo';
+  font-size: 40px;
 }
 
 .icons-container {
   display: flex;
-  gap: 10px;
+  gap: 35px; /* Space between icons */
 }
 
 .icon {
-  width: 24px;
+  width: 24px; /* Adjust icon size as needed */
   height: 24px;
   cursor: pointer;
-  transition: transform 0.2s ease-in-out;
 }
 
 .icon:hover {
-  transform: scale(1.2);
+  opacity: 0.8; /* Optional hover effect */
 }
 
 .specific-Price {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #444;
-  margin-top: 10px;
-}
-
-p {
-  font-size: 1rem;
-  color: #666;
-  line-height: 1.5;
+  position: absolute;
+  top: 940px;
+  left: 50px;
+  font-family: 'Aleo';
+  font-size: 32px;
 }

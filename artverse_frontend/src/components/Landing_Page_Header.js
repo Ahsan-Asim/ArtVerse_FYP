@@ -44,8 +44,8 @@ function Landing_Page_Header() {
           Digital Art
         </Link>
 
-        <Link to="/signup" className="explore-digital-art">
-          Explore More
+        <Link to="/become-artist" className="explore-digital-art">
+          Become Artist
         </Link>
       </div>
 

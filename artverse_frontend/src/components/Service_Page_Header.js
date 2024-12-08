@@ -37,17 +37,8 @@ function Service_Page_Header() {
         </Link>
         <div className="headings">
           <Link to="/become-artist" className="become-artist">Become Artist</Link>
-          <Link to="/About_Us" className="why-us">Why Us</Link>
-          <Link
-          to="#"
-          className="explore-digital-art"
-          onClick={(e) => {
-            e.preventDefault();
-            alert("This page is under construction.");
-          }}
-        >
-          Explore Digital Art
-        </Link>
+          <Link to="/why-us" className="why-us">Why Us</Link>
+          <Link to="/explore-digital-art" className="explore-digital-art">Explore Digital Art</Link>
         </div>
         <form className="search-container50" onSubmit={handleSearchSubmit}>
           <img src={SearchIcon} alt="Search Icon" className="search-icon" />
@@ -76,13 +67,12 @@ function Service_Page_Header() {
 
       {/* New Row of Headings */}
       <div className="sub-headings">
-
-       <Link to="#"className="sub-heading-item"onClick={(e) => {e.preventDefault(); alert("This page is under construction."); }}>Paintings</Link>
-       <Link to="#"className="sub-heading-item"onClick={(e) => {e.preventDefault(); alert("This page is under construction."); }}>Sculptures</Link>
-       <Link to="#"className="sub-heading-item"onClick={(e) => {e.preventDefault(); alert("This page is under construction."); }}>Photography</Link>
-       <Link to="#"className="sub-heading-item"onClick={(e) => {e.preventDefault(); alert("This page is under construction."); }}>Digital Arts</Link>
-       <Link to="#"className="sub-heading-item"onClick={(e) => {e.preventDefault(); alert("This page is under construction."); }}>Auctions</Link>
-       <Link to="#"className="sub-heading-item"onClick={(e) => {e.preventDefault(); alert("This page is under construction."); }}>Events</Link>
+        <Link to="/painting" className="sub-heading-item">Paintings</Link>
+        <Link to="/sculptures" className="sub-heading-item">Sculptures</Link>
+        <Link to="/photography" className="sub-heading-item">Photography</Link>
+        <Link to="/digital-arts" className="sub-heading-item">Digital Arts</Link>
+        <Link to="/auctions" className="sub-heading-item">Auctions</Link>
+        <Link to="/events" className="sub-heading-item">Events</Link>
       </div>
     </div>
   );

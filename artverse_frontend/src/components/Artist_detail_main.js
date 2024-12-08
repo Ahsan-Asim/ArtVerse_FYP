@@ -1,14 +1,118 @@
+// import React, { useState } from "react";
+// import "../styles/Artist_detail_main.css";
+// import home4 from "../assets/images/home4.png"; // If you want to include an image for each artist, use it here
+
+// // Modal Component to display artist details and edit/delete buttons
+// function Modal({ artist, closeModal }) {
+//   return (
+//     <div className="modal-overlay" onClick={closeModal}>
+//       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+//         <button className="close-btn" onClick={closeModal}>×</button> {/* Close button */}
+//         <h3>{artist.name}</h3>
+//         <p>{artist.city}</p>
+//         <p>{artist.description}</p>
+
+//         <div className="modal-buttons">
+//           <button>Edit</button>
+//           <button>Delete</button>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
+
+// function ArtistCard({ image, name, city, description, onClick }) {
+//   return (
+//     <div className="artist-card" onClick={onClick}>
+//       <img src={image || home4} alt={name} />
+      
+//       <div className="artist-details">
+//         <h3>{name}</h3>
+//         <p>{city}</p>
+//         <p>{description}</p>
+//       </div>
+//     </div>
+//   );
+// }
+
+// function Artist_detail_main() {
+//   const [selectedArtist, setSelectedArtist] = useState(null); // state for selected artist for the modal
+
+//   const artists = [
+//     {
+//       image: home4,
+//       name: "Wajeeha Kashaf",
+//       city: "Faisalabad",
+//       description: "Hardworking, creative, and passionate about design and art.",
+//     },
+//     {
+//       image: home4,
+//       name: "Rohit Kumar",
+//       city: "Islamabad",
+//       description: "An artist blending intricate details with bold abstract elements.",
+//     },
+//     {
+//       image: home4,
+//       name: "Ali Hassan",
+//       city: "Lahore",
+//       description: "Inspired by nature, Ali creates minimalist art with a modern twist.",
+//     },
+//     {
+//       image: home4,
+//       name: "Sarah Khan",
+//       city: "Karachi",
+//       description: "A photographer turned visual artist, exploring light and shadows.",
+//     },
+//     {
+//       image: home4,
+//       name: "Usman Ali",
+//       city: "Rawalpindi",
+//       description: "An experimental artist known for mixing traditional with digital art.",
+//     },
+//   ];
+
+//   // Handle opening the modal and setting the selected artist
+//   const handleCardClick = (artist) => {
+//     setSelectedArtist(artist);
+//   };
+
+//   // Handle closing the modal
+//   const closeModal = () => {
+//     setSelectedArtist(null);
+//   };
+
+//   return (
+//     <div className="main-studio">
+//       <h1>Manage Artist Profile</h1>
+//       <div className="heading">Welcome to Artist Portfolios</div>
+
+//       <div className="artist-list">
+//         {artists.map((artist, index) => (
+//           <ArtistCard key={index} {...artist} onClick={() => handleCardClick(artist)} />
+//         ))}
+//       </div>
+
+//       {selectedArtist && (
+//         <Modal artist={selectedArtist} closeModal={closeModal} />
+//       )}
+//     </div>
+//   );
+// }
+
+// export default Artist_detail_main;
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../styles/Artist_detail_main.css";
 
-// Modal Component (no changes to this)
+// Modal Component to display artist details and edit/delete buttons
 function Modal({ artist, closeModal, refreshArtists }) {
+  // Handle button click actions
   const handleVerify = async () => {
     try {
       await axios.put("http://localhost:4000/api/admin/verifyUser", { email: artist.email });
-      artist.isVerified = true;
-      refreshArtists();
+      artist.isVerified = true; // Update the artist's verified status
+      refreshArtists(); // Refresh the artist list to reflect the changes
     } catch (error) {
       console.error("Error verifying user:", error);
     }
@@ -17,7 +121,7 @@ function Modal({ artist, closeModal, refreshArtists }) {
   const handleUnverify = async () => {
     try {
       await axios.put("http://localhost:4000/api/admin/unverifyUser", { email: artist.email });
-      artist.isVerified = false;
+      artist.isVerified = false; // Update the artist's verified status
       refreshArtists();
     } catch (error) {
       console.error("Error unverifying user:", error);
@@ -27,7 +131,7 @@ function Modal({ artist, closeModal, refreshArtists }) {
   const handleBlock = async () => {
     try {
       await axios.put("http://localhost:4000/api/admin/blockUser", { email: artist.email });
-      artist.isBlocked = true;
+      artist.isBlocked = true; // Update the artist's blocked status
       refreshArtists();
     } catch (error) {
       console.error("Error blocking user:", error);
@@ -37,7 +141,7 @@ function Modal({ artist, closeModal, refreshArtists }) {
   const handleUnblock = async () => {
     try {
       await axios.put("http://localhost:4000/api/admin/unblockUser", { email: artist.email });
-      artist.isBlocked = false;
+      artist.isBlocked = false; // Update the artist's blocked status
       refreshArtists();
     } catch (error) {
       console.error("Error unblocking user:", error);
@@ -72,8 +176,7 @@ function Modal({ artist, closeModal, refreshArtists }) {
   );
 }
 
-// Artist Card Component with Show Artwork Button
-function ArtistCard({ artist, onClick, fetchArtwork }) {
+function ArtistCard({ artist, onClick }) {
   return (
     <div className="artist-card" onClick={onClick}>
       <div className="artist-details">
@@ -87,23 +190,13 @@ function ArtistCard({ artist, onClick, fetchArtwork }) {
           <p><strong>Blocked:</strong> {artist.isBlocked ? 'Yes' : 'No'}</p>
         </div>
       </div>
-      {/* Show Artwork Button for each artist */}
-      <button
-        className="show-artwork-btn"
-        onClick={() => fetchArtwork(artist._id)} // Pass artist's ID
-      >
-        Show Artwork
-      </button>
     </div>
   );
 }
 
-// Main Component with the Artwork Grid
 function Artist_detail_main() {
   const [artists, setArtists] = useState([]);
-  const [selectedArtist, setSelectedArtist] = useState(null);
-  const [artworkGrid, setArtworkGrid] = useState(false); // State to toggle the artwork grid visibility
-  const [artworks, setArtworks] = useState([]); // State to store artwork data
+  const [selectedArtist, setSelectedArtist] = useState(null); // state for selected artist for the modal
 
   // Fetch artists data from the API
   useEffect(() => {
@@ -117,22 +210,7 @@ function Artist_detail_main() {
       });
   }, []);
 
-  // Fetch artwork data from the API for specific artist
-  const fetchArtwork = async (artistId) => {
-    try {
-      const response = await axios.get(`http://localhost:4000/api/artworks?artistId=${artistId}`);
-      if (response.data.length === 0) {
-        alert("No artwork is present for this artist.");
-      } else {
-        setArtworks(response.data);
-        setArtworkGrid(true);
-      }
-    } catch (error) {
-      console.error("Error fetching artworks:", error);
-    }
-  };
-
-  // Handle opening the modal
+  // Handle opening the modal and setting the selected artist
   const handleCardClick = (artist) => {
     setSelectedArtist(artist);
   };
@@ -147,7 +225,7 @@ function Artist_detail_main() {
     axios
       .get("http://localhost:4000/api/admin/artists")
       .then((response) => {
-        setArtists(response.data);
+        setArtists(response.data); // Update artist list after the action
       })
       .catch((error) => {
         console.error("Error fetching artists:", error);
@@ -161,36 +239,12 @@ function Artist_detail_main() {
 
       <div className="artist-list">
         {artists.map((artist, index) => (
-          <ArtistCard 
-            key={index} 
-            artist={artist} 
-            onClick={() => handleCardClick(artist)} 
-            fetchArtwork={fetchArtwork} // Pass fetchArtwork to ArtistCard
-          />
+          <ArtistCard key={index} artist={artist} onClick={() => handleCardClick(artist)} />
         ))}
       </div>
 
       {selectedArtist && (
         <Modal artist={selectedArtist} closeModal={closeModal} refreshArtists={refreshArtists} />
-      )}
-
-      {/* Artwork Grid (Visible after button click) */}
-      {artworkGrid && (
-        <div className="artwork-grid">
-          <button className="close-artwork-btn" onClick={() => setArtworkGrid(false)}>
-            Close Artwork
-          </button>
-          {artworks.map((artwork, index) => (
-            <div key={index} className="artwork-card">
-              <img src={artwork.image} alt={artwork.title} className="artwork-image" />
-              <div className="artwork-info">
-                <h4>{artwork.title}</h4>
-                <p>{artwork.artist.name}</p>
-                <p>{artwork.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
       )}
     </div>
   );

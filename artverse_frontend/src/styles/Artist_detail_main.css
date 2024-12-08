@@ -1,7 +1,7 @@
 /* Main Studio Section */
 .main-studio {
   padding: 20px;
-  background: linear-gradient(90deg, #e9d26c 65.5%, #68a0ce 100%);
+  background-color: #f4f4f4;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -33,7 +33,7 @@
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 100%;
+  width: 100%; /* Make each card take up the full page width */
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -42,13 +42,23 @@
 }
 
 .artist-card:hover {
-  transform: scale(1.05);
+  transform: scale(1.05); /* Add a hover effect */
   background: linear-gradient(90deg, #FFFDF4 65.5%, #998486 100%);
   border: 3px solid rgba(135, 130, 130, 1);
   border-radius: 15px;
   padding: 20px;
   box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.4);
-  width: 350px;
+  width: 350px; /* Increased width */
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: box-shadow 0.3s ease;
+  outline: none;
+}
+
+.artist-card:hover {
+  box-shadow: 0px 4px 60px rgba(0, 0, 0, 0.6); /* More intense shadow on hover */
 }
 
 /* Artist Details */
@@ -83,16 +93,22 @@
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.7);
+  background-image: url('../assets/images/home9.png'); 
+  background-size: cover; /* Ensures the image covers the entire viewport */
+  background-position: center center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  background-attachment: fixed; /* Makes the background image fixed while scrolling */
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  animation: fadeIn 0.3s ease-in-out;
+  animation: fadeIn 0.3s ease-in-out; /* Fade-in animation */
+  
 }
 
 /* Modal Content */
 .modal-content {
-  background: linear-gradient(145deg, #fff, #b66990);
+  background: linear-gradient(145deg, #fff, #b66990); /* Gradient background */
   padding: 30px;
   border-radius: 12px;
   max-width: 80vw;
@@ -100,11 +116,11 @@
   width: 100%;
   height: auto;
   text-align: left;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Soft shadow */
   position: relative;
   overflow-y: auto;
   z-index: 1001;
-  animation: scaleUp 0.3s ease-out;
+  animation: scaleUp 0.3s ease-out; /* Scale-up animation */
 }
 
 /* Close Button */
@@ -128,7 +144,7 @@
 .modal-buttons button {
   margin: 15px;
   padding: 15px 20px;
-  background-color: #4CAF50;
+  background-color: #4CAF50; /* Green button */
   color: white;
   border: none;
   border-radius: 8px;
@@ -140,87 +156,31 @@
 
 .modal-buttons button:hover {
   background-color: #45a049;
-  transform: translateY(-5px);
+  transform: translateY(-5px); /* Slight lift effect on hover */
 }
 
 .modal-buttons button:active {
-  transform: translateY(2px);
+  transform: translateY(2px); /* Slight press effect on click */
 }
 
-/* Artwork Grid */
-.artwork-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-/* Artwork Card Styling */
-.artwork-card {
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 300px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: transform 0.3s ease;
-}
-
-.artwork-card:hover {
-  transform: scale(1.05);
-}
-
-.artwork-image {
-  max-width: 100%;
-  border-radius: 8px;
-  margin-bottom: 10px;
-}
-
-.artwork-info h4 {
+/* Modal Title */
+.modal-content h3 {
   font-family: 'Aleo', sans-serif;
-  font-size: 18px;
+  font-size: 28px;
   color: #333;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+
 }
 
-.artwork-info p {
-  font-size: 14px;
+/* Modal Paragraphs */
+.modal-content p {
+  font-size: 16px;
   color: #555;
+  margin: 5px 0;
 }
 
-/* Show Artwork Button */
-.show-artwork-btn, .close-artwork-btn {
-  background-color: black important;/* Change the button color to black */
-  color: white; /* Keep the text color white for contrast */
-  border: none;
-  border-radius: 8px;
-  padding: 10px 15px;
-  margin-top: 10px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-.show-artwork-btn:hover, .close-artwork-btn:hover {
-  background-color: #444; /* Optional: Change the background to a darker shade of black on hover */
-}
-
-
-.show-artwork-btn:hover, .close-artwork-btn:hover {
-  background-color: #1775c2;
-}
-
-.close-artwork-btn {
-  background-color: #f44336;
-  margin-top: 20px;
-}
-
-.close-artwork-btn:hover {
-  background-color: #d32f2f;
+.modal-content strong {
+  color: #333;
 }
 
 /* Add Animations for Modal Visibility */
@@ -240,4 +200,9 @@
   to {
     transform: scale(1);
   }
+}
+
+/* Style for Modal Text */
+.modal-content p {
+  line-height: 1.6; /* Better readability */
 }
