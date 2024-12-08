@@ -144,7 +144,6 @@ function Home_Page_Header() {
         .then((data) => {
           if (data.profileImage) {
             setArtistProfileImage(data.profileImage);  // Set the profile image path
-            console.log(data.profileImage);
           }
           if (data.name) {
             setArtistName(data.name);  // Set the artist name
