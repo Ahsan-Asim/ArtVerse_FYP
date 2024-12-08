@@ -194,8 +194,8 @@
 
 /* Show Artwork Button */
 .show-artwork-btn, .close-artwork-btn {
-  background-color: #68a0ce;
-  color: white;
+  background-color: black !important;/* Change the button color to black */
+  color: white; /* Keep the text color white for contrast */
   border: none;
   border-radius: 8px;
   padding: 10px 15px;
@@ -204,6 +204,11 @@
   font-weight: bold;
   transition: background-color 0.3s ease;
 }
+
+.show-artwork-btn:hover, .close-artwork-btn:hover {
+  background-color: #444; /* Optional: Change the background to a darker shade of black on hover */
+}
+
 
 .show-artwork-btn:hover, .close-artwork-btn:hover {
   background-color: #1775c2;
