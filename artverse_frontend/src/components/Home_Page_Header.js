@@ -177,8 +177,8 @@ function Home_Page_Header() {
 
       <div className="headings">
         <Link to="/become-artist" className="become-artist">Become Artist</Link>
-        <Link to="/why-us" className="why-us">Why Us</Link>
-        <Link to="/explore-digital-art" className="explore-digital-art">Explore Digital Art</Link>
+        <Link to="/About_Us" className="why-us">Why Us</Link>
+        <Link to="/signup" className="explore-digital-art">Explore Digital Art</Link>
       </div>
 
       <div className="search-container30">

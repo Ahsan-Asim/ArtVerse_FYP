@@ -12,9 +12,9 @@ function ArtistStudioHeader() {
         </a>
         <div className="nav-links">
           <a href="/profile" className="nav-link profile-link">Profile</a>
-          <a href="/manage_artworks" className="nav-link manage-artworks-link">Manage Artworks</a>
-          <a href="/sales_dashboard" className="nav-link sales-dashboard-link">Sales Dashboard</a>
-          <a href="/offers_dashboard" className="nav-link offers-dashboard-link">Offers Dashboard</a>
+          <a href="#" className="nav-link manage-artworks-link" onClick={(e) => {e.preventDefault(); alert("This page is under construction."); }}>Manage Artworks</a>
+          <a href="#" className="nav-link sales-dashboard-link" onClick={(e) => {e.preventDefault(); alert("This page is under construction."); }}>Sales Dashboard</a>
+          <a href="#" className="nav-link offers-dashboard-link" onClick={(e) => {e.preventDefault(); alert("This page is under construction."); }}>Offers Dashboard</a>
         </div>
         <a href="/profile" className="profile-icon-link">
           <img src={ProfileIcon} alt="Profile Icon" className="profile-icon-img" />
