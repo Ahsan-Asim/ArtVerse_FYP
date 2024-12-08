@@ -194,7 +194,7 @@
 
 /* Show Artwork Button */
 .show-artwork-btn, .close-artwork-btn {
-  background-color: black !important;/* Change the button color to black */
+  background-color: black important;/* Change the button color to black */
   color: white; /* Keep the text color white for contrast */
   border: none;
   border-radius: 8px;
