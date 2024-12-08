@@ -235,7 +235,7 @@ function ArtistForm() {
                 </div>
 
                 <button type="submit" className="register-button">
-                    Register as Artist
+                    Register as Artisttt
                 </button>
             </form>
         </div>
