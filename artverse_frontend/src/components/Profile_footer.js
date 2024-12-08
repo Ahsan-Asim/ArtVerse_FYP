@@ -12,7 +12,7 @@ function Profile_footer() {
   padding: '20px',
   margin: '0 auto',
   position:'absolute',
-  top:'1300px',
+  top:'1500px',
   left:'20px'
 }}>
   {/* Logo */}

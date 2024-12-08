@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/Specefic_Paintings_Specification.css"; // Ensure to import your custom CSS
-import ArtistImage from "../assets/images/Artist_Image.png";
+import ArtistImage from "../assets/images/backend_dev.png";
 import vVerifiedIcon from "../assets/images/verified_icon.png";
 
 function Specefic_Paintings_Specification() {

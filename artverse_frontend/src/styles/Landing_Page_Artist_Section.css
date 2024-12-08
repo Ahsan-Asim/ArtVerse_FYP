@@ -100,3 +100,53 @@ card4{
   object-fit: cover;
   margin-top: 0px;
 }
+
+/* Follow Button */
+.follow-button {
+  background-color: black; /* Darker tone of the color scheme */
+  color: white; /* Ensure text is readable */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px; /* Rounded corners */
+  font-family: 'Aleo', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.follow-button:hover {
+  background-color: #00838f; /* Slightly lighter shade on hover */
+}
+
+/* Explore More Button */
+.explore-more-button {
+  background: linear-gradient(to right,black, #94d2bd); /* Gradient effect */
+  color: white;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 50px; /* Fully rounded button */
+  font-family: 'Aleo', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+  display: inline-block;
+  margin-top: 20px;
+  cursor: pointer;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25); /* Adds depth */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.explore-more-button:hover {
+  transform: scale(1.05); /* Slight enlargement on hover */
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.35); /* Enhanced shadow */
+}
+
+/* Button Alignment */
+.button-container {
+  display: flex;
+  justify-content: center; /* Center aligns the buttons */
+  gap: 20px; /* Space between buttons */
+  margin-top: 40px;
+}
+
