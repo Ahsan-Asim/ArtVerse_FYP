@@ -203,10 +203,11 @@ exports.signin = async (req, res) => {
 
     // Create JWT token
     const token = jwt.sign(
-      { userId: user._id, email: user.email,role:user.role},
-      '1234', // use a strong secret key
-      { expiresIn: '1h' } // Token expiration (you can adjust this)
+      { userId: user._id, email: user.email, role: user.role },
+      '1234', // Use a strong secret key
+      { expiresIn: '1hr' } // Token expiration (20 seconds)
     );
+    
 
     // Send the token in response
     res.status(200).json({

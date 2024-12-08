@@ -30,8 +30,7 @@ function About_us_3rd_sec() {
               <h3>Team Leader</h3>
             </div>
             <p>
-              An entrepreneur and visionary leader, Rohit Kumar guides Artverse
-              with a commitment to innovation and empowering the art community.
+            Special thanks to <b>Rohit</b>, the brilliant designer behind the Figma designs for this project. Their creativity and attention to detail have brought our vision to life, making this website not only functional but visually stunning. We truly appreciate their invaluable contribution to this journey!
             </p>
           </div>
         </div>
@@ -50,8 +49,7 @@ function About_us_3rd_sec() {
               <h3>Designer</h3>
             </div>
             <p>
-              She is a very chill girl who only eats, sleeps, and repeats. A
-              very lazy girl.
+            A huge thank you to Wajeeha for her incredible support in designing the React components and helping with various aspects of the project. Her dedication and expertise have played a key role in bringing this website to life. We are truly grateful for her invaluable assistance and teamwork throughout the development process!
             </p>
           </div>
         </div>
@@ -69,7 +67,7 @@ function About_us_3rd_sec() {
               <h2>Ahsan Asim</h2>
               <h3>Backend Developer</h3>
             </div>
-            <p>He is also a bad boy, "snake chupa rustam", and a lot more.</p>
+            <p>A special thanks to Ahsan for his leadership and dedication throughout this project. Taking charge of both the backend and frontend development, he ensured everything ran smoothly. Ahsan's hard work in uniting the team and guiding them toward success has been invaluable in bringing this project to completion!</p>
           </div>
         </div>
       </div>

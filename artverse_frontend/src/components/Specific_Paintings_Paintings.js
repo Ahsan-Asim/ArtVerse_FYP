@@ -8,91 +8,12 @@ import ShoppingIcon from '../assets/images/shopping_icon.png';
 function Specific_Paintings_Paintings() {
   return (
     <div>
-      <h1 className='main-headin3'><b>More From Artists</b></h1>
+      <h1 className='main-headin3' style={{'margin-top' : '300px'}}><b>More From Artists</b></h1>
 
       
       <div className="art-cards-container11">
       {/* First Card */}
-      <div className="art-card">
-        <div className="card-image" style={{ backgroundImage: `url(${require('../assets/images/home9.png')})` }}></div>
-        <div className="card-details">
-          <div className="left-details">
-            <h3 className="art-title">Flowery</h3>
-            <p className="artist-name">By Asif Hussain</p>
-            <p className="art-type">Painting</p>
-            <p className="art-material">Oil, Acrylic on Canvas</p>
-            <p className="dimensions">72 x 52 Inches</p>
-          </div>
-          <div className="right-details">
-            <p className="price-old">Rs. 80,000</p>
-            <p className="price-new">Rs. 71,000</p>
-            <p className="discount">30% OFF</p>
-          </div>
-        </div>
-        <div className="card-buttons">
-          <button className="icon-container">
-            <img src={LikeIcon} alt="Like" />
-          </button>
-          <button className="icon-container">
-            <img src={ShoppingIcon} alt="Shopping" />
-          </button>
-        </div>
-      </div>
-
-      {/* Second Card */}
-      <div className="art-card">
-        <div className="card-image" style={{ backgroundImage: `url(${require('../assets/images/home10.png')})` }}></div>
-        <div className="card-details">
-          <div className="left-details">
-            <h3 className="art-title">Colour Paintings</h3>
-            <p className="artist-name">By Artist Name</p>
-            <p className="art-type">Artist Spotlights</p>
-            <p className="art-material">Oil, Acrylic on Canvas</p>
-
-            <p className="dimensions">60 x 40 Inches</p>
-          </div>
-          <div className="right-details">
-            <p className="price-old">Rs. 90,000</p>
-            <p className="price-new">Rs. 81,000</p>
-            <p className="discount">10% OFF</p>
-          </div>
-        </div>
-        <div className="card-buttons">
-          <button className="icon-container">
-            <img src={LikeIcon} alt="Like" />
-          </button>
-          <button className="icon-container">
-            <img src={ShoppingIcon} alt="Shopping" />
-          </button>
-        </div>
-      </div>
-
-      {/* Third Card */}
-      <div className="art-card">
-        <div className="card-image" style={{ backgroundImage: `url(${require('../assets/images/home11.png')})` }}></div>
-        <div className="card-details">
-          <div className="left-details">
-            <h3 className="art-title">Asian Mysticism</h3>
-            <p className="artist-name">By Artist Name</p>
-            <p className="art-type">Englo Art</p>
-            <p className="art-material">Acrylic on Canvas</p>
-            <p className="dimensions">50 x 70 Inches</p>
-          </div>
-          <div className="right-details">
-            <p className="price-old">Rs. 100,000</p>
-            <p className="price-new">Rs. 90,000</p>
-            <p className="discount">15% OFF</p>
-          </div>
-        </div>
-        <div className="card-buttons">
-          <button className="icon-container">
-            <img src={LikeIcon} alt="Like" />
-          </button>
-          <button className="icon-container">
-            <img src={ShoppingIcon} alt="Shopping" />
-          </button>
-        </div>
-      </div>
+      
     </div>
 
 

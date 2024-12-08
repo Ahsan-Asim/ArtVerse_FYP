@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchCart, addItemToCart, removeItemFromCart, clearCart } from "../feature/slice/Add_to_cart_slice.js";
+import "../styles/Item_Cart.css"; // Custom CSS for the Cart page
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -25,23 +26,35 @@ const Cart = () => {
 
   return (
     <div className="cart-page">
-      <h2>Your Cart</h2>
+      <h2 className="cart-title">Your Cart</h2>
       {cartItems.length === 0 ? (
-        <p>Your cart is empty</p>
+        <p className="cart-empty-message">Your cart is empty</p>
       ) : (
         <>
-          {cartItems.map((item, index) => (
-            <div key={index}>
-              <h3>{item.name}</h3>
-              <p>Price: {item.price}</p>
-              <p>Quantity: {item.quantity}</p>
-              <button onClick={() => handleAddToCart(item)}>Add more</button>
-              <button onClick={() => handleRemove(item.id)}>Remove</button>
-            </div>
-          ))}
-          <div>
-            <h3>Total: Rs. {totalPrice}</h3>
-            <button onClick={handleClearCart}>Clear Cart</button>
+          <div className="cart-items-container">
+            {cartItems.map((item, index) => (
+              <div key={index} className="cart-item-card">
+                <div className="cart-item-details">
+                  <h3 className="cart-item-name">{item.name}</h3>
+                  <p className="cart-item-price">Price: Rs. {item.price}</p>
+                  <p className="cart-item-quantity">Quantity: {item.quantity}</p>
+                </div>
+                <div className="cart-item-actions">
+                  <button className="cart-btn add-btn" onClick={() => handleAddToCart(item)}>
+                    Add More
+                  </button>
+                  <button className="cart-btn remove-btn" onClick={() => handleRemove(item.id)}>
+                    Remove
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="cart-total-section">
+            <h3 className="cart-total">Total: Rs. {totalPrice}</h3>
+            <button className="cart-btn clear-cart-btn" onClick={handleClearCart}>
+              Clear Cart
+            </button>
           </div>
         </>
       )}

@@ -58,6 +58,15 @@ function Artist_studio_main() {
       });
     }
   }, [email]);
+  const handleUploadClick = () => {
+    if (isVerified && !isBlocked) {
+      // User is verified and not blocked, allow them to upload artwork
+      window.open("/upload_artwork", "_blank"); // Open in a new tab
+    } else {
+      // Show alert if user is not verified or is blocked
+      alert("You need to be verified and not blocked to upload artwork.");
+    }
+  };
 
   const handleEdit = (artwork) => {
     navigate("/Edit_Artwork", { state: artwork });
@@ -98,7 +107,8 @@ function Artist_studio_main() {
           <h1>My Original Artworks</h1>
         </div>
         <div className="right-area">
-          <button onClick={() => navigate("/upload_artwork")}>
+          <button             onClick={handleUploadClick} // Trigger the upload logic on click
+>
             Upload New Artwork
           </button>
         </div>
