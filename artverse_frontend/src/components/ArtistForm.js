@@ -377,6 +377,7 @@ function ArtistForm() {
                 <button type="submit" className="register-button">Register as Artist</button>
             </form>
         </div>
+        
     );
 }
 
