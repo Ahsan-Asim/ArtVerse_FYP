@@ -373,6 +373,9 @@ function ArtistForm() {
                         onChange={handleImageChange}
                     />
                 </div>
+                <button type="submit" className="register-button">
+                    Register as Artisttt
+                </button>
 
                 <button type="submit" className="register-button">Register as Artist</button>
             </form>
