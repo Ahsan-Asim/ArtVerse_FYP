@@ -239,6 +239,7 @@ function ArtistForm() {
                 </button>
             </form>
         </div>
+        
     );
 }
 
