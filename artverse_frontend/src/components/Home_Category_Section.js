@@ -18,21 +18,8 @@ function Home_Category_Section() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // Example painting data for this grid
-  const painting = {
-    title: "1", // Unique identifier
-    name: "Flowery",
-    artist: "Asif Hussain",
-    type: "Painting",
-    material: "Oil, Acrylic on Canvas",
-    dimensions: "72 x 52 Inches",
-    oldPrice: 80000,
-    newPrice: 71000,
-    discount: "30% OFF",
-    image: require("../assets/images/Artist_Image.png"),
-  };
-
-  const handleAddToCart = () => {
+  // Example function to handle adding an item to the cart
+  const handleAddToCart = (item) => {
     const userEmail = sessionStorage.getItem("email");
     if (!userEmail) {
       alert("Please sign in to add items to your cart.");
@@ -43,10 +30,10 @@ function Home_Category_Section() {
     dispatch(
       addItemToCart({
         userEmail,
-        title: painting.title,
-        artist: painting.artist,
-        image: painting.image,
-        price: painting.newPrice,
+        title: item.title,
+        artist: item.artist,
+        image: item.image,
+        price: item.newPrice,
         quantity: 1,
       })
     );
@@ -63,40 +50,62 @@ function Home_Category_Section() {
     navigate("/cartpage");
   };
 
+  const artItems = [
+    {
+      title: "Colour Paintings",
+      artist: "Artist Name",
+      type: "Artist Spotlights",
+      material: "Mixed Media",
+      dimensions: "60 x 40 Inches",
+      oldPrice: 90000,
+      newPrice: 81000,
+      discount: "10% OFF",
+      image: require("../assets/images/home10.png"),
+    },
+    {
+      title: "Artist Spotlights",
+      artist: "Artist Name",
+      type: "Artist Spotlights",
+      material: "Acrylic on Canvas",
+      dimensions: "50 x 70 Inches",
+      oldPrice: 100000,
+      newPrice: 90000,
+      discount: "15% OFF",
+      image: require("../assets/images/home11.png"),
+    },
+    {
+      title: "Englo Art",
+      artist: "Artist Name",
+      type: "Artist Spotlights",
+      material: "Oil on Canvas",
+      dimensions: "72 x 52 Inches",
+      oldPrice: 80000,
+      newPrice: 71000,
+      discount: "30% OFF",
+      image: require("../assets/images/home12.png"),
+    },
+  ];
+
   return (
     <>
-      {/* Category Section */}
-      <div className="category-section">
-        <h2 className="category-title">Explore By Category</h2>
-        <div className="category-items">
-          <div className="category-item">
-            <img
-              src={SerigraphImage}
-              alt="Serigraphs"
-              className="category-image"
-            />
-            <p className="category-text">Serigraphs</p>
-          </div>
-          <div className="category-item">
-            <img src={DrawingImage} alt="Drawings" className="category-image" />
-            <p className="category-text">Drawings</p>
-          </div>
-          <div className="category-item">
-            <img
-              src={PaintingImage}
-              alt="Paintings"
-              className="category-image"
-            />
-            <p className="category-text">Paintings</p>
-          </div>
-          <div className="category-item">
-            <img
-              src={SculptureImage}
-              alt="Sculptures"
-              className="category-image"
-            />
-            <p className="category-text">Sculptures</p>
-          </div>
+    <div className="category-section">
+      <h2 className="category-title">Explore By Category</h2>
+      <div className="category-items">
+        <div className="category-item">
+          <img src={SerigraphImage} alt="Serigraphs" className="category-image" />
+          <p className="category-text">Serigraphs</p>
+        </div>
+        <div className="category-item">
+          <img src={DrawingImage} alt="Drawings" className="category-image" />
+          <p className="category-text">Drawings</p>
+        </div>
+        <div className="category-item">
+          <img src={PaintingImage} alt="Paintings" className="category-image" />
+          <p className="category-text">Paintings</p>
+        </div>
+        <div className="category-item">
+          <img src={SculptureImage} alt="Sculptures" className="category-image" />
+          <p className="category-text">Sculptures</p>
         </div>
       </div>
 
@@ -136,103 +145,44 @@ function Home_Category_Section() {
         </div>
       </div>
 
-      {/* Art Card Section */}
+      {/* Art Card Section with Add to Cart functionality */}
       <div className="art-card-container">
-        {/* First Card */}
-        <div className="art-card">
-          <div
-            className="card-image"
-            style={{
-              backgroundImage: `url(${require("../assets/images/home10.png")})`,
-            }}
-          ></div>
-          <div className="card-details">
-            <div className="left-details">
-              <h3 className="art-title">Colour Paintings</h3>
-              <p className="artist-name">By Artist Name</p>
-              <p className="art-type">Artist Spotlights</p>
-              <p className="art-material">Mixed Media</p>
-              <p className="dimensions">60 x 40 Inches</p>
+        {artItems.map((item, index) => (
+          <div key={index} className="art-card">
+            <div
+              className="card-image"
+              style={{
+                backgroundImage: `url(${item.image})`,
+              }}
+            ></div>
+            <div className="card-details">
+              <div className="left-details">
+                <h3 className="art-title">{item.title}</h3>
+                <p className="artist-name">By {item.artist}</p>
+                <p className="art-type">{item.type}</p>
+                <p className="art-material">{item.material}</p>
+                <p className="dimensions">{item.dimensions}</p>
+              </div>
+              <div className="right-details">
+                <p className="price-old">Rs. {item.oldPrice}</p>
+                <p className="price-new">Rs. {item.newPrice}</p>
+                <p className="discount">{item.discount}</p>
+              </div>
             </div>
-            <div className="right-details">
-              <p className="price-old">Rs. 90,000</p>
-              <p className="price-new">Rs. 81,000</p>
-              <p className="discount">10% OFF</p>
-            </div>
-          </div>
-          <div className="card-buttons">
-            <button className="like-button">
-              <img src={LikeIcon} alt="Like" className="icon" />
-            </button>
-            <button className="add-to-cart-button">
-              <img src={ShoppingIcon} alt="Add to Cart" className="icon" />
-            </button>
-          </div>
-        </div>
-
-        {/* Second Card */}
-        <div className="art-card">
-          <div
-            className="card-image"
-            style={{
-              backgroundImage: `url(${require("../assets/images/home10.png")})`,
-            }}
-          ></div>
-          <div className="card-details">
-            <div className="left-details">
-              <h3 className="art-title">Colour Paintings</h3>
-              <p className="artist-name">By Artist Name</p>
-              <p className="art-type">Artist Spotlights</p>
-              <p className="art-material">Mixed Media</p>
-              <p className="dimensions">60 x 40 Inches</p>
-            </div>
-            <div className="right-details">
-              <p className="price-old">Rs. 90,000</p>
-              <p className="price-new">Rs. 81,000</p>
-              <p className="discount">10% OFF</p>
+            <div className="card-buttons">
+              <button className="like-button">
+                <img src={LikeIcon} alt="Like" className="icon" />
+              </button>
+              <button
+                className="add-to-cart-button"
+                onClick={() => handleAddToCart(item)} // Attach add to cart functionality
+              >
+                <img src={ShoppingIcon} alt="Add to Cart" className="icon" />
+              </button>
             </div>
           </div>
-          <div className="card-buttons">
-            <button className="like-button">
-              <img src={LikeIcon} alt="Like" className="icon" />
-            </button>
-            <button className="add-to-cart-button">
-              <img src={ShoppingIcon} alt="Add to Cart" className="icon" />
-            </button>
-          </div>
-        </div>
-
-        {/* Third Card */}
-        <div className="art-card">
-          <div
-            className="card-image"
-            style={{
-              backgroundImage: `url(${require("../assets/images/home11.png")})`,
-            }}
-          ></div>
-          <div className="card-details">
-            <div className="left-details">
-              <h3 className="art-title">Asian Mysticism</h3>
-              <p className="artist-name">By Artist Name</p>
-              <p className="art-type">Englo Art</p>
-              <p className="art-material">Acrylic on Canvas</p>
-              <p className="dimensions">50 x 70 Inches</p>
-            </div>
-            <div className="right-details">
-              <p className="price-old">Rs. 100,000</p>
-              <p className="price-new">Rs. 90,000</p>
-              <p className="discount">15% OFF</p>
-            </div>
-          </div>
-          <div className="card-buttons">
-            <button className="like-button">
-              <img src={LikeIcon} alt="Like" className="icon" />
-            </button>
-            <button className="add-to-cart-button">
-              <img src={ShoppingIcon} alt="Add to Cart" className="icon" />
-            </button>
-          </div>
-        </div>
+        ))}
+      </div>
       </div>
       {/* Art Card Section */}
       <div className="art-card-container">
